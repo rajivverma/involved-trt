@@ -4,6 +4,13 @@ body {
   margin: 0;
   padding: 0; }
 
+ul {
+  margin: 0;
+  padding: 0; }
+
+li {
+  list-style: none; }
+
 .main {
   background-color: #f1f1f1;
   height: 100vh;
@@ -201,5 +208,128 @@ body {
 .back span {
   color: #ff7800 !important;
   cursor: pointer; }
+
+/*error*/
+.p-error::-webkit-input-placeholder {
+  color: #f00; }
+
+.p-error::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #f00; }
+
+.p-error::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #f00; }
+
+.p-error:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #f00; }
+
+.p-error:-moz-placeholder {
+  /* Firefox 18- */
+  color: #f00; }
+
+/*dashboard*/
+.header {
+  border-top: 4px solid #54c9e8;
+  background: #fff;
+  padding: 5px 0 3px;
+  position: relative;
+  border-bottom: 2px solid #dbdbdb; }
+
+.settings {
+  position: absolute;
+  top: 7px;
+  right: 40px;
+  cursor: pointer; }
+
+.logout {
+  position: absolute;
+  top: 7px;
+  right: 0px;
+  cursor: pointer; }
+
+.container {
+  width: 1280px;
+  position: relative;
+  margin: 0 auto; }
+
+/*sidebar*/
+.nav-sidebar {
+  float: left;
+  width: 223px;
+  background: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  margin-right: 22px;
+  height: 100%; }
+
+.dashboard-main {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  height: 100%;
+  border: 1px solid #d2d2d2; }
+
+.profile {
+  background: #54c9e8;
+  padding: 34px 25px 40px;
+  text-align: center;
+  color: #fff; }
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  margin: 0px auto;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #fff; }
+
+.profile h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 18px 0 15px; }
+
+.profile p {
+  font-size: 15px; }
+
+.nav {
+  text-align: center;
+  margin-top: 2px; }
+
+.nav li a {
+  display: block;
+  padding: 15px 5px;
+  font-size: 15px;
+  color: #333;
+  border-top: 1px solid #f8f8f8;
+  text-decoration: none; }
+
+.active {
+  background-color: #54c9e8;
+  color: #fff; }
+
+.inner-main {
+  height: calc(768px - 95px);
+  padding: 20px 0 0; }
+
+.dashboard-head {
+  background-color: #54c9e8;
+  color: #fff;
+  padding: 10px 20px; }
+
+table {
+  border-collapse: collapse;
+  width: 100%; }
+
+th, td {
+  text-align: left;
+  padding: 8px; }
+
+tr:nth-child(even) {
+  background-color: #f2f2f2; }
+
+th {
+  background-color: #4CAF50;
+  color: white; }
 
 /*# sourceMappingURL=output.css.map */
