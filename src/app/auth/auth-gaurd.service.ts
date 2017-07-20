@@ -6,12 +6,12 @@ import { AuthService } from './auth.service';
 export class AuthGuard implements CanLoad {
   constructor(private authService: AuthService, private router: Router) { }
   canLoad(route: Route): boolean {
-    let url = `/${route.path}`;
+    const url = `/${route.path}`;
     return this.checkLogin(url);
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    let url: string = state.url;
+    const url: string = state.url;
 
     return this.checkLogin(url);
   }
@@ -23,7 +23,7 @@ export class AuthGuard implements CanLoad {
   checkLogin(url: string): boolean {
     if (this.authService.isLoggedIn) { return true; }
     this.authService.redirectUrl = url;
-    let sessionId = localStorage.getItem('token');
+    const sessionId = localStorage.getItem('token');
     if (sessionId == null) {
       this.router.navigate(['login']);
       return false;

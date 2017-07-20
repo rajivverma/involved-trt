@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './auth/auth-gaurd.service';
-import { AuthService } from './auth/auth.service'
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [

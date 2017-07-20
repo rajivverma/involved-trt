@@ -1,3 +1,11 @@
-<p>
-  dashboard works!
-</p>
+<div>
+  <ul class="nav nav-sidebar">
+    <li><a id="dashboard" [routerLink]="['./performance']">Performance</a></li>
+    <li><a id="domains" [routerLink]="['./tasks']">Tasks</a></li>
+    <li><a id="lists" [routerLink]="['./timetable']">Timetable</a></li>
+    <li><a id="campaigns" [routerLink]="['./announcements']">Announcements</a></li>
+  </ul>
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div>
