@@ -2,7 +2,7 @@ body{ font-family: $roboto; margin:0; padding: 0;}
 .main{background-color: $body-bg; height: 100vh; width: 100%;}
 .login-box { border-top: 4px solid $primary-color; background: $white; position: relative; width: 585px; padding: 15px 0; margin: 0 auto 10px; z-index: 9; top: 50px;}
 .logo{text-align: center;}
-.login-box h1 {border-bottom: 1px solid $primary-color; margin: 40px 0 15px; font-size: 90px; font-weight: 100; text-align: center;}
+.login-box h1 {border-bottom: 1px solid $primary-color; margin: 25px 0 15px; font-size: 75px; font-weight: 100; text-align: center;}
 .form-inner{padding: 0 80px;}
 .form-inner h2{font-size: 30px; color:$black; margin: 0 0 25px; font-weight: 400;}
 .custom-input {width: 100%; border:none; margin-bottom: 5px; border-bottom: 1px solid $input; padding:12px 0; font-size: 14px; color: $black;  outline: none; transition: all 0.4s ease-in-out 0s; -moz-transition: all 0.4s ease-in-out 0s; -webkit-transition: all 0.4s ease-in-out 0s;}
@@ -75,7 +75,7 @@ body{ font-family: $roboto; margin:0; padding: 0;}
 .form-footer p{padding-top: 10px; font-size: 14px; font-weight: 400; color: $light-font; line-height: 22px;}
 .form-footer p strong{color: $primary-color; cursor: pointer;}
 .form-footer p strong:hover{color: $light-font; transition: all ease 0.3s; }
-.copyright{color: $very-light-font; position: absolute; bottom: -40px; text-align: center; margin: 0 auto; left: 50%; right: -50%; transform: translate(-50%);}
+.copyright{color: $very-light-font; position: absolute; bottom: -30px; text-align: center; margin: 0 auto; left: 50%; right: -50%; transform: translate(-50%);}
 
 /*forgot pwd*/
 .forgot-pwd .form-inner{margin-top: 40px;}
