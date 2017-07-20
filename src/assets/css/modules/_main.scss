@@ -1,6 +1,6 @@
-body{margin:0; padding: 0; font-family: $roboto;}
+body{ font-family: $roboto; margin:0; padding: 0;}
 .main{background-color: $body-bg; height: 100vh; width: 100%;}
-.login-box {width: 585px; padding: 15px 0; margin: 0 auto 10px; border-top: 4px solid $primary-color; background: $white; position: relative; z-index: 9; top: 50px;}
+.login-box { border-top: 4px solid $primary-color; background: $white; position: relative; width: 585px; padding: 15px 0; margin: 0 auto 10px; z-index: 9; top: 50px;}
 .logo{text-align: center;}
 .login-box h1 {border-bottom: 1px solid $primary-color; margin: 40px 0 15px; font-size: 90px; font-weight: 100; text-align: center;}
 .form-inner{padding: 0 80px;}
@@ -76,4 +76,13 @@ body{margin:0; padding: 0; font-family: $roboto;}
 .form-footer p strong{color: $primary-color; cursor: pointer;}
 .form-footer p strong:hover{color: $light-font; transition: all ease 0.3s; }
 .copyright{color: $very-light-font; position: absolute; bottom: -40px; text-align: center; margin: 0 auto; left: 50%; right: -50%; transform: translate(-50%);}
+
+/*forgot pwd*/
+.forgot-pwd .form-inner{margin-top: 40px;}
+.forgot-pwd .submit-events{text-align: center; margin:20px 0 40px;}
+.forgot-pwd .form-footer{text-align: left;}
+.forgot-pwd .form-footer h2{color: $primary-color; font-weight: 400; font-size: 19px; }
+.forgot-pwd .form-footer span{cursor: pointer; color: $black; font-weight: 500;}
+.back{text-align: center; margin: 30px 0; font-size: 19px !important;}
+.back span{color: $clr-highlight !important; cursor: pointer;}
 
