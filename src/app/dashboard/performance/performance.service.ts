@@ -15,12 +15,12 @@ export class PerformanceService {
     return options;
   }
   getStudentData(id) {
-    let token = this.getToken();
+    const token = this.getToken();
     return this.http.get(URL + '/api/students/' + id + '/performance', token)
       .map((res: Response) => res.json());
   }
   getStudentPerformanceData(studentId, classid) {
-    let token = this.getToken();
+    const token = this.getToken();
     return this.http.get(URL + '/api/students/' + studentId + '/performancegraph/classid=' + classid, token)
       .map((res: Response) => res.json());
   }

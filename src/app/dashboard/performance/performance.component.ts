@@ -12,8 +12,10 @@ import { PiChart } from '../commonService/pi-chart';
 export class PerformanceComponent implements OnInit {
   options: Object;
   chart: Object;
-  constructor(private router: Router, private performanceService: PerformanceService, private dashboardService: DashboardService, private piChart: PiChart) { }
-
+  constructor(private router: Router,
+    private performanceService: PerformanceService,
+    private dashboardService: DashboardService,
+    private piChart: PiChart) { }
   ngOnInit() {
     this.getPieChartData();
     this.dashboardService.getCounter(13).subscribe(

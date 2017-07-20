@@ -13,13 +13,12 @@ export class ForgotPasswordComponent {
   constructor(private router: Router, private forgotPaswordService: ForgotPaswordService) { }
   submit() {
     if (!this.username) {
-      let divToChange = (<HTMLInputElement>document.getElementById("username"));
-      divToChange.placeholder = "Please enter Username";
-      if(!divToChange.className.includes("p-error")){
-        divToChange.className = divToChange.className + " p-error";
+      const divToChange = (<HTMLInputElement>document.getElementById('username'));
+      divToChange.placeholder = 'Please enter Username';
+      if (!divToChange.className.includes('p-error')) {
+        divToChange.className = divToChange.className + ' p-error';
       }
-    }
-    else {
+    } else {
       this.forgotPaswordService.submit(this.username).subscribe(
         (data) => {
           console.log(data);

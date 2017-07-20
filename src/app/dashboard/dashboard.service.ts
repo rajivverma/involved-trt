@@ -16,7 +16,7 @@ export class DashboardService {
     return options;
   }
   getCounter(id) {
-    let token = this.getToken();
+    const token = this.getToken();
     return this.http.get(URL + '/api/students/' + id + '/counters', token)
       .map((res: Response) => res.json());
   }

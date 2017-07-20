@@ -21,13 +21,14 @@ export class LoginComponent {
   constructor(private loginService: LoginService, private router: Router) { }
 
   get_browser = function () {
-    let ua = navigator.userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+    const ua = navigator.userAgent;
+    let tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
     if (/trident/i.test(M[1])) {
       tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
       return { name: 'IE', version: (tem[1] || '') };
     }
     if (M[1] === 'Chrome') {
-      tem = ua.match(/\bOPR|Edge\/(\d+)/)
+      tem = ua.match(/\bOPR|Edge\/(\d+)/);
       if (tem != null) { return { name: 'Opera', version: tem[1] }; }
     }
     M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
@@ -36,55 +37,54 @@ export class LoginComponent {
       name: M[0],
       version: M[1]
     };
-  }
+  };
   getDeviceToken() {
     let devicetoken;
     this.browser = this.get_browser();
-    if (this.isIE == true) {
-      devicetoken = "1" + "_" + this.browser.version;
-    } else if (this.isChrome == true) {
-      devicetoken = "2" + "_" + this.browser.version;
-    } else if (this.isFirefox == true) {
-      devicetoken = "3" + "_" + this.browser.version;
+    if (this.isIE === true) {
+      devicetoken = '1' + '_' + this.browser.version;
+    } else if (this.isChrome === true) {
+      devicetoken = '2' + '_' + this.browser.version;
+    } else if (this.isFirefox === true) {
+      devicetoken = '3' + '_' + this.browser.version;
     } else {
-      devicetoken = "4" + "_" + this.browser.version;
+      devicetoken = '4' + '_' + this.browser.version;
     }
     return devicetoken;
   }
   getPlateform() {
-    let version = navigator.appVersion.split(' ');
-    let platform = this.browser.name + '_' + this.browser.version + '_' + navigator.platform + '_' + version[0];
+    const version = navigator.appVersion.split(' ');
+    const platform = this.browser.name + '_' + this.browser.version + '_' + navigator.platform + '_' + version[0];
     return platform;
   }
   login() {
     if (!this.username || !this.password) {
       let divToChange;
       if (!this.username) {
-        divToChange = (<HTMLInputElement>document.getElementById("username"));
-        divToChange.placeholder = "Please enter Username";
-        if (!divToChange.className.includes("p-error")) {
-          divToChange.className = divToChange.className + " p-error";
+        divToChange = (<HTMLInputElement>document.getElementById('username'));
+        divToChange.placeholder = 'Please enter Username';
+        if (!divToChange.className.includes('p-error')) {
+          divToChange.className = divToChange.className + ' p-error';
         }
       }
       if (!this.password) {
-        divToChange = (<HTMLInputElement>document.getElementById("password"));
-        divToChange.placeholder = "Please enter password";
-        if (!divToChange.className.includes("p-error")) {
-          divToChange.className = divToChange.className + " p-error";
+        divToChange = (<HTMLInputElement>document.getElementById('password'));
+        divToChange.placeholder = 'Please enter password';
+        if (!divToChange.className.includes('p-error')) {
+          divToChange.className = divToChange.className + ' p-error';
         }
       }
-    }
-    else {
-      let devicetoken = this.getDeviceToken();
-      let platform = this.getPlateform();
-      let user = {
+    } else {
+      const devicetoken = this.getDeviceToken();
+      const platform = this.getPlateform();
+      const user = {
         'grant_type': 'password',
         'username': this.username,
         'password': this.password,
         'clientid': '3_3',
         'devicetoken': devicetoken,
         'platform': platform
-      }
+      };
       console.log(user);
       this.router.navigate(['dashboard']);
       this.loginService.login(user).subscribe(
@@ -106,7 +106,7 @@ declare global {
 }
 declare global {
   interface Window {
-    chrome: any; //you can go further and define a strict shape of this member
+    chrome: any;
   }
 }
 declare const InstallTrigger: any;
