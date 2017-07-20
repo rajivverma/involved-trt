@@ -7,16 +7,13 @@ import 'rxjs/add/operator/catch';
 import { URL } from '../app.service';
 
 @Injectable()
-export class LoginService {
+export class ForgotPaswordService {
   constructor(private router: Router, private http: Http) {
   }
-  logout() {
-    localStorage.removeItem('user');
-    this.router.navigate(['login']);
-  }
-
-  login(data) {
-    return this.http.post(URL + '/token', data)
+  submit(username) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post(URL + '/api/account/resetpassword/username=' + username, options)
       .map((res: Response) => res.json());
   }
 }
