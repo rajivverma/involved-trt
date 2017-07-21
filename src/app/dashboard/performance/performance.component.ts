@@ -33,8 +33,8 @@ export class PerformanceComponent implements OnInit {
     this.performanceService.getStudentPerformanceData(id, sId).subscribe(
       (data) => {
         console.log(data);
-        const d = document.getElementById("performance-modal");
-        d.className += " in";
+        const d = document.getElementById('performance-modal');
+        d.className += ' in';
         this.getPieChartData();
       },
       (err) => {
@@ -42,8 +42,8 @@ export class PerformanceComponent implements OnInit {
       });
   }
   closeModal() {
-    const d = document.getElementById("performance-modal");
-    d.className = d.className.replace('in','');
+    const d = document.getElementById('performance-modal');
+    d.className = d.className.replace('in', '');
   }
   getPieChartData() {
     this.options = this.piChart.getPieChartData();
