@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['dashboard']);
       },
       (err) => {
-        console.log("Invalid username or password");
+        console.log('Invalid username or password');
       });
   }
 }

@@ -16,7 +16,7 @@ export class LoginService {
   constructor(private router: Router, private http: Http) {
   }
   login(data) {
-    let body = new URLSearchParams();
+    const body = new URLSearchParams();
     body.set('username', data.username);
     body.set('password', data.password);
     body.set('clientid', data.clientid);

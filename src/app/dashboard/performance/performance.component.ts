@@ -19,13 +19,6 @@ export class PerformanceComponent implements OnInit {
   ngOnInit() {
     this.getPieChartData();
     const id = localStorage.getItem('userid');
-    this.dashboardService.getCounter(id).subscribe(
-      (data) => {
-        console.log(data);
-      },
-      (err) => {
-        // alert('something wrong');
-      });
     this.performanceService.getStudentData(id).subscribe(
       (data) => {
         console.log(data);

@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getStudentDetails().subscribe(
       (data) => {
         this.studentInfo = data;
+        localStorage.setItem('userid', data.id);
         console.log(data);
       },
       (err) => {
