@@ -11,25 +11,36 @@
       <th>Target</th>
       <th>Grade</th>
     </tr>
-    <tr *ngFor='let subject of subjectsData; trackBy: index;' (click)="getSubjectDetails(subject.Id)">
+    <tr *ngFor='let subject of subjectsData;' (click)="getSubjectDetails(subject)">
       <td>
         <div class="table-profile-pic"></div>
-        <div class="subject-name">
-          <p>{{subject.SubjectName}}</p>
-          <span *ngFor="let teacher of subject.ClassTeachers; trackBy: index;let last = last">{{teacher.Name}}<b *ngIf="!last">,</b> </span>
+        <div class="subject-name" id="{{subject.Id}}">
+          <p class="first">{{subject.SubjectName}}</p>
+          <span class="second" *ngFor="let teacher of subject.ClassTeachers; trackBy: index;">{{teacher.Name}}</span>
         </div>
       </td>
       <td>
-        <p class="success">{{subject.Performance.Column1.Value}} {{subject.Performance.Column1.Trend}}
-          <span class="up" *ngIf="subject.Performance.Column1.Trend == 1"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
-          <span class="down" *ngIf="subject.Performance.Column1.Trend == 3"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
+        <p class="success">{{subject.Performance.Column1.Value}} {{subject.Performance.Column1.Unit}}
+          <span class="up" *ngIf="subject.Performance.Column1.Trend == 1">
+            <i class="fa fa-caret-up" aria-hidden="true"></i>
+          </span>
+          <span class="down" *ngIf="subject.Performance.Column1.Trend == 3">
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </span>
         </p>
       </td>
       <td>
         <p class="black">{{subject.Performance.Column2.Value}}</p>
       </td>
       <td>
-        <p class="success">{{subject.Performance.Column3.Value}}<span class="up"></span></p>
+        <p class="success">{{subject.Performance.Column3.Value}}
+          <span class="up" *ngIf="subject.Performance.Column3.Trend == 1">
+            <i class="fa fa-caret-up" aria-hidden="true"></i>
+          </span>
+          <span class="down" *ngIf="subject.Performance.Column3.Trend == 3">
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </span>
+        </p>
       </td>
   </table>
   <!-- Trigger/Open The Modal -->
@@ -41,7 +52,7 @@
         <span class="close" (click)="closeModal()">&times;</span>
         <p>Student Name</p>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" *ngIf="subjectDetails.subject != undefined">
         <div class="modal-table">
           <table>
             <tr>
@@ -54,8 +65,8 @@
               <td>
                 <div class="table-profile-pic"></div>
                 <div class="subject-name">
-                  <p>Subject Name</p>
-                  <span>Teacher Name A, Teacher Name B</span>
+                  <p>{{subjectDetails.subject.SubjectName}}</p>
+                  <span *ngFor="let teacher of subjectDetails.subject.ClassTeachers; trackBy: index;let last = last">{{teacher.Name}}<b *ngIf="!last">,</b> </span>
                 </div>
               </td>
               <td>
