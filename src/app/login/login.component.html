@@ -4,19 +4,22 @@
       <img src="../assets/img/logo.png">
     </div>
     <h1>Welcome</h1>
-    <div class="form-inner">
-      <h2>Sign In</h2>
-      <input type="text" id="username" [(ngModel)]="username"  class="custom-input" placeholder="User Name">
-      <input type="password" id="password" [(ngModel)]="password" class="custom-input" placeholder="Password">
-      <div class="remember-me">
-        <input type="checkbox" id="test2" checked="checked" />
-        <label for="test2">Remember Me</label>
+    <form (ngSubmit)="login()" ngNativeValidate>
+      <div class="form-inner">
+        <h2>Sign In</h2>
+        <input type="text" name="username" [(ngModel)]="user.username" class="custom-input" placeholder="User Name" required>
+        <input type="password" name="password" [(ngModel)]="user.password" class="custom-input" placeholder="Password" required>
+        <div class="remember-me">
+          <input type="checkbox" id="test2" checked="checked" />
+          <label for="test2">Remember Me</label>
+          <div id="login-error"></div>
+        </div>
+        <div class="submit-events">
+          <button type="submit" class="round-btn">Sign In</button>
+          <span [routerLink]="['/forgotPassword']">Password</span>
+        </div>
       </div>
-      <div class="submit-events">
-        <button class="round-btn" (click)="login()">Sign In</button>
-        <span [routerLink]="['/forgotPassword']">Password</span>
-      </div>
-    </div>
+    </form>
     <div class="form-footer">
       <p>By clicking Sign In, you agree to InvolvEdTech's <br><strong>Privacy Policy</strong> and <strong>Terms and Conditions</strong></p>
     </div>

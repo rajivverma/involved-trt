@@ -18,29 +18,24 @@ export class PerformanceComponent implements OnInit {
     private piChart: PiChart) { }
   ngOnInit() {
     this.getPieChartData();
-    this.dashboardService.getCounter(13).subscribe(
-      (data) => {
-        console.log(data);
-      },
-      (err) => {
-        alert('something wrong');
-      });
-    this.performanceService.getStudentData(13).subscribe(
+    const id = localStorage.getItem('userid');
+    this.performanceService.getStudentData(id).subscribe(
       (data) => {
         console.log(data);
         this.studentPerformance();
       },
       (err) => {
-        alert('something wrong');
+        // alert('something wrong');
       });
   }
   studentPerformance() {
-    this.performanceService.getStudentPerformanceData(13, 414).subscribe(
+    const id = localStorage.getItem('userid');
+    this.performanceService.getStudentPerformanceData(id, 414).subscribe(
       (data) => {
         console.log(data);
       },
       (err) => {
-        alert('something wrong');
+        // alert('something wrong');
       });
   }
 
