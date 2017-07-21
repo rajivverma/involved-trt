@@ -8,7 +8,7 @@
 				<div class="settings">
 					<img src="../assets/img/settiing_icon.png">
 				</div>
-				<div class="logout">
+				<div class="logout" (click)="logout()">
 					<img src="../assets/img/logout_icon.png">
 				</div>
 			</div>
@@ -19,18 +19,18 @@
 		<div class="nav-sidebar">
 			<div class="profile">
 				<div class="profile-pic">
-					
+              <img [src]="'data:image/png;base64,'+studentInfo.Image"/>
 				</div>
 				<div class="profile-name">
-					<h2>Student Name</h2>
-					<p>Year Group</p>
+					<h2>{{studentInfo.Firstname}} {{studentInfo.Lastname}}</h2>
+					<p>{{studentInfo.YearGroup}}</p>
 				</div>
 			</div>
 			<ul class="nav">
-			    <li><a id="dashboard" [routerLink]="['./performance']">Performance</a></li>
-			    <li><a id="domains" [routerLink]="['./tasks']">Tasks</a></li>
-			    <li><a id="lists" [routerLink]="['./timetable']">Timetable</a></li>
-			    <li><a id="campaigns" [routerLink]="['./announcements']">Announcements</a></li>
+			    <li><a [routerLinkActive]="['active']" id="dashboard" [routerLink]="['./performance']">Performance</a></li>
+			    <li><a [routerLinkActive]="['active']" id="domains" [routerLink]="['./tasks']">Tasks</a></li>
+			    <li><a [routerLinkActive]="['active']" id="lists" [routerLink]="['./timetable']">Timetable</a></li>
+			    <li><a [routerLinkActive]="['active']" id="campaigns" [routerLink]="['./announcements']">Announcements</a></li>
 		    </ul>
 	    </div>
 	  <div class="dashboard-main">

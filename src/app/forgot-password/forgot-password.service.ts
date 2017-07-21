@@ -11,9 +11,9 @@ export class ForgotPaswordService {
   constructor(private router: Router, private http: Http) {
   }
   submit(username) {
-    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const headers = new Headers({ 'clientid': '2_3' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.post(URL + '/api/account/resetpassword/username=' + username, options)
+    return this.http.post(URL + '/api/account/resetpassword/username=' + username, {}, options)
       .map((res: Response) => res.json());
   }
 }

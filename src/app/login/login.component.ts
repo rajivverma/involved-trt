@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { LoginService } from './login.service';
+import { LoginService, User } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +8,11 @@ import { LoginService } from './login.service';
   providers: [LoginService]
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   public username: string;
   public password: string;
+  public user = new User('', '');
+
   // Internet Explorer 6-11
   public isIE = false || !!document.documentMode;
   // Chrome 1+
@@ -19,7 +21,9 @@ export class LoginComponent {
   public isFirefox = typeof InstallTrigger !== 'undefined';
   public browser: any;
   constructor(private loginService: LoginService, private router: Router) { }
-
+  ngOnInit() {
+    localStorage.clear();
+  }
   get_browser = function () {
     const ua = navigator.userAgent;
     let tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
@@ -58,45 +62,26 @@ export class LoginComponent {
     return platform;
   }
   login() {
-    if (!this.username || !this.password) {
-      let divToChange;
-      if (!this.username) {
-        divToChange = (<HTMLInputElement>document.getElementById('username'));
-        divToChange.placeholder = 'Please enter Username';
-        if (!divToChange.className.includes('p-error')) {
-          divToChange.className = divToChange.className + ' p-error';
-        }
-      }
-      if (!this.password) {
-        divToChange = (<HTMLInputElement>document.getElementById('password'));
-        divToChange.placeholder = 'Please enter password';
-        if (!divToChange.className.includes('p-error')) {
-          divToChange.className = divToChange.className + ' p-error';
-        }
-      }
-    } else {
-      const devicetoken = this.getDeviceToken();
-      const platform = this.getPlateform();
-      const user = {
-        'grant_type': 'password',
-        'username': this.username,
-        'password': this.password,
-        'clientid': '3_3',
-        'devicetoken': devicetoken,
-        'platform': platform
-      };
-      console.log(user);
-      this.router.navigate(['dashboard']);
-      this.loginService.login(user).subscribe(
-        (data) => {
-          console.log(data);
-          localStorage.setItem('token', data.data.token);
-          this.router.navigate(['dashboard']);
-        },
-        (err) => {
-          alert('wrong email and password');
-        });
-    }
+    const devicetoken = this.getDeviceToken();
+    const platform = this.getPlateform();
+    const user = {
+      'grant_type': 'password',
+      'username': this.user.username,
+      'password': this.user.password,
+      'clientid': '2_3',
+      'devicetoken': devicetoken,
+      'platform': platform
+    };
+    this.loginService.login(user).subscribe(
+      (data) => {
+        console.log(data);
+        localStorage.setItem('token', 'Bearer ' + data.access_token);
+        localStorage.setItem('userid', data.userid);
+        this.router.navigate(['dashboard']);
+      },
+      (err) => {
+        console.log("Invalid username or password");
+      });
   }
 }
 declare global {

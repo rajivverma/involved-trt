@@ -25,10 +25,13 @@ export function highchartsFactory() {
     RouterModule,
     FormsModule,
     HttpModule,
-    ChartModule.forRoot(require('highcharts')),
+    ChartModule,
   ],
   exports: [],
   declarations: [DashboardComponent, PerformanceComponent, TasksComponent, TimetableComponent, AnnouncementsComponent],
-  providers: [],
+  providers: [{
+    provide: HighchartsStatic,
+    useFactory: highchartsFactory
+  }]
 })
 export class DashboardModule { }
