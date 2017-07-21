@@ -294,19 +294,20 @@ li {
 
 .nav {
   text-align: center;
-  margin-top: 2px; }
+  margin-top: 1px; }
 
 .nav li a {
   display: block;
   padding: 15px 5px;
   font-size: 15px;
   color: #333;
-  border-top: 1px solid #f8f8f8;
+  border-bottom: 1px solid #f8f8f8;
   text-decoration: none; }
 
 .active {
   background-color: #54c9e8;
-  color: #fff; }
+  color: #fff !important;
+  transition: all ease 0.3s; }
 
 .inner-main {
   height: calc(768px - 95px);
@@ -317,19 +318,189 @@ li {
   color: #fff;
   padding: 10px 20px; }
 
-table {
+.performance table {
   border-collapse: collapse;
   width: 100%; }
 
-th, td {
+.performance th, td {
   text-align: left;
-  padding: 8px; }
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 500; }
 
-tr:nth-child(even) {
-  background-color: #f2f2f2; }
+/*tr:nth-child(even){background-color: #f2f2f2}*/
+.performance th {
+  background-color: #54c9e8;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400; }
 
-th {
-  background-color: #4CAF50;
-  color: white; }
+.performance tr {
+  border-bottom: 1px solid #eeeeee;
+  cursor: pointer; }
+
+.performance tr:hover {
+  background-color: #e7f0f9; }
+
+.table-profile-pic {
+  background-color: #f77c32;
+  height: 47px;
+  width: 47px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block; }
+
+.subject-name {
+  display: inline-block;
+  position: relative;
+  top: -7px;
+  left: 10px; }
+
+.subject-name p {
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0; }
+
+.subject-name span {
+  font-size: 15px;
+  font-weight: 400;
+  color: #7c7c7c; }
+
+.up {
+  border-color: transparent transparent #6bc04b;
+  border-style: solid;
+  border-width: 8px 5px;
+  content: "";
+  display: inline-block;
+  margin-left: 8px;
+  margin-top: -5px; }
+
+.success {
+  color: #6bc04b; }
+
+.black {
+  color: #000; }
+
+/* The Modal (background) */
+.modal {
+  display: block;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */ }
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s; }
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0; }
+  to {
+    top: 0;
+    opacity: 1; } }
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0; }
+  to {
+    top: 0;
+    opacity: 1; } }
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  position: absolute;
+  top: -20px;
+  right: -15px;
+  background: black;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  text-align: center;
+  cursor: pointer; }
+
+.modal-header {
+  padding: 9px 23px;
+  background-color: #54c9e8;
+  position: relative; }
+
+.modal-header p {
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  margin: 0; }
+
+.modal-table th {
+  background-color: #f4f4f4;
+  font-size: 12px;
+  color: #434242; }
+
+.modal-table .table-profile-pic {
+  height: 70px;
+  width: 70px;
+  border: 1px solid #54c9e8;
+  background-color: transparent; }
+
+.modal-table .subject-name {
+  top: -23px; }
+
+.rating-outer {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0px auto;
+  position: relative;
+  left: -20px; }
+
+.value {
+  font-size: 20px;
+  font-weight: bold;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+
+svg {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg); }
 
 /*# sourceMappingURL=output.css.map */
