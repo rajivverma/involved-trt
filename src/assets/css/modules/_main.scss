@@ -285,10 +285,24 @@ li {list-style: none;}
 	background: $white;
 	border: 1px solid #d2d2d2;
 	height: 100%;
-	overflow: hidden;
+	overflow-y: auto;
 	position: relative;
  }
- 
+.dashboard-main::-webkit-scrollbar-track
+{
+	background-color: #F5F5F5;
+}
+
+.dashboard-main::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.dashboard-main::-webkit-scrollbar-thumb
+{
+	background-color: $primary-color;
+}
 .profile {
 	background: $primary-color;
 	color: $white;
@@ -400,16 +414,7 @@ li {list-style: none;}
 		font-weight: 400;
 	 }
  
-.up {
-	border-color: transparent transparent $success;
-	border-style: solid;
-	border-width: 8px 5px;
-	content: "";
-	display: inline-block;
-	margin-left: 8px;
-	margin-top: -5px;
- }
- 
+
 .success {color: $success;}
  
 .black {color: $black;}
@@ -427,8 +432,11 @@ li {list-style: none;}
 	top: 0;
 	width: 100%; /* Full width */
 	z-index: 1; /* Sit on top */
+	display: none;
  }
- 
+.modal.in {
+  display: block;
+}
 /* Modal Content */
 .modal-content {
 	-webkit-animation-duration: 0.4s;
@@ -540,9 +548,9 @@ li {list-style: none;}
 		text-align: center;
 	 }
  
-	.down {
+	.down, .up{
 		position: relative;
-		top: -5px;
+		font-size: 20px;
 	 }
  
 #login-error {
