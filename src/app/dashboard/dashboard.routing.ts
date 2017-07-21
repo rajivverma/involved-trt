@@ -19,7 +19,6 @@ const routes: Routes = [
         path: '',
         // canActivateChild: [AuthGuard],
         children: [
-          { path: '', redirectTo: 'performance', component: PerformanceComponent },
           { path: 'performance', component: PerformanceComponent },
           { path: 'tasks', component: TasksComponent },
           { path: 'timetable', component: TimetableComponent },

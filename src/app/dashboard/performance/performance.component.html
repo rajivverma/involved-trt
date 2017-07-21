@@ -11,50 +11,25 @@
  		<th>Target</th>
  		<th>Grade</th>
  	</tr>
- 	<tr>
+ 	<tr *ngFor='let subject of subjectsData; trackBy: index;' (click)="getSubjectDetails(subject.Id)">
  		<td>
  			<div class="table-profile-pic"></div>
  			<div class="subject-name">
- 				<p>Subject Name</p>
-				<span>Teacher Name A, Teacher Name B</span>
+ 				<p>{{subject.SubjectName}}</p>
+				<span *ngFor='let teacher of subject.ClassTeachers; trackBy: index;let last = last'>{{teacher.Name}}<b *ngIf="!last">,</b> </span>
  			</div>
  		</td>
- 		<td><p class="success">97% <span class="up"></span></p></td>
- 		<td><p class="black">9C</p></td>
- 		<td><p class="success"> 9A<span class="up"></span></p></td>
- 	</tr>
- 	<tr>
- 		<td>
- 			<div class="table-profile-pic"></div>
- 			<div class="subject-name">
- 				<p>Subject Name</p>
-				<span>Teacher Name A, Teacher Name B</span>
- 			</div>
- 		</td>
- 		<td><p class="success">97% <span class="up"></span></p></td>
- 		<td><p class="black">9C</p></td>
- 		<td><p class="success"> 9A<span class="up"></span></p></td>
- 	</tr>
- 	<tr>
- 		<td>
- 			<div class="table-profile-pic"></div>
- 			<div class="subject-name">
- 				<p>Subject Name</p>
-				<span>Teacher Name A, Teacher Name B</span>
- 			</div>
- 		</td>
- 		<td><p class="success">97% <span class="up"></span></p></td>
- 		<td><p class="black">9C</p></td>
- 		<td><p class="success"> 9A<span class="up"></span></p></td>
- 	</tr>
+ 		<td><p class="success">{{subject.Performance.Column1.Value}} {{subject.Performance.Column1.Unit}} <span class="up"></span></p></td>
+ 		<td><p class="black">{{subject.Performance.Column2.Value}}</p></td>
+ 		<td><p class="success">{{subject.Performance.Column3.Value}}<span class="up"></span></p></td>
  </table>
  	<!-- Trigger/Open The Modal -->
 	<!-- The Modal -->
-	<div id="performance-modal" class="modal" style="display:none">
+	<div id="performance-modal" class="modal">
 	  <!-- Modal content -->
 	  <div class="modal-content">
 	    <div class="modal-header">
-	      <span class="close">&times;</span>
+	      <span class="close" (click)="closeModal()">&times;</span>
 	      <p>Student Name</p>
 	    </div>
 	    <div class="modal-body">

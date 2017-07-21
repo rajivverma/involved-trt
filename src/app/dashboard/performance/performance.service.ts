@@ -14,7 +14,7 @@ export class PerformanceService {
     const options = new RequestOptions({ headers: headers });
     return options;
   }
-  getStudentData(id) {
+  getSubjectData(id) {
     const token = this.getToken();
     return this.http.get(URL + '/api/students/' + id + '/performance', token)
       .map((res: Response) => res.json());
