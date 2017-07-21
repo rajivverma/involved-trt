@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardRoutingModule } from './dashboard.routing';
 import { DashboardComponent } from './dashboard.component';
@@ -26,6 +27,7 @@ export function highchartsFactory() {
     FormsModule,
     HttpModule,
     ChartModule,
+    CommonModule,
   ],
   exports: [],
   declarations: [DashboardComponent, PerformanceComponent, TasksComponent, TimetableComponent, AnnouncementsComponent],
