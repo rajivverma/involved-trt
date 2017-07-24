@@ -7,7 +7,6 @@ export class PiChart {
 
   getPieChartData(GradeSet: any, xAxixData: any) {
     console.log(GradeSet);
-    let count = -1;
     return {
       chart: {
         width: 1000
@@ -46,7 +45,5 @@ export class PiChart {
           enableMouseTracking: false
         }]
     };
-
-
   }
 }

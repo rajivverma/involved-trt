@@ -20,8 +20,8 @@ export class PerformanceComponent implements OnInit {
   public intervalCount = 0;
   public intervalsId: any = [];
   public studentDetailInterval: any;
-  public monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  public monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
   ];
   constructor(private router: Router,
     private performanceService: PerformanceService,
@@ -79,11 +79,11 @@ export class PerformanceComponent implements OnInit {
       });
   }
   getColor(val) {
-    if (val == 0) {
+    if (val === 0) {
       return '#3c3c3c';
-    } else if (val == 1) {
+    } else if (val === 1) {
       return '#6bc04b';
-    } else if (val == 2) {
+    } else if (val === 2) {
       return '#ff7800';
     } else {
       return '#ff3c1f';
@@ -105,34 +105,34 @@ export class PerformanceComponent implements OnInit {
         }
         for (let i = 0; i < this.subjectDetails.XaxisGrades.length; i++) {
           date = new Date(this.subjectDetails.XaxisGrades[i].Date);
-          date = this.monthNames[date.getMonth()] +' '+ date.getFullYear();
+          date = this.monthNames[date.getMonth()] + ' ' + date.getFullYear();
           GradeResults.push(date);
         }
         console.log(data);
         this.options = this.piChart.getPieChartData(GradeSet, GradeResults);
-        let that = this;
+        const that = this;
         setTimeout(function () {
           document.getElementById('sd' + that.subjectDetails.subject.Id).children[1].children[1].className += ' subject-name-active';
           document.getElementById('sd' + that.subjectDetails.subject.Id).children[0].children[0].className += ' teacher-image-active';
           (function () {
-            let d = document.getElementById('sd' + that.subjectDetails.subject.Id).children[1];
-            let dp = document.getElementById('sd' + that.subjectDetails.subject.Id).children[0];
+            const ds = document.getElementById('sd' + that.subjectDetails.subject.Id).children[1];
+            const dp = document.getElementById('sd' + that.subjectDetails.subject.Id).children[0];
             let iCount = 0;
-            if (d.childElementCount > 2) {
+            if (ds.childElementCount > 2) {
               iCount++;
               that.studentDetailInterval = setInterval(function () {
                 if (iCount === 1) {
-                  d.children[iCount + 1].className = 'second';
-                  d.children[iCount].className = 'second subject-name-active';
+                  ds.children[iCount + 1].className = 'second';
+                  ds.children[iCount].className = 'second subject-name-active';
                   dp.children[iCount - 1].className = 'teacher-image teacher-image-active';
                   dp.children[iCount].className = 'teacher-image';
                 } else {
-                  d.children[iCount - 1].className = 'second';
-                  d.children[iCount].className = 'second subject-name-active';
+                  ds.children[iCount - 1].className = 'second';
+                  ds.children[iCount].className = 'second subject-name-active';
                   dp.children[iCount - 2].className = 'teacher-image';
                   dp.children[iCount - 1].className = 'teacher-image teacher-image-active';
                 }
-                if (iCount === (d.childElementCount - 1)) {
+                if (iCount === (ds.childElementCount - 1)) {
                   iCount = 1;
                 } else {
                   iCount++;
