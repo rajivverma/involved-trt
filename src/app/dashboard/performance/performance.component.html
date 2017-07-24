@@ -11,9 +11,12 @@
       <th>Target</th>
       <th>Grade</th>
     </tr>
-    <tr *ngFor='let subject of subjectsData;' (click)="getSubjectDetails(subject)">
+    <tr *ngFor="let subject of subjectsData" (click)="getSubjectDetails(subject)">
       <td>
-        <div class="table-profile-pic"></div>
+        <div></div>
+        <div class="table-profile-pic" id="t{{subject.Id}}">
+          <img class="teacher-image" *ngFor="let teacher of subject.ClassTeachers" [src]="'data:image/png;base64,'+teacher.Image" />
+        </div>
         <div class="subject-name" id="{{subject.Id}}">
           <p class="first">{{subject.SubjectName}}</p>
           <span class="second" *ngFor="let teacher of subject.ClassTeachers; trackBy: index;">{{teacher.Name}}</span>

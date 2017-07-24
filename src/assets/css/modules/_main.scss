@@ -3,20 +3,20 @@ body {
 	margin: 0;
 	padding: 0;
  }
- 
+
 ul {
 	margin: 0;
 	padding: 0;
  }
- 
+
 li {list-style: none;}
- 
+
 .main {
 	background-color: $body-bg;
 	height: 100vh;
 	width: 100%;
  }
- 
+
 .login-box {
 	background: $white;
 	border-top: 4px solid $primary-color;
@@ -27,9 +27,9 @@ li {list-style: none;}
 	width: 585px;
 	z-index: 9;
  }
- 
+
 .logo {text-align: center;}
- 
+
 .login-box h1 {
 	border-bottom: 1px solid $primary-color;
 	font-size: 75px;
@@ -37,16 +37,16 @@ li {list-style: none;}
 	margin: 25px 0 15px;
 	text-align: center;
  }
- 
+
 .form-inner {padding: 0 80px;}
- 
+
 	.form-inner h2 {
 		color: $black;
 		font-size: 30px;
 		font-weight: 400;
 		margin: 0 0 25px;
 	 }
- 
+
 .custom-input {
 	-moz-transition: all 0.4s ease-in-out 0s;
 	-webkit-transition: all 0.4s ease-in-out 0s;
@@ -60,23 +60,23 @@ li {list-style: none;}
 	transition: all 0.4s ease-in-out 0s;
 	width: 100%;
  }
- 
+
 .remember-me {margin: 25px 0;}
- 
+
 /* Base for label styling */
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
 	left: -9999px;
 	position: absolute;
  }
- 
+
 [type="checkbox"]:not(:checked) + label,
 [type="checkbox"]:checked + label {
 	cursor: pointer;
 	padding-left: 1.95em;
 	position: relative;
  }
- 
+
 /* checkbox aspect */
 [type="checkbox"]:not(:checked) + label:before,
 [type="checkbox"]:checked + label:before {
@@ -91,7 +91,7 @@ li {list-style: none;}
 	top: 0;
 	width: 15px;
  }
- 
+
 /* checked mark aspect */
 [type="checkbox"]:not(:checked) + label:after,
 [type="checkbox"]:checked + label:after {
@@ -104,18 +104,18 @@ li {list-style: none;}
 	transition: all .2s;
 	width: 12px;
  }
- 
+
 /* checked mark aspect changes */
 [type="checkbox"]:not(:checked) + label:after {
 	opacity: 0;
 	transform: scale(0);
  }
- 
+
 [type="checkbox"]:checked + label:after {
 	opacity: 1;
 	transform: scale(1);
  }
- 
+
 /* disabled checkbox */
 [type="checkbox"]:disabled:not(:checked) + label:before,
 [type="checkbox"]:disabled:checked + label:before {
@@ -123,20 +123,20 @@ li {list-style: none;}
 	border-color: #bbb;
 	box-shadow: none;
  }
- 
+
 [type="checkbox"]:disabled:checked + label:after {color: #999;}
- 
+
 [type="checkbox"]:disabled + label {color: #aaa;}
- 
+
 .remember-me {position: relative;}
- 
+
 	.remember-me label {
 		color: #404040;
 		font-size: 12px;
 		font-weight: 400;
 		padding: 3px 30px;
 	 }
- 
+
 .round-btn {
 	background: $primary-color;
 	border-radius: 30px;
@@ -146,29 +146,29 @@ li {list-style: none;}
 	margin-right: 15px;
 	padding: 10px 25px;
  }
- 
+
 	.round-btn:hover {
 		background-color: $hover-btn;
 		transition: all ease .3s;
 	 }
- 
+
 .submit-events span {
 	color: #b6b6b6;
 	cursor: pointer;
 	font-size: 12px;
  }
- 
+
 	.submit-events span:hover {
 		color: $primary-color;
 		transition: all ease 0.3s;
 	 }
- 
+
 .form-footer {
 	border-top: 1px solid #f8f8f8;
 	margin: 20px 80px 0 80px;
 	text-align: center;
  }
- 
+
 	.form-footer p {
 		color: $light-font;
 		font-size: 14px;
@@ -176,17 +176,17 @@ li {list-style: none;}
 		line-height: 22px;
 		padding-top: 10px;
 	 }
- 
+
 		.form-footer p strong {
 			color: $primary-color;
 			cursor: pointer;
 		 }
- 
+
 			.form-footer p strong:hover {
 				color: $light-font;
 				transition: all ease 0.3s;
 			 }
- 
+
 .copyright {
 	bottom: -30px;
 	color: $very-light-font;
@@ -197,51 +197,51 @@ li {list-style: none;}
 	text-align: center;
 	transform: translate(-50%);
  }
- 
+
 /*forgot pwd*/
 .forgot-pwd .form-inner {margin-top: 40px;}
- 
+
 .forgot-pwd .submit-events {
 	margin: 20px 0 40px;
 	text-align: center;
  }
- 
+
 .forgot-pwd .form-footer {text-align: left;}
- 
+
 	.forgot-pwd .form-footer h2 {
 		color: $primary-color;
 		font-size: 19px;
 		font-weight: 400;
 	 }
- 
+
 	.forgot-pwd .form-footer span {
 		color: $black;
 		cursor: pointer;
 		font-weight: 500;
 	 }
- 
+
 .back {
 	font-size: 19px !important;
 	margin: 30px 0;
 	text-align: center;
  }
- 
+
 	.back span {
 		color: $clr-highlight !important;
 		cursor: pointer;
 	 }
- 
+
 /*error*/
 .p-error::-webkit-input-placeholder {color: $danger;}
- 
+
 .p-error::-webkit-input-placeholder {color: $danger; /* Chrome/Opera/Safari */}
- 
+
 .p-error::-moz-placeholder {color: $danger; /* Firefox 19+ */}
- 
+
 .p-error:-ms-input-placeholder {color: $danger; /* IE 10+ */}
- 
+
 .p-error:-moz-placeholder {color: $danger; /* Firefox 18- */}
- 
+
 /*dashboard*/
 .header {
 	background: $white;
@@ -250,27 +250,27 @@ li {list-style: none;}
 	padding: 5px 0 3px;
 	position: relative;
  }
- 
+
 .settings {
 	cursor: pointer;
 	position: absolute;
 	right: 40px;
 	top: 7px;
  }
- 
+
 .logout {
 	cursor: pointer;
 	position: absolute;
 	right: 0px;
 	top: 7px;
  }
- 
+
 .container {
 	margin: 0 auto;
 	position: relative;
 	width: 1280px;
  }
- 
+
 /*sidebar*/
 .nav-sidebar {
 	background: $white;
@@ -280,7 +280,7 @@ li {list-style: none;}
 	margin-right: 22px;
 	width: 223px;
  }
- 
+
 .dashboard-main {
 	background: $white;
 	border: 1px solid #d2d2d2;
@@ -309,7 +309,7 @@ li {list-style: none;}
 	padding: 34px 25px 40px;
 	text-align: center;
  }
- 
+
 .profile-pic {
 	background-color: $white;
 	border-radius: 50%;
@@ -318,20 +318,20 @@ li {list-style: none;}
 	overflow: hidden;
 	width: 80px;
  }
- 
+
 .profile h2 {
 	font-size: 18px;
 	font-weight: 700;
 	margin: 18px 0 15px;
  }
- 
+
 .profile p {font-size: 15px;}
- 
+
 .nav {
 	margin-top: 1px;
 	text-align: center;
  }
- 
+
 	.nav li a {
 		border-bottom: 1px solid #f8f8f8;
 		color: $light-font;
@@ -340,36 +340,36 @@ li {list-style: none;}
 		padding: 15px 5px;
 		text-decoration: none;
 	 }
- 
+
 .active {
 	background-color: $primary-color;
 	color: $white !important;
 	transition: all ease 0.3s;
  }
- 
+
 .inner-main {
 	height: calc(768px - 95px);
 	padding: 20px 0 0;
  }
- 
+
 .dashboard-head {
 	background-color: $primary-color;
 	color: $white;
 	padding: 10px 20px;
  }
- 
+
 .performance table {
 	border-collapse: collapse;
 	width: 100%;
  }
- 
+
 .performance th, td {
 	font-size: 15px;
 	font-weight: 500;
 	padding: 10px;
 	text-align: left;
  }
- 
+
 /*tr:nth-child(even){background-color: #f2f2f2}*/
 .performance th {
 	background-color: $primary-color;
@@ -377,48 +377,77 @@ li {list-style: none;}
 	font-size: 15px;
 	font-weight: 400;
  }
- 
+
 .performance tr {
 	border-bottom: 1px solid #eeeeee;
 	cursor: pointer;
  }
- 
+
 	.performance tr:hover {background-color: #e7f0f9;}
- 
+
 .table-profile-pic {
-	background-color: #f77c32;
-	border-radius: 50%;
-	display: inline-block;
-	height: 47px;
-	overflow: hidden;
-	width: 47px;
- }
- 
+  background-color: #f77c32;
+  border-radius: 50%;
+  display: inline-block;
+  height: 47px;
+  overflow: hidden;
+  position: relative;
+  width: 47px;
+}
+.table-profile-pic .teacher-image {
+  opacity: 0;
+  transition: all 1s ease;
+}
+.table-profile-pic .teacher-image.teacher-image-active {
+  opacity: 1;
+  }
+.table-profile-pic img{
+  width: 100%;
+  position: absolute;
+}
 .subject-name {
 	display: inline-block;
 	left: 10px;
 	position: relative;
-	top: -7px;
+  vertical-align: top;
+  top: 5px;
+  width: 70%;
  }
- 
+
 	.subject-name p {
 		color: $light-font;
 		font-size: 16px;
 		font-weight: 500;
 		margin: 0;
 	 }
- 
-	.subject-name span {
-		color: $very-light-font;
-		font-size: 15px;
-		font-weight: 400;
-	 }
- 
+
+.subject-name span {
+  color: #7c7c7c;
+  font-size: 15px;
+  font-weight: 400;
+  position: absolute;
+    width: 100%; }
+
+       .subject-name .second{
+      opacity: 0;
+      transition: all 1s ease;
+    }
+.subject-name .second.subject-name-active{
+  opacity: 1;
+}
+    .subject-name .second{
+      opacity: 0;
+      transition: all 1s ease;
+    }
+.subject-name .second.subject-name-active{
+  opacity: 1;
+}
+
 
 .success {color: $success;}
- 
+
 .black {color: $black;}
- 
+
 /* The Modal (background) */
 .modal {
 	background-color: rgb(255,255,255); /* Fallback color */
@@ -450,11 +479,11 @@ li {list-style: none;}
 	position: relative;
 	width: 1200px;
  }
- 
+
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0} 
+    from {top:-300px; opacity:0}
     to {top:0; opacity:1}
 }
 
@@ -462,7 +491,7 @@ li {list-style: none;}
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
 }
- 
+
 	/* The Close Button */
 .close {
 		background: black;
@@ -479,35 +508,35 @@ li {list-style: none;}
 		top: -20px;
 		width: 30px;
 	 }
- 
+
 	.modal-header {
 		background-color: $primary-color;
 		padding: 9px 23px;
 		position: relative;
 	 }
- 
+
 		.modal-header p {
 			color: $white;
 			font-size: 18px;
 			font-weight: 400;
 			margin: 0;
 		 }
- 
+
 	.modal-table th {
 		background-color: #f4f4f4;
 		color: #434242;
 		font-size: 12px;
 	 }
- 
+
 	.modal-table .table-profile-pic {
 		background-color: transparent;
 		border: 1px solid $primary-color;
 		height: 70px;
 		width: 70px;
 	 }
- 
+
 	.modal-table .subject-name {top: -23px;}
- 
+
 	.rating-outer {
 		display: inline-block;
 		height: 100px;
@@ -517,7 +546,7 @@ li {list-style: none;}
 		vertical-align: middle;
 		width: 100px;
 	 }
- 
+
 	.value {
 		font-size: 20px;
 		font-weight: bold;
@@ -526,7 +555,7 @@ li {list-style: none;}
 		top: 50%;
 		transform: translate(-50%, -50%);
 	 }
- 
+
 	.modal-table svg {
 		height: 100%;
 		left: 0;
@@ -538,21 +567,21 @@ li {list-style: none;}
 		transform: rotate(-90deg);
 		width: 100%;
 	 }
- 
+
 		.modal-table svg:not(:root) {overflow: hidden;}
- 
+
 	.danger {color: $danger}
- 
+
 	.arrow-bottom {
 		margin-top: 35px;
 		text-align: center;
 	 }
- 
+
 	.down, .up{
 		position: relative;
 		font-size: 20px;
 	 }
- 
+
 #login-error {
 	color: $danger;
 	font-size: 14px;
@@ -612,5 +641,7 @@ canvas {
 .count-particles{
   border-radius: 0 0 3px 3px;
 }
- 
- 
+
+
+
+

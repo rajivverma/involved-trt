@@ -17,7 +17,9 @@ export class DashboardComponent implements OnInit {
         this.studentInfo = data;
         localStorage.setItem('userid', data.Id);
         console.log(data);
-        this.router.navigate(['dashboard/performance']);
+        if (this.router.url === '/dashboard') {
+          this.router.navigate(['dashboard/performance']);
+        }
       },
       (err) => {
         console.log(err);

@@ -361,13 +361,27 @@ li {
   display: inline-block;
   height: 47px;
   overflow: hidden;
+  position: relative;
   width: 47px; }
+
+.table-profile-pic .teacher-image {
+  opacity: 0;
+  transition: all 1s ease; }
+
+.table-profile-pic .teacher-image.teacher-image-active {
+  opacity: 1; }
+
+.table-profile-pic img {
+  width: 100%;
+  position: absolute; }
 
 .subject-name {
   display: inline-block;
   left: 10px;
   position: relative;
-  top: -7px; }
+  vertical-align: top;
+  top: 5px;
+  width: 70%; }
 
 .subject-name p {
   color: #333;
@@ -378,7 +392,23 @@ li {
 .subject-name span {
   color: #7c7c7c;
   font-size: 15px;
-  font-weight: 400; }
+  font-weight: 400;
+  position: absolute;
+  width: 100%; }
+
+.subject-name .second {
+  opacity: 0;
+  transition: all 1s ease; }
+
+.subject-name .second.subject-name-active {
+  opacity: 1; }
+
+.subject-name .second {
+  opacity: 0;
+  transition: all 1s ease; }
+
+.subject-name .second.subject-name-active {
+  opacity: 1; }
 
 .success {
   color: #6bc04b; }
