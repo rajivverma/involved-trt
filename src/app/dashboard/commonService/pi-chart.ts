@@ -5,10 +5,18 @@ export class PiChart {
   constructor() { }
   options: Object;
 
-  getPieChartData(GradeSet: any, xAxixData: any) {
-    console.log(GradeSet);
+  getPieChartData(GradeSet: any, xAxixData: any, GradeResults: any, TargetGrades: any) {
+    const results1 = [];
+    const results2 = [];
+    for (let i = 0; i < GradeResults.length; i++) {
+      results1[i] = GradeSet.indexOf(GradeResults[i].Grade);
+    }
+    for (let i = 0; i < TargetGrades.length; i++) {
+      results2[i] = GradeSet.indexOf(TargetGrades[i].Grade);
+    }
     return {
       chart: {
+        type: 'line',
         width: 1000
       },
       title: {
@@ -24,20 +32,22 @@ export class PiChart {
         title: { text: 'Grade' },
         labels: {
           formatter: function () {
-            return GradeSet[this.value];
+            if (GradeSet[this.value] !== undefined) {
+              return '<b>' + GradeSet[this.value] + '</b>';
+            }
           }
-        }
+        },
       },
       credits: {
         enabled: false
       },
       series: [
         {
-          data: [5, 2, 1, 4],
-          color: '#ffa500'
+          data: results1,
+          color: '#ff5958'
         },
         {
-          data: [5, 2, 1, 4],
+          data: results2,
           color: '#63d2e9',
           marker: {
             enabled: false

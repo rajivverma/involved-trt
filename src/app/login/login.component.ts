@@ -22,7 +22,9 @@ export class LoginComponent implements OnInit {
   public browser: any;
   constructor(private loginService: LoginService, private router: Router) { }
   ngOnInit() {
-    localStorage.clear();
+    if (localStorage.token) {
+      this.router.navigate(['dashboard']);
+    }
   }
   get_browser = function () {
     const ua = navigator.userAgent;
