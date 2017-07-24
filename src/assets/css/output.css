@@ -317,6 +317,10 @@ li {
   padding: 15px 5px;
   text-decoration: none; }
 
+.nav li a:hover {
+  background: rgba(84, 201, 232, 0.2);
+  color: #000; }
+
 .active {
   background-color: #54c9e8;
   color: #fff !important;
@@ -339,6 +343,13 @@ li {
   font-size: 15px;
   font-weight: 500;
   padding: 10px;
+  text-align: center; }
+
+.performance .lft {
+  text-align: left; }
+
+.performance .lft-subject {
+  padding-left: 6%;
   text-align: left; }
 
 /*tr:nth-child(even){background-color: #f2f2f2}*/
@@ -516,7 +527,7 @@ li {
 .rating-outer {
   display: inline-block;
   height: 100px;
-  left: -20px;
+  /*left: -20px;*/
   margin: 0px auto;
   position: relative;
   vertical-align: middle;
@@ -623,5 +634,8 @@ canvas {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); }
+
+.modal-table .subject-name {
+  top: 15px; }
 
 /*# sourceMappingURL=output.css.map */

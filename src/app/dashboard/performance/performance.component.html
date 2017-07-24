@@ -6,7 +6,7 @@
 <div class="performance">
   <table>
     <tr>
-      <th>Subject</th>
+      <th class="lft-subject">Subject</th>
       <th>Attendance</th>
       <th>Target</th>
       <th>Grade</th>
@@ -14,10 +14,10 @@
     <tr *ngFor="let subject of subjectsData" (click)="getSubjectDetails(subject)">
       <td>
         <div></div>
-        <div class="table-profile-pic" id="t{{subject.Id}}">
+        <div class="table-profile-pic lft" id="t{{subject.Id}}">
           <img class="teacher-image" *ngFor="let teacher of subject.ClassTeachers" [src]="'data:image/png;base64,'+teacher.Image" />
         </div>
-        <div class="subject-name" id="{{subject.Id}}">
+        <div class="subject-name lft" id="{{subject.Id}}">
           <p class="first">{{subject.SubjectName}}</p>
           <span class="second" *ngFor="let teacher of subject.ClassTeachers; trackBy: index;">{{teacher.Name}}</span>
         </div>
@@ -63,18 +63,18 @@
         <div class="modal-table">
           <table>
             <tr>
-              <th>Subject</th>
+              <th class="lft-subject">Subject</th>
               <th>Attendance</th>
               <th>Target</th>
               <th>Grade</th>
             </tr>
             <tr>
               <td id="sd{{subjectDetails.subject.Id}}">
-                <div class="table-profile-pic">
+                <div class="table-profile-pic lft">
                   <img class="teacher-image" *ngFor="let teacher of subjectDetails.subject.ClassTeachers" [src]="'data:image/png;base64,'+teacher.Image"
                   />
                 </div>
-                <div class="subject-name">
+                <div class="subject-name lft">
                   <p class="first">{{subjectDetails.subject.SubjectName}}</p>
                   <span class="second" *ngFor="let teacher of subjectDetails.subject.ClassTeachers; trackBy: index">{{teacher.Name}}</span>
                 </div>
