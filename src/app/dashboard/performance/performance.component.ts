@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationStart, NavigationEnd, NavigationError, NavigationCancel, RoutesRecognized, ActivatedRoute, Params } from '@angular/router';
+import {
+  Router, NavigationStart, NavigationEnd, NavigationError,
+  NavigationCancel, RoutesRecognized, ActivatedRoute, Params
+} from '@angular/router';
 import { PerformanceService } from './performance.service';
 import { DashboardService } from '../dashboard.service';
 import { PiChart } from '../commonService/pi-chart';
@@ -14,7 +17,7 @@ export class PerformanceComponent implements OnInit {
   chart: Object;
   public subjectsData: any[];
   public subjectDetails: any = {};
-  public intervalCount: number = 0;
+  public intervalCount = 0;
   public intervalsId: any = [];
   constructor(private router: Router,
     private performanceService: PerformanceService,
@@ -22,10 +25,10 @@ export class PerformanceComponent implements OnInit {
     private piChart: PiChart) {
     router.events.subscribe((val) => {
       // clearInterval();
-      for (var i = 0; i < this.intervalsId.length; i++) {
+      for (let i = 0; i < this.intervalsId.length; i++) {
         clearInterval(this.intervalsId[i]);
       }
-    })
+    });
   }
   ngOnInit() {
     const id = localStorage.getItem('userid');
@@ -33,42 +36,39 @@ export class PerformanceComponent implements OnInit {
       (data) => {
         console.log(data);
         this.subjectsData = data;
-        const count = 2;
-        let that = this;
+        const c = 2;
+        const that = this;
         setTimeout(function () {
           for (let i = 0; i < data.length; i++) {
             document.getElementById(data[i].Id).children[1].className += ' subject-name-active';
             document.getElementById('t' + data[i].Id).children[0].className += ' teacher-image-active';
-            (function (i, count) {
-              const d = document.getElementById(data[i].Id);
-              const td = document.getElementById('t' + data[i].Id);
+            (function (j, count) {
+              const d = document.getElementById(data[j].Id);
+              const td = document.getElementById('t' + data[j].Id);
               if (d.childElementCount > 2) {
                 that.intervalCount++;
                 that.intervalsId.push(setInterval(function () {
-                  if (count == 1) {
+                  if (count === 1) {
                     d.children[count + 1].className = 'second';
                     d.children[count].className = 'second subject-name-active';
                     td.children[count - 1].className = 'teacher-image teacher-image-active';
                     td.children[count].className = 'teacher-image';
-                  }
-                  else {
+                  } else {
                     d.children[count - 1].className = 'second';
                     d.children[count].className = 'second subject-name-active';
                     td.children[count - 2].className = 'teacher-image';
                     td.children[count - 1].className = 'teacher-image teacher-image-active';
                   }
-                  if (count == (d.childElementCount - 1)) {
+                  if (count === (d.childElementCount - 1)) {
                     count = 1;
-                  }
-                  else {
+                  } else {
                     count++;
                   }
                 }, 5000));
               }
-            })(i, count);
+            })(i, c);
           }
-        })
-
+        });
       },
       (err) => {
         // alert('something wrong');
