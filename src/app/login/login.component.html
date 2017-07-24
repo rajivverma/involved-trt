@@ -15,7 +15,7 @@
     <form (ngSubmit)="login()" ngNativeValidate>
       <div class="form-inner">
         <h2>Sign In</h2>
-        <input type="text" name="username" [(ngModel)]="user.username" class="custom-input" placeholder="User Name" required>
+        <input type="text" name="username" [(ngModel)]="user.username" class="custom-input" placeholder="Username" required>
         <input type="password" name="password" [(ngModel)]="user.password" class="custom-input" placeholder="Password" required>
         <div class="remember-me">
           <input type="checkbox" id="test2" checked="checked" />
@@ -24,7 +24,7 @@
         </div>
         <div class="submit-events">
           <button type="submit" class="round-btn">Sign In</button>
-          <span [routerLink]="['/forgotPassword']">Password</span>
+          <span [routerLink]="['/forgotPassword']">Forgot Password</span>
         </div>
       </div>
     </form>

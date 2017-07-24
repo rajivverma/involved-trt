@@ -23,7 +23,7 @@
         </div>
       </td>
       <td>
-        <p class="success">{{subject.Performance.Column1.Value}} {{subject.Performance.Column1.Unit}}
+        <p class="success" [ngStyle]="{ 'color': getColor(subject.Performance.Column1.Trend)}">{{subject.Performance.Column1.Value}} {{subject.Performance.Column1.Unit}}
           <span class="up" *ngIf="subject.Performance.Column1.Trend == 1">
             <i class="fa fa-caret-up" aria-hidden="true"></i>
           </span>
@@ -33,10 +33,10 @@
         </p>
       </td>
       <td>
-        <p class="black">{{subject.Performance.Column2.Value}}</p>
+        <p class="black" [ngStyle]="{ 'color': getColor(subject.Performance.Column2.Trend)}">{{subject.Performance.Column2.Value}}</p>
       </td>
       <td>
-        <p class="success">{{subject.Performance.Column3.Value}}
+        <p class="success" [ngStyle]="{ 'color': getColor(subject.Performance.Column3.Trend)}">{{subject.Performance.Column3.Value}}
           <span class="up" *ngIf="subject.Performance.Column3.Trend == 1">
             <i class="fa fa-caret-up" aria-hidden="true"></i>
           </span>
@@ -65,53 +65,53 @@
               <th>Grade</th>
             </tr>
             <tr>
-              <td>
-                <div class="table-profile-pic"></div>
+              <td id="sd{{subjectDetails.subject.Id}}">
+                <div class="table-profile-pic">
+                  <img class="teacher-image" *ngFor="let teacher of subjectDetails.subject.ClassTeachers" [src]="'data:image/png;base64,'+teacher.Image" />
+                </div>
                 <div class="subject-name">
-                  <p>{{subjectDetails.subject.SubjectName}}</p>
-                  <span *ngFor="let teacher of subjectDetails.subject.ClassTeachers; trackBy: index;let last = last">{{teacher.Name}}<b *ngIf="!last">,</b> </span>
+                  <p class="first">{{subjectDetails.subject.SubjectName}}</p>
+                  <span class="second" *ngFor="let teacher of subjectDetails.subject.ClassTeachers; trackBy: index">{{teacher.Name}}</span>
                 </div>
               </td>
               <td>
                 <div class="rating-outer">
                   <div class="value">
-                    <p class="danger arrow-bottom">88% <span class="down"><i class="fa fa-caret-down" aria-hidden="true"></i></span></p>
+                    <p class="danger arrow-bottom" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column1.Trend)}">{{subjectDetails.subject.Performance.Column1.Value}}{{subjectDetails.subject.Performance.Column1.Unit}}
+                      <span class="down"><i class="fa fa-caret-down" aria-hidden="true"></i></span></p>
                   </div>
                   <svg ng-if="Attendance != '' &amp;&amp; Attendance != null" xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm"
                     viewBox="0 0 1052.3622 744.09448">
                     <g color="#000" fill="none" stroke-width="24">
-                      <path id="carbs1" style="isolation: auto; mix-blend-mode: normal; stroke-dashoffset: 133px;" d="M874.322 370.115a350.75 350.75 0 0 1-350.75 350.75 350.75 350.75 0 0 1-350.752-350.75 350.75 350.75 0 0 1 350.75-350.75 350.75 350.75 0 0 1 350.752 350.75z"
-                        overflow="visible" solid-color="#000000" stroke="#b981d1"></path>
+                      <path id="carbs1" [ngStyle]="{ 'stroke': getColor(subjectDetails.subject.Performance.Column1.Trend)}" style="isolation: auto; mix-blend-mode: normal; stroke-dashoffset: 133px;"
+                        d="M874.322 370.115a350.75 350.75 0 0 1-350.75 350.75 350.75 350.75 0 0 1-350.752-350.75 350.75 350.75 0 0 1 350.75-350.75 350.75 350.75 0 0 1 350.752 350.75z"
+                        overflow="visible" solid-color="#000000"></path>
                     </g>
                   </svg>
                 </div>
               </td>
               <td>
                 <div class="rating-outer">
-                  <div class="value">9C</div>
+                  <div class="value" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column2.Trend)}">{{subjectDetails.subject.Performance.Column2.Value}}</div>
                   <svg ng-if="TargetGrade != '' &amp;&amp; TargetGrade != null &amp;&amp; TargetGrade != undefined" xmlns="http://www.w3.org/2000/svg"
                     width="297mm" height="210mm" viewBox="0 0 1052.3622 744.09448">
                     <g color="#000" fill="none" stroke-width="24">
-                      <path id="proteins" style="isolation:auto;mix-blend-mode:normal" d="M874.322 370.115a350.75 350.75 0 0 1-350.75 350.75 350.75 350.75 0 0 1-350.752-350.75 350.75 350.75 0 0 1 350.75-350.75 350.75 350.75 0 0 1 350.752 350.75z"
-                        overflow="visible" solid-color="#000000" stroke="#48CAE5"></path>
+                      <path id="proteins" [ngStyle]="{ 'stroke': getColor(subjectDetails.subject.Performance.Column2.Trend)}" style="isolation:auto;mix-blend-mode:normal"
+                        d="M874.322 370.115a350.75 350.75 0 0 1-350.75 350.75 350.75 350.75 0 0 1-350.752-350.75 350.75 350.75 0 0 1 350.75-350.75 350.75 350.75 0 0 1 350.752 350.75z"
+                        overflow="visible" solid-color="#000000"></path>
                     </g>
                   </svg>
                 </div>
               </td>
               <td>
                 <div class="rating-outer">
-                  <div class="value">8B</div>
+                  <div class="value" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column3.Trend)}">{{subjectDetails.subject.Performance.Column3.Value}}</div>
                   <svg ng-if="LastGrade != '' &amp;&amp; LastGrade != null" xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm"
                     viewBox="0 0 1052.3622 744.09448">
                     <g color="#000" fill="none" stroke-width="24">
-                      <path ng-show="GradeTrend == 1" id="fat1" style="isolation:auto;mix-blend-mode:normal" d="M874.322 370.115a350.75 350.75 0 0 1-350.75 350.75 350.75 350.75 0 0 1-350.752-350.75 350.75 350.75 0 0 1 350.75-350.75 350.75 350.75 0 0 1 350.752 350.75z"
-                        overflow="visible" solid-color="#000000" stroke="#ff7800" class="ng-hide"></path>
-                      <path ng-show="GradeTrend == 3" id="fat2" style="isolation:auto;mix-blend-mode:normal" d="M874.322 370.115a350.75 350.75 0 0 1-350.75 350.75 350.75 350.75 0 0 1-350.752-350.75 350.75 350.75 0 0 1 350.75-350.75 350.75 350.75 0 0 1 350.752 350.75z"
-                        overflow="visible" solid-color="#000000" stroke="#ff7800"></path>
-                      <path ng-show="GradeTrend == 2" id="fat3" style="isolation:auto;mix-blend-mode:normal" d="M874.322 370.115a350.75 350.75 0 0 1-350.75 350.75 350.75 350.75 0 0 1-350.752-350.75 350.75 350.75 0 0 1 350.75-350.75 350.75 350.75 0 0 1 350.752 350.75z"
-                        overflow="visible" solid-color="#000000" stroke="#ff7800" class="ng-hide"></path>
-                      <path ng-show="GradeTrend == 0" id="fat4" style="isolation:auto;mix-blend-mode:normal" d="M874.322 370.115a350.75 350.75 0 0 1-350.75 350.75 350.75 350.75 0 0 1-350.752-350.75 350.75 350.75 0 0 1 350.75-350.75 350.75 350.75 0 0 1 350.752 350.75z"
-                        overflow="visible" solid-color="#000000" stroke="#ff7800" class="ng-hide"></path>
+                      <path [ngStyle]="{ 'stroke': getColor(subjectDetails.subject.Performance.Column3.Trend)}" id="fat1" style="isolation:auto;mix-blend-mode:normal"
+                        d="M874.322 370.115a350.75 350.75 0 0 1-350.75 350.75 350.75 350.75 0 0 1-350.752-350.75 350.75 350.75 0 0 1 350.75-350.75 350.75 350.75 0 0 1 350.752 350.75z"
+                        overflow="visible" solid-color="#000000" class="ng-hide"></path>
                     </g>
                   </svg>
                 </div>
