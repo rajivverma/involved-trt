@@ -5,18 +5,23 @@ export class PiChart {
   constructor() { }
   options: Object;
 
-  getPieChartData(GradeSet: any) {
+  getPieChartData(GradeSet: any, xAxixData: any) {
     console.log(GradeSet);
-    const count = 0;
     return {
+      chart: {
+        width: 1000
+      },
       title: {
         text: 'Student'
       },
       xAxis: {
-        tickInterval: 1
+        categories: xAxixData
       },
       yAxis: {
-        type: 'logarithmic',
+        endOnTick: true,
+        min: 0,
+        max: 5,
+        title: { text: 'Grade' },
         labels: {
           formatter: function () {
             return GradeSet[this.value];
@@ -28,11 +33,11 @@ export class PiChart {
       },
       series: [
         {
-          data: [50, 80, 90, 100, 110, 120, 150, 300, 700, 800],
+          data: [5, 2, 1, 4],
           color: '#ffa500'
         },
         {
-          data: [1, 2, 4, 8, 16, 32, 64, 128, 256, 512],
+          data: [5, 2, 1, 4],
           color: '#63d2e9',
           marker: {
             enabled: false
@@ -40,7 +45,5 @@ export class PiChart {
           enableMouseTracking: false
         }]
     };
-
-
   }
 }

@@ -510,7 +510,7 @@ li {
   width: 70px; }
 
 .modal-table .subject-name {
-  top: -23px; }
+  top: 20 px; }
 
 .rating-outer {
   display: inline-block;
@@ -604,5 +604,8 @@ canvas {
 
 .count-particles {
   border-radius: 0 0 3px 3px; }
+
+.highcharts-container {
+  margin: 0 auto; }
 
 /*# sourceMappingURL=output.css.map */

@@ -19,7 +19,7 @@
 		<div class="nav-sidebar">
 			<div class="profile">
 				<div class="profile-pic">
-              <img [src]="'data:image/png;base64,'+studentInfo.Image"/>
+              <img *ngIf="studentInfo.Image != undefined" [src]="'data:image/png;base64,'+studentInfo.Image"/>
 				</div>
 				<div class="profile-name">
 					<h2>{{studentInfo.Firstname}} {{studentInfo.Lastname}}</h2>
