@@ -61,7 +61,7 @@ li {list-style: none;}
 	width: 100%;
  }
 
-.remember-me {margin: 25px 0;}
+.remember-me {margin: 15px 0;}
 
 /* Base for label styling */
 [type="checkbox"]:not(:checked),
@@ -348,7 +348,7 @@ li {list-style: none;}
  }
 
 .inner-main {
-	height: calc(768px - 95px);
+	height: calc(768px - 280px);
 	padding: 20px 0 0;
  }
 
@@ -586,7 +586,7 @@ li {list-style: none;}
 	color: $danger;
 	font-size: 14px;
 	position: absolute;
-	top: -24px;
+	top: -18px;
  }
 canvas {
   display: block;
