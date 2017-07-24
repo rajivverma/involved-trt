@@ -45,7 +45,11 @@
           </span>
         </p>
       </td>
+    </tr>
   </table>
+  <div class="loader" id="performance-loader">
+    <img src="../../../assets/img/loader.gif">
+  </div>
   <!-- Trigger/Open The Modal -->
   <!-- The Modal -->
   <div id="performance-modal" class="modal">
@@ -67,7 +71,8 @@
             <tr>
               <td id="sd{{subjectDetails.subject.Id}}">
                 <div class="table-profile-pic">
-                  <img class="teacher-image" *ngFor="let teacher of subjectDetails.subject.ClassTeachers" [src]="'data:image/png;base64,'+teacher.Image" />
+                  <img class="teacher-image" *ngFor="let teacher of subjectDetails.subject.ClassTeachers" [src]="'data:image/png;base64,'+teacher.Image"
+                  />
                 </div>
                 <div class="subject-name">
                   <p class="first">{{subjectDetails.subject.SubjectName}}</p>
@@ -76,44 +81,17 @@
               </td>
               <td>
                 <div class="rating-outer">
-                  <div class="value">
-                    <p class="danger arrow-bottom" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column1.Trend)}">{{subjectDetails.subject.Performance.Column1.Value}}{{subjectDetails.subject.Performance.Column1.Unit}}
-                      <span class="down"><i class="fa fa-caret-down" aria-hidden="true"></i></span></p>
-                  </div>
-                  <svg ng-if="Attendance != '' &amp;&amp; Attendance != null" xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm"
-                    viewBox="0 0 1052.3622 744.09448">
-                    <g color="#000" fill="none" stroke-width="24">
-                      <path id="carbs1" [ngStyle]="{ 'stroke': getColor(subjectDetails.subject.Performance.Column1.Trend)}" style="isolation: auto; mix-blend-mode: normal; stroke-dashoffset: 133px;"
-                        d="M874.322 370.115a350.75 350.75 0 0 1-350.75 350.75 350.75 350.75 0 0 1-350.752-350.75 350.75 350.75 0 0 1 350.75-350.75 350.75 350.75 0 0 1 350.752 350.75z"
-                        overflow="visible" solid-color="#000000"></path>
-                    </g>
-                  </svg>
+                  <div class="circle" id="attendance-circles"></div>
                 </div>
               </td>
               <td>
                 <div class="rating-outer">
-                  <div class="value" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column2.Trend)}">{{subjectDetails.subject.Performance.Column2.Value}}</div>
-                  <svg ng-if="TargetGrade != '' &amp;&amp; TargetGrade != null &amp;&amp; TargetGrade != undefined" xmlns="http://www.w3.org/2000/svg"
-                    width="297mm" height="210mm" viewBox="0 0 1052.3622 744.09448">
-                    <g color="#000" fill="none" stroke-width="24">
-                      <path id="proteins" [ngStyle]="{ 'stroke': getColor(subjectDetails.subject.Performance.Column2.Trend)}" style="isolation:auto;mix-blend-mode:normal"
-                        d="M874.322 370.115a350.75 350.75 0 0 1-350.75 350.75 350.75 350.75 0 0 1-350.752-350.75 350.75 350.75 0 0 1 350.75-350.75 350.75 350.75 0 0 1 350.752 350.75z"
-                        overflow="visible" solid-color="#000000"></path>
-                    </g>
-                  </svg>
+                  <div class="circle" id="target-circles"></div>
                 </div>
               </td>
               <td>
                 <div class="rating-outer">
-                  <div class="value" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column3.Trend)}">{{subjectDetails.subject.Performance.Column3.Value}}</div>
-                  <svg ng-if="LastGrade != '' &amp;&amp; LastGrade != null" xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm"
-                    viewBox="0 0 1052.3622 744.09448">
-                    <g color="#000" fill="none" stroke-width="24">
-                      <path [ngStyle]="{ 'stroke': getColor(subjectDetails.subject.Performance.Column3.Trend)}" id="fat1" style="isolation:auto;mix-blend-mode:normal"
-                        d="M874.322 370.115a350.75 350.75 0 0 1-350.75 350.75 350.75 350.75 0 0 1-350.752-350.75 350.75 350.75 0 0 1 350.75-350.75 350.75 350.75 0 0 1 350.752 350.75z"
-                        overflow="visible" solid-color="#000000" class="ng-hide"></path>
-                    </g>
-                  </svg>
+                  <div class="circle" id="grade-circles"></div>
                 </div>
               </td>
             </tr>

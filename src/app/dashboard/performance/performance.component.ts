@@ -6,7 +6,7 @@ import {
 import { PerformanceService } from './performance.service';
 import { DashboardService } from '../dashboard.service';
 import { PiChart } from '../commonService/pi-chart';
-
+declare var Circles: any;
 @Component({
   selector: 'app-performance',
   templateUrl: './performance.component.html',
@@ -36,9 +36,11 @@ export class PerformanceComponent implements OnInit {
   }
   ngOnInit() {
     const id = localStorage.getItem('userid');
+    document.getElementById('performance-loader').style.display = 'block';
     this.performanceService.getSubjectData(id).subscribe(
       (data) => {
         console.log(data);
+        document.getElementById('performance-loader').style.display = '';
         this.subjectsData = data;
         const c = 2;
         const that = this;
@@ -140,11 +142,58 @@ export class PerformanceComponent implements OnInit {
               }, 5000);
             }
           })();
+          that.createCircle('attendance-circles',
+            that.subjectDetails.subject.Performance.Column1.Value,
+            '#b981d1',
+            that.getClassName(that.subjectDetails.subject.Performance.Column1.Trend),
+            that.subjectDetails.subject.Performance.Column1.Value + '%'
+          );
+          that.createCircle('target-circles',
+            100,
+            '#48cae5',
+            that.getClassName(that.subjectDetails.subject.Performance.Column2.Trend),
+            that.subjectDetails.subject.Performance.Column2.Value
+          );
+          that.createCircle('grade-circles',
+            100,
+            '#6bc04b',
+            that.getClassName(that.subjectDetails.subject.Performance.Column3.Trend),
+            that.subjectDetails.subject.Performance.Column3.Value
+          );
         });
       },
       (err) => {
         // alert('something wrong');
       });
+  }
+  getClassName(name) {
+    if (name === 0) {
+      return 'class-zero';
+    } else if (name === 1) {
+      return 'class-one';
+    } else if (name === 2) {
+      return 'class-two';
+    } else {
+      return 'class-three';
+    }
+  }
+  createCircle(id, val, color, txtColor, txtValue) {
+    Circles.create({
+      id: id,
+      radius: 35,
+      value: val,
+      maxValue: 100,
+      width: 3,
+      text: txtValue,
+      colors: ['transparent', color],
+      duration: 400,
+      wrpClass: 'circles-wrp',
+      textClass: txtColor,
+      valueStrokeClass: 'circles-valueStroke',
+      maxValueStrokeClass: 'circles-maxValueStroke',
+      styleWrapper: true,
+      styleText: true
+    });
   }
   closeModal() {
     const d = document.getElementById('performance-modal');
