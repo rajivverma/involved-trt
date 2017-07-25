@@ -75,7 +75,7 @@
               <th>Grade</th>
             </tr>
             <tr>
-              <td id="sd{{subjectDetails.subject.Id}}">
+              <td id="sd{{subjectDetails.subject.Id}}" class="lft-subject">
                 <div class="table-profile-pic lft">
                   <img class="teacher-image" *ngFor="let teacher of subjectDetails.subject.ClassTeachers" [src]="'data:image/png;base64,'+teacher.Image"
                   />

@@ -395,7 +395,7 @@ button:focus, a:focus{outline: none;}
 .fixed-header tbody {
     display: block;
     overflow: auto;
-    height: 510px;
+    height: 480px;
 }
 
  .lft {
@@ -418,8 +418,8 @@ button:focus, a:focus{outline: none;}
 	cursor: pointer;
  }
 
-.performance tr:hover {background-color: #e7f0f9;}
-.modal-body tr:hover {background-color: #e7f0f9;}
+.performance tr:hover {background-color: #e7f0f9; transition: all ease 0.5s;}
+.modal-body tr:hover {background-color: #e7f0f9; transition: all ease 0.5s;}
 .table-profile-pic {
   border-radius: 50%;
   display: inline-block;
@@ -491,7 +491,7 @@ button:focus, a:focus{outline: none;}
 	height: 100%; /* Full height */
 	left: 0;
 	overflow: auto; /* Enable scroll if needed */
-	padding-top: 4%; /* Location of the box */
+	padding-top: 2%; /* Location of the box */
 	position: fixed; /* Stay in place */
 	top: 0;
 	width: 100%; /* Full width */
@@ -529,19 +529,20 @@ button:focus, a:focus{outline: none;}
 
 	/* The Close Button */
 .close {
-		background: black;
+		background: rgba(0,0,0,0.9);
 		border-radius: 50px;
 		color: white;
 		cursor: pointer;
 		float: right;
 		font-size: 24px;
-		font-weight: bold;
+		font-weight: lighter;
 		height: 30px;
 		position: absolute;
 		right: -15px;
 		text-align: center;
 		top: -20px;
 		width: 30px;
+		line-height: 23px;
 	 }
 
 	.modal-header {
@@ -562,7 +563,7 @@ button:focus, a:focus{outline: none;}
 		color: #434242;
 		font-size: 12px;
 	 }
-
+	.modal-table .lft-subject{padding-left: 25px;}
 	.modal-table .table-profile-pic {
 		background-color: transparent;
 		border: 1px solid $primary-color;
@@ -580,7 +581,8 @@ button:focus, a:focus{outline: none;}
 		width: 100px;
 		height: 70px;
 	 }
-	.rating-outer .up, .rating-outer .down{position: absolute; top: 42px; left: 0; right: 0;}
+	.rating-outer .down{position: absolute; top: 42px; left: 0; right: 0;}
+	.rating-outer .up{position: absolute; top: 0; left: 0; right: 0;}
 	.value {
 		font-size: 20px;
 		font-weight: bold;
@@ -683,7 +685,7 @@ canvas {
   display: none;
   position: absolute;
   top: 0;
-  background-color: #27a9e3 ;
+  background-color: #2671be ;
   width: 100%;
   opacity: 1;
   height: 100%;
@@ -714,8 +716,8 @@ canvas {
 }
 
 #logout .modal-dialog{
-    padding: 15px 25px;
-    width: 250px;
+    padding:10px 25px 39px;
+    width: 215px;
     background: white;
     text-align: center;
     border-radius: 0;
@@ -731,6 +733,7 @@ canvas {
   font-size: 14px;
     color: #434242;
     text-align: center;
+    margin: 8px 0 30px;
 }
 
 .notification{

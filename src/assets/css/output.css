@@ -24,7 +24,7 @@ button:focus, a:focus {
 
 .login-box {
   background: #fff;
-  border-top: 4px solid #54c9e8;
+  border-top: 4px solid #2671be;
   margin: 0 auto 10px;
   padding: 15px 0;
   position: relative;
@@ -36,7 +36,7 @@ button:focus, a:focus {
   text-align: center; }
 
 .login-box h1 {
-  border-bottom: 1px solid #54c9e8;
+  border-bottom: 1px solid #2671be;
   font-size: 90px;
   font-weight: 100;
   margin: 25px 0 15px;
@@ -65,7 +65,7 @@ button:focus, a:focus {
   width: calc(100% - 16px); }
 
 .custom-input:focus {
-  border-bottom: 1px solid #54c9e8 !important;
+  border-bottom: 1px solid #2671be !important;
   transition: all ease 0.3s; }
 
 .remember-me {
@@ -141,14 +141,14 @@ button:focus, a:focus {
   padding: 3px 30px; }
 
 .round-btn {
-  background: #54c9e8;
+  background: #2671be;
   border-radius: 30px;
   border: none;
   color: #fff;
   cursor: pointer;
   margin-right: 15px;
   padding: 6px 25px;
-  border: 2px solid #54c9e8; }
+  border: 2px solid #2671be; }
 
 .round-btn:hover {
   background-color: #0290b5;
@@ -156,7 +156,7 @@ button:focus, a:focus {
   border: 2px solid #0290b5; }
 
 .btn-border {
-  border: 2px solid #54c9e8;
+  border: 2px solid #2671be;
   background-color: transparent;
   color: #000; }
 
@@ -170,7 +170,7 @@ button:focus, a:focus {
   font-size: 12px; }
 
 .submit-events span:hover {
-  color: #54c9e8;
+  color: #2671be;
   transition: all ease 0.3s; }
 
 .form-footer {
@@ -188,7 +188,7 @@ button:focus, a:focus {
   line-height: 22px; }
 
 .form-footer p strong {
-  color: #54c9e8;
+  color: #2671be;
   cursor: pointer; }
 
 .form-footer p strong:hover {
@@ -219,7 +219,7 @@ button:focus, a:focus {
   text-align: center; }
 
 .forgot-pwd .form-footer h2 {
-  color: #54c9e8;
+  color: #2671be;
   font-size: 19px;
   font-weight: 400; }
 
@@ -261,7 +261,7 @@ button:focus, a:focus {
 .header {
   background: #fff;
   border-bottom: 2px solid #dbdbdb;
-  border-top: 4px solid #54c9e8;
+  border-top: 4px solid #2671be;
   padding: 5px 0 3px;
   position: relative; }
 
@@ -307,13 +307,13 @@ button:focus, a:focus {
   background-color: #F5F5F5; }
 
 .fixed-header tbody::-webkit-scrollbar-thumb {
-  background-color: #54c9e8; }
+  background-color: #2671be; }
 
 .fixed-header tbody tr td, .fixed-header th {
   width: 258px; }
 
 .profile {
-  background: #54c9e8;
+  background: #2671be;
   color: #fff;
   padding: 34px 25px 40px;
   text-align: center; }
@@ -356,11 +356,11 @@ button:focus, a:focus {
   color: #000; }
 
 .nav li .active:hover {
-  background: #54c9e8;
+  background: #2671be;
   color: #000; }
 
 .active {
-  background-color: #54c9e8;
+  background-color: #2671be;
   color: #fff !important;
   transition: all ease 0.3s; }
 
@@ -369,7 +369,7 @@ button:focus, a:focus {
   padding: 20px 0 0; }
 
 .dashboard-head {
-  background-color: #54c9e8;
+  background-color: #2671be;
   color: #fff;
   padding: 10px 20px; }
 
@@ -401,7 +401,7 @@ button:focus, a:focus {
 .fixed-header tbody {
   display: block;
   overflow: auto;
-  height: 510px; }
+  height: 480px; }
 
 .lft {
   text-align: left; }
@@ -411,7 +411,7 @@ button:focus, a:focus {
 
 /*tr:nth-child(even){background-color: #f2f2f2}*/
 .performance th {
-  background-color: #54c9e8;
+  background-color: #2671be;
   color: #fff;
   font-size: 15px;
   font-weight: 400; }
@@ -421,10 +421,12 @@ button:focus, a:focus {
   cursor: pointer; }
 
 .performance tr:hover {
-  background-color: #e7f0f9; }
+  background-color: #e7f0f9;
+  transition: all ease 0.5s; }
 
 .modal-body tr:hover {
-  background-color: #e7f0f9; }
+  background-color: #e7f0f9;
+  transition: all ease 0.5s; }
 
 .table-profile-pic {
   border-radius: 50%;
@@ -500,7 +502,7 @@ button:focus, a:focus {
   left: 0;
   overflow: auto;
   /* Enable scroll if needed */
-  padding-top: 4%;
+  padding-top: 2%;
   /* Location of the box */
   position: fixed;
   /* Stay in place */
@@ -544,22 +546,23 @@ button:focus, a:focus {
     opacity: 1; } }
 /* The Close Button */
 .close {
-  background: black;
+  background: rgba(0, 0, 0, 0.9);
   border-radius: 50px;
   color: white;
   cursor: pointer;
   float: right;
   font-size: 24px;
-  font-weight: bold;
+  font-weight: lighter;
   height: 30px;
   position: absolute;
   right: -15px;
   text-align: center;
   top: -20px;
-  width: 30px; }
+  width: 30px;
+  line-height: 23px; }
 
 .modal-header {
-  background-color: #54c9e8;
+  background-color: #2671be;
   padding: 9px 23px;
   position: relative; }
 
@@ -574,9 +577,12 @@ button:focus, a:focus {
   color: #434242;
   font-size: 12px; }
 
+.modal-table .lft-subject {
+  padding-left: 25px; }
+
 .modal-table .table-profile-pic {
   background-color: transparent;
-  border: 1px solid #54c9e8;
+  border: 1px solid #2671be;
   height: 70px;
   width: 70px; }
 
@@ -594,9 +600,15 @@ button:focus, a:focus {
   width: 100px;
   height: 70px; }
 
-.rating-outer .up, .rating-outer .down {
+.rating-outer .down {
   position: absolute;
   top: 42px;
+  left: 0;
+  right: 0; }
+
+.rating-outer .up {
+  position: absolute;
+  top: 0;
   left: 0;
   right: 0; }
 
@@ -692,7 +704,7 @@ canvas {
   display: none;
   position: absolute;
   top: 0;
-  background-color: #27a9e3;
+  background-color: #2671be;
   width: 100%;
   opacity: 1;
   height: 100%;
@@ -723,8 +735,8 @@ canvas {
   background-color: rgba(255, 255, 255, 0.5); }
 
 #logout .modal-dialog {
-  padding: 15px 25px;
-  width: 250px;
+  padding: 10px 25px 39px;
+  width: 215px;
   background: white;
   text-align: center;
   border-radius: 0;
@@ -739,7 +751,8 @@ canvas {
 #logout .modal-dialog p {
   font-size: 14px;
   color: #434242;
-  text-align: center; }
+  text-align: center;
+  margin: 8px 0 30px; }
 
 .notification {
   display: inline-block;
