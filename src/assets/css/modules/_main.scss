@@ -32,10 +32,10 @@ li {list-style: none;}
 
 .login-box h1 {
 	border-bottom: 1px solid $primary-color;
-	font-size: 75px;
-	font-weight: 500;
+	font-size: 90px;
+	font-weight: 100;
 	margin: 25px 0 15px;
-	text-align: center;
+	padding: 0 80px;
  }
 
 .form-inner {padding: 0 80px;}
@@ -56,7 +56,7 @@ li {list-style: none;}
 	font-size: 14px;
 	margin-bottom: 5px;
 	outline: none;
-	padding: 12px 0;
+	padding: 12px 8px 15px;
 	transition: all 0.4s ease-in-out 0s;
 	width: 100%;
  }
@@ -190,6 +190,7 @@ li {list-style: none;}
 .copyright {
 	bottom: -30px;
 	color: $very-light-font;
+	font-size: 14px;
 	left: 50%;
 	margin: 0 auto;
 	position: absolute;
@@ -584,7 +585,7 @@ li {list-style: none;}
 
 #login-error {
 	color: $danger;
-	font-size: 14px;
+	font-size: 12px;
 	position: absolute;
 	top: -18px;
  }
