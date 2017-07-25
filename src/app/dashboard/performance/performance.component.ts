@@ -196,7 +196,7 @@ export class PerformanceComponent implements OnInit {
       width: 3,
       text: txtValue,
       colors: ['transparent', color],
-      duration: 400,
+      duration: 100,
       wrpClass: 'circles-wrp',
       textClass: txtColor,
       valueStrokeClass: 'circles-valueStroke',

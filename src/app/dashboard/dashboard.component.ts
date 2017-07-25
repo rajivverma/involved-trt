@@ -45,11 +45,9 @@ export class DashboardComponent implements OnInit {
       document.getElementById('logout').className = 'show-logout';
     }, 100);
   }
-  cancelLogout() {
+  cancelLogout(event) {
+    event.stopPropagation();
     document.getElementById('logout').className = '';
-    setTimeout(function () {
-      document.getElementById('logout').style.display = '';
-    }, 100);
   }
   logout() {
     this.dashboardService.logout();

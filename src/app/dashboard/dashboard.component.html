@@ -39,12 +39,12 @@
     </div>
   <p class="copyright">Copyright © 2017 InvolvEdTech. All Rights Reserved.</p>
   </div>
-  <div id="logout">
+  <div id="logout" (click)="cancelLogout($event)">
     <div class="modal-dialog">
       <p>Confirm logout?</p>
       <div class="modal-dialog-footer">
         <button class="round-btn" (click)="logout()">Yes</button>
-        <button class="round-btn btn-border" (click)="cancelLogout()">No</button>
+        <button class="round-btn btn-border" (click)="cancelLogout($event)">No</button>
       </div>
     </div>
   </div>
