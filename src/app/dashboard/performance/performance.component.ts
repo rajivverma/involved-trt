@@ -107,20 +107,15 @@ export class PerformanceComponent implements OnInit {
         const GradeSet = [];
         const GradeResults = [];
         const XaxisGrades = [];
-        let date;
         for (let i = 0; i < this.subjectDetails.GradeSet.length; i++) {
           GradeSet.push(this.subjectDetails.GradeSet[i].Code);
         }
-        for (let i = 0; i < this.subjectDetails.XaxisGrades.length; i++) {
-          date = new Date(this.subjectDetails.XaxisGrades[i].Date);
-          date = this.monthNames[date.getMonth()] + ' ' + date.getFullYear();
-          XaxisGrades.push(date);
-        }
         console.log(data);
         this.options = this.piChart.getPieChartData(GradeSet,
-          XaxisGrades,
+          this.subjectDetails.XaxisGrades,
           this.subjectDetails.GradeResults,
-          this.subjectDetails.TargetGrades
+          this.subjectDetails.TargetGrades,
+          this.getColor(this.subjectDetails.subject.Performance.Column3.Trend)
         );
         const that = this;
         setTimeout(function () {
@@ -166,7 +161,7 @@ export class PerformanceComponent implements OnInit {
           );
           that.createCircle('grade-circles',
             100,
-            '#6bc04b',
+            that.getColor(that.subjectDetails.subject.Performance.Column3.Trend),
             that.getClassName(that.subjectDetails.subject.Performance.Column3.Trend),
             that.subjectDetails.subject.Performance.Column3.Value
           );

@@ -5,16 +5,15 @@ export class PiChart {
   constructor() { }
   options: Object;
 
-  getPieChartData(GradeSet: any, xAxixData: any, GradeResults: any, TargetGrades: any) {
-    const results1 = [];
+  getPieChartData(GradeSet: any,
+    xAxixData: any,
+    GradeResults: any,
+    TargetGrades: any,
+    color: any) {
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+    ];
     const GradeResultsName = new Array();
-    const results2 = [];
-    for (let i = 0; i < GradeResults.length; i++) {
-      results1[i] = GradeSet.indexOf(GradeResults[i].Grade);
-    }
-    for (let i = 0; i < TargetGrades.length; i++) {
-      results2[i] = GradeSet.indexOf(TargetGrades[i].Grade);
-    }
     return {
       chart: {
         type: 'line',
@@ -23,20 +22,20 @@ export class PiChart {
       title: {
         text: '<h2><b>Performance Graph</b></h2>'
       },
-         xAxis: {
-                                    type: 'datetime',
-                                    title: {
-                                        text: 'Month'
-                                    },
-                                   
-                                    labels: {
-                                        format: '{value:%b %Y}',
-                                        style: {
-                                            fontWeight: 'bold'
-                                        }
-                                    },
-                                    gridLineWidth: 1,
-                                },
+      xAxis: {
+        type: 'datetime',
+        title: {
+          text: 'Month'
+        },
+
+        labels: {
+          format: '{value:%b %Y}',
+          style: {
+            fontWeight: 'bold'
+          }
+        },
+        gridLineWidth: 1,
+      },
       yAxis: {
         endOnTick: true,
         min: 0,
@@ -53,95 +52,93 @@ export class PiChart {
       credits: {
         enabled: false
       },
-                                              tooltip: {
-                                                                                              formatter: function () {
-                                                        var tooltiptxt = '';
-                                                         if (this.series.name == "Grade") {
-                                                        var date = new Date(this.x);
-                                                        var id = date.getDate()+"-"+date.getMonth()+"-"+date.getFullYear()+"-"+GradeSet[this.y];
-                                                        console.log(id);
-                                                        tooltiptxt = '<b> ' + GradeResultsName[id] + '</b><br> Grade '  + GradeSet[this.y] + ', ' + new Date(this.x);
-                                                            
-                                                            return tooltiptxt;
-                                                             } else {
-                                                            return false;
-                                                        }
-                                                    },
-                                                    shared: false,
-                                                    backgroundColor: '#5bd9a4',
-                                                    style: {
-                                                        color: 'white'
-                                                    },                                               
-                                        },  
+      tooltip: {
+        formatter: function () {
+          let tooltiptxt = '';
+          if (this.series.name === 'Grade') {
+            const date = new Date(this.x);
+            const id = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear() + '-' + GradeSet[this.y];
+            const dateT = date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
+            tooltiptxt = '<b> ' + GradeResultsName[id] + '</b><br> Grade ' + GradeSet[this.y] + ', ' + dateT;
+            return tooltiptxt;
+          } else {
+            return false;
+          }
+        },
+        shared: false,
+        backgroundColor: color,
+        style: {
+          color: 'white'
+        },
+      },
       series: [
-                                    {
-                                        showInLegend: false,
-                                        name: 'XaxisGrades',
-                                        color: '#FFF',
-                                        data: (function () {
-                                            var data2 = [];
-                                            for (var m = 0; m < xAxixData.length; m++) {
-                                               data2.push({
-                                                x : new Date(xAxixData[m].Date),
-                                                y : GradeSet.indexOf(xAxixData[m].Grade)
-                                                });
-                                            }
-                                            return data2;
-                                        }()),
-                                        marker: {
-                                            enabled: false,
-                                            states: {
-                                                hover: {
-                                                    enabled: false
-                                                }
-                                            }
-                                        },
-                                    },{
-                name: 'Target',
-                                        color: '#48CAE5',
-                                        data: (function () {
-                                            var data1 = [];
-                                            for (var m = 0; m < TargetGrades.length; m++) {
-                                                 data1.push({
-                                                    x: new Date(TargetGrades[m].Date),
-                                                    y: GradeSet.indexOf(TargetGrades[m].Grade),
-                                                });
-                                            }
-                                            return data1;
-                                        }()),
-                                        marker: {
-                                            enabled: false,
-                                            states: {
-                                                hover: {
-                                                    enabled: false
-                                                }
-                                            }
-                                        }},
-                                        {
-                                        name: "Grade",
-                                        color: "red",
-                                        
-                                        data: (function () {
-                                            var data = [];
-                                            for (var j = 0; j < GradeResults.length; j++) {
-                                            var date = new Date(GradeResults[j].Date);
-                                            var id = date.getDate()+"-"+date.getMonth()+"-"+date.getFullYear()+"-"+GradeResults[j].Grade;
-                                                GradeResultsName[id] = GradeResults[j].Name;
-                                                            console.log(GradeResults[j].Date + " " + GradeResults[j].Name);
-                                                data.push({
-                                                  x: date,
-                                                    y: GradeSet.indexOf(GradeResults[j].Grade),
-                                                          });
-                                            }
-                                            return data;
-                                        }()),
-                                        marker: {
-                                            enabled: true,
-                                            radius: 5,
-                                            symbol: 'circle'
-                                        },
-                                    }
-              ]
+        {
+          showInLegend: false,
+          name: 'XaxisGrades',
+          color: '#FFF',
+          data: (function () {
+            const data2 = [];
+            for (let m = 0; m < xAxixData.length; m++) {
+              data2.push({
+                x: new Date(xAxixData[m].Date),
+                y: GradeSet.indexOf(xAxixData[m].Grade)
+              });
+            }
+            return data2;
+          }()),
+          marker: {
+            enabled: false,
+            states: {
+              hover: {
+                enabled: false
+              }
+            }
+          },
+        }, {
+          name: 'Target',
+          color: '#48CAE5',
+          data: (function () {
+            const data1 = [];
+            for (let m = 0; m < TargetGrades.length; m++) {
+              data1.push({
+                x: new Date(TargetGrades[m].Date),
+                y: GradeSet.indexOf(TargetGrades[m].Grade),
+              });
+            }
+            return data1;
+          }()),
+          marker: {
+            enabled: false,
+            states: {
+              hover: {
+                enabled: false
+              }
+            }
+          }
+        },
+        {
+          name: 'Grade',
+          color: color,
+          data: (function () {
+            const data = [];
+            for (let j = 0; j < GradeResults.length; j++) {
+              const date = new Date(GradeResults[j].Date);
+              const id = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear() + '-' + GradeResults[j].Grade;
+              GradeResultsName[id] = GradeResults[j].Name;
+              data.push({
+                x: date,
+                y: GradeSet.indexOf(GradeResults[j].Grade),
+              });
+            }
+            return data;
+          }()),
+          marker: {
+            enabled: true,
+            radius: 5,
+            symbol: 'circle'
+          },
+        }
+      ]
     };
   }
 }
