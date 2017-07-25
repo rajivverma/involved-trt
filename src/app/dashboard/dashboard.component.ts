@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DashboardService } from './dashboard.service';
+import { MainService } from '../commonService/main.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  providers: [DashboardService]
+  providers: [DashboardService, MainService]
 })
 export class DashboardComponent implements OnInit {
 
   public studentInfo: any = {};
-  constructor(private dashboardService: DashboardService, private router: Router) { }
+  constructor(private dashboardService: DashboardService,
+    private router: Router,
+    private mainService: MainService) { }
   ngOnInit() {
+    this.mainService.show('dashboard-loader');
     this.dashboardService.getStudentDetails().subscribe(
       (data) => {
+        this.mainService.hide('dashboard-loader');
         this.studentInfo = data;
         localStorage.setItem('userid', data.Id);
         console.log(data);

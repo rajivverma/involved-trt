@@ -20,7 +20,7 @@ export class PiChart {
         width: 1000
       },
       title: {
-        text: 'Student'
+        text: '<h2><b>Performance Graph</b></h2>'
       },
       xAxis: {
         categories: xAxixData

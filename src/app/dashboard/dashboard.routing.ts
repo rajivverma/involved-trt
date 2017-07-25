@@ -13,11 +13,11 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
-    // canActivateChild: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',
-        // canActivateChild: [AuthGuard],
+        canActivateChild: [AuthGuard],
         children: [
           { path: 'performance', component: PerformanceComponent },
           { path: 'tasks', component: TasksComponent },

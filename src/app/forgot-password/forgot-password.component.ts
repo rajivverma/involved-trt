@@ -1,16 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ForgotPaswordService } from './forgot-password.service';
-
+import { ParticalService } from '../commonService/partical.service';
 
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
-  providers: [ForgotPaswordService]
+  providers: [ForgotPaswordService,ParticalService]
 })
-export class ForgotPasswordComponent {
+export class ForgotPasswordComponent implements OnInit {
   public username: string;
-  constructor(private router: Router, private forgotPaswordService: ForgotPaswordService) { }
+  particalStyle: object = {};
+  particalParams: object = {};
+  constructor(private router: Router,
+  private forgotPaswordService: ForgotPaswordService,
+  private particalService : ParticalService) { }
+  ngOnInit() {
+    this.particalStyle = this.particalService.getParticalStyle();
+    this.particalParams = this.particalService.getParticalParams();
+  }
   submit() {
     if (!this.username) {
       const divToChange = (<HTMLInputElement>document.getElementById('username'));

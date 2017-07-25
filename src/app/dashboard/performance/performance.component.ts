@@ -6,11 +6,12 @@ import {
 import { PerformanceService } from './performance.service';
 import { DashboardService } from '../dashboard.service';
 import { PiChart } from '../commonService/pi-chart';
+import { MainService } from '../../commonService/main.service';
 declare var Circles: any;
 @Component({
   selector: 'app-performance',
   templateUrl: './performance.component.html',
-  providers: [PerformanceService, DashboardService, PiChart]
+  providers: [PerformanceService, DashboardService, PiChart, MainService]
 })
 export class PerformanceComponent implements OnInit {
   options: Object;
@@ -26,7 +27,8 @@ export class PerformanceComponent implements OnInit {
   constructor(private router: Router,
     private performanceService: PerformanceService,
     private dashboardService: DashboardService,
-    private piChart: PiChart) {
+    private piChart: PiChart,
+    private mainService: MainService) {
     router.events.subscribe((val) => {
       // clearInterval();
       for (let i = 0; i < this.intervalsId.length; i++) {
@@ -36,11 +38,11 @@ export class PerformanceComponent implements OnInit {
   }
   ngOnInit() {
     const id = localStorage.getItem('userid');
-    document.getElementById('performance-loader').style.display = 'block';
+    this.mainService.show('performance-loader');
     this.performanceService.getSubjectData(id).subscribe(
       (data) => {
         console.log(data);
-        document.getElementById('performance-loader').style.display = '';
+        this.mainService.hide('performance-loader');
         this.subjectsData = data;
         const c = 2;
         const that = this;

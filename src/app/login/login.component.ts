@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { LoginService, User } from './login.service';
+import { ParticalService } from '../commonService/partical.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  providers: [LoginService]
+  providers: [LoginService, ParticalService]
 })
 
 export class LoginComponent implements OnInit {
@@ -20,12 +21,20 @@ export class LoginComponent implements OnInit {
   // Firefox 1.0+
   public isFirefox = typeof InstallTrigger !== 'undefined';
   public browser: any;
-  constructor(private loginService: LoginService, private router: Router) { }
+  particalStyle: object = {};
+  particalParams: object = {};
+  constructor(private loginService: LoginService,
+  private router: Router,
+  private particalService : ParticalService) { }
   ngOnInit() {
+    let that = this;
+    this.particalStyle = this.particalService.getParticalStyle();
+    this.particalParams = this.particalService.getParticalParams();
     if (localStorage.token) {
       this.router.navigate(['dashboard']);
     }
   }
+
   get_browser = function () {
     const ua = navigator.userAgent;
     let tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
