@@ -7,6 +7,7 @@ import { PerformanceService } from './performance.service';
 import { DashboardService } from '../dashboard.service';
 import { PiChart } from '../commonService/pi-chart';
 import { MainService } from '../../commonService/main.service';
+
 declare var Circles: any;
 @Component({
   selector: 'app-performance',
@@ -21,6 +22,7 @@ export class PerformanceComponent implements OnInit {
   public intervalCount = 0;
   public intervalsId: any = [];
   public studentDetailInterval: any;
+  public studentName : string;
   public monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
   ];
@@ -38,12 +40,13 @@ export class PerformanceComponent implements OnInit {
   }
   ngOnInit() {
     const id = localStorage.getItem('userid');
+    this.studentName = localStorage.getItem('fullname');
     this.mainService.show('performance-loader');
     this.performanceService.getSubjectData(id).subscribe(
       (data) => {
         console.log(data);
         this.mainService.hide('performance-loader');
-          this.subjectsData = data;
+        this.subjectsData = data;
         const c = 2;
         const that = this;
         setTimeout(function () {

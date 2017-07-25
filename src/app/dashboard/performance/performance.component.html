@@ -55,7 +55,7 @@
     <img src="../../../assets/img/loader.gif">
   </div>
   <!-- Trigger/Open The Modal -->
-  
+
 </div>
 <!-- The Modal -->
   <div id="performance-modal" class="modal">
@@ -63,7 +63,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <span class="close" (click)="closeModal()">&times;</span>
-        <p>Student Name</p>
+        <p>{{studentName}}</p>
       </div>
       <div class="modal-body" *ngIf="subjectDetails.subject != undefined">
         <div class="modal-table">

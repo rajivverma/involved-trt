@@ -28,7 +28,8 @@
     "angular2-highcharts": "^0.5.5",
     "core-js": "^2.4.1",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "enhanced-resolve": "3.3.0"
   },
   "devDependencies": {
     "@angular/cli": "1.2.1",

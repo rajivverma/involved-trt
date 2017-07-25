@@ -11,6 +11,7 @@ import { MainService } from '../commonService/main.service';
 export class DashboardComponent implements OnInit {
 
   public studentInfo: any = {};
+  public counterData: any = {};
   constructor(private dashboardService: DashboardService,
     private router: Router,
     private mainService: MainService) { }
@@ -21,10 +22,19 @@ export class DashboardComponent implements OnInit {
         this.mainService.hide('dashboard-loader');
         this.studentInfo = data;
         localStorage.setItem('userid', data.Id);
+        localStorage.setItem('fullname', data.Firstname + ' ' + data.Lastname);
         console.log(data);
         if (this.router.url === '/dashboard') {
           this.router.navigate(['dashboard/performance']);
         }
+        this.dashboardService.getCounter(data.Id).subscribe(
+          (data) => {
+            console.log(data);
+            this.counterData = data;
+          },
+          (err) => {
+            console.log(err);
+          });
       },
       (err) => {
         console.log(err);

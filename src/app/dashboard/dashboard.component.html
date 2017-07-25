@@ -28,9 +28,9 @@
         </div>
         <ul class="nav">
           <li><a [routerLinkActive]="['active']" id="dashboard" [routerLink]="['./performance']">Performance</a></li>
-          <li><a [routerLinkActive]="['active']" id="domains" [routerLink]="['./tasks']">Tasks <div class="notification">3</div></a></li>
+          <li><a [routerLinkActive]="['active']" id="domains" [routerLink]="['./tasks']">Tasks <div class="notification">{{counterData.UnreadTaskCount}}</div></a></li>
           <li><a [routerLinkActive]="['active']" id="lists" [routerLink]="['./timetable']">Timetable</a></li>
-          <li><a [routerLinkActive]="['active']" id="campaigns" [routerLink]="['./announcements']">Announcements <div class="notification">3</div></a></li>
+          <li><a [routerLinkActive]="['active']" id="campaigns" [routerLink]="['./announcements']">Announcements <div class="notification">{{counterData.UnreadAnnouncementCount}}</div></a></li>
         </ul>
       </div>
       <div class="dashboard-main">

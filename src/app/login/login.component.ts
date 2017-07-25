@@ -84,7 +84,6 @@ export class LoginComponent implements OnInit {
     };
     this.loginService.login(user).subscribe(
       (data) => {
-        console.log(data);
         localStorage.setItem('token', 'Bearer ' + data.access_token);
         localStorage.setItem('userid', data.userid);
         this.router.navigate(['dashboard']);
