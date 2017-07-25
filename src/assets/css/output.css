@@ -417,7 +417,8 @@ button:focus {
 
 .table-profile-pic img {
   width: 100%;
-  max-width: 100%; }
+  max-width: 100%;
+  position: absolute; }
 
 .subject-name {
   display: inline-block;
@@ -713,5 +714,16 @@ canvas {
   font-size: 14px;
   color: #434242;
   text-align: center; }
+
+.notification {
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  background-color: red;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  line-height: 18px; }
 
 /*# sourceMappingURL=output.css.map */

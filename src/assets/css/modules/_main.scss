@@ -432,6 +432,7 @@ button:focus{outline: none;}
 .table-profile-pic img{
   width: 100%;
   max-width: 100%;
+  position: absolute;
 }
 .subject-name {
 	display: inline-block;
@@ -726,6 +727,15 @@ canvas {
     text-align: center;
 }
 
-
-
+.notification{
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    background-color: red;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    line-height: 18px;
+}
 
