@@ -25,6 +25,18 @@ export class DashboardComponent implements OnInit {
         console.log(err);
       });
   }
+  logoutPopup() {
+    document.getElementById('logout').style.display = 'block';
+    setTimeout(function () {
+      document.getElementById('logout').className = 'show-logout';
+    }, 100);
+  }
+  cancelLogout() {
+    document.getElementById('logout').className = '';
+    setTimeout(function () {
+      document.getElementById('logout').style.display = '';
+    }, 100);
+  }
   logout() {
     this.dashboardService.logout();
   }

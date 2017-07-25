@@ -101,6 +101,7 @@ export class PerformanceComponent implements OnInit {
         d.className += ' in';
         const GradeSet = [];
         const GradeResults = [];
+        const XaxisGrades = [];
         let date;
         for (let i = 0; i < this.subjectDetails.GradeSet.length; i++) {
           GradeSet.push(this.subjectDetails.GradeSet[i].Code);
@@ -108,10 +109,14 @@ export class PerformanceComponent implements OnInit {
         for (let i = 0; i < this.subjectDetails.XaxisGrades.length; i++) {
           date = new Date(this.subjectDetails.XaxisGrades[i].Date);
           date = this.monthNames[date.getMonth()] + ' ' + date.getFullYear();
-          GradeResults.push(date);
+          XaxisGrades.push(date);
         }
         console.log(data);
-        this.options = this.piChart.getPieChartData(GradeSet, GradeResults);
+        this.options = this.piChart.getPieChartData(GradeSet,
+          XaxisGrades,
+          this.subjectDetails.GradeResults,
+          this.subjectDetails.TargetGrades
+        );
         const that = this;
         setTimeout(function () {
           document.getElementById('sd' + that.subjectDetails.subject.Id).children[1].children[1].className += ' subject-name-active';
