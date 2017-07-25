@@ -17,7 +17,7 @@ export class PiChart {
     return {
       chart: {
         type: 'line',
-        width: 1000
+        width: 1150
       },
       title: {
         text: '<h2><b>Performance Graph</b></h2>'
@@ -27,7 +27,6 @@ export class PiChart {
         title: {
           text: 'Month'
         },
-
         labels: {
           format: '{value:%b %Y}',
           style: {
@@ -73,28 +72,6 @@ export class PiChart {
       },
       series: [
         {
-          showInLegend: false,
-          name: 'XaxisGrades',
-          color: '#FFF',
-          data: (function () {
-            const data2 = [];
-            for (let m = 0; m < xAxixData.length; m++) {
-              data2.push({
-                x: new Date(xAxixData[m].Date),
-                y: GradeSet.indexOf(xAxixData[m].Grade)
-              });
-            }
-            return data2;
-          }()),
-          marker: {
-            enabled: false,
-            states: {
-              hover: {
-                enabled: false
-              }
-            }
-          },
-        }, {
           name: 'Target',
           color: '#48CAE5',
           data: (function () {
