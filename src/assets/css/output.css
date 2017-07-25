@@ -11,8 +11,11 @@ ul {
 li {
   list-style: none; }
 
-button:focus {
+button:focus, a:focus {
   outline: none; }
+
+:focus {
+  outline: none !important; }
 
 .main {
   background-color: #f1f1f1;
@@ -59,7 +62,11 @@ button:focus {
   outline: none;
   padding: 12px 8px 15px;
   transition: all 0.4s ease-in-out 0s;
-  width: 100%; }
+  width: calc(100% - 16px); }
+
+.custom-input:focus {
+  border-bottom: 1px solid #54c9e8 !important;
+  transition: all ease 0.3s; }
 
 .remember-me {
   margin: 15px 0; }
@@ -80,15 +87,15 @@ button:focus {
 [type="checkbox"]:not(:checked) + label:before,
 [type="checkbox"]:checked + label:before {
   background: #fff;
-  border-radius: 4px;
-  border: 2px solid #ccc;
+  border-radius: 3px;
+  border: 2px solid #e1dede;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   content: '';
-  height: 15px;
+  height: 14px;
   left: 0;
   position: absolute;
   top: 0;
-  width: 15px; }
+  width: 14px; }
 
 /* checked mark aspect */
 [type="checkbox"]:not(:checked) + label:after,
@@ -140,11 +147,22 @@ button:focus {
   color: #fff;
   cursor: pointer;
   margin-right: 15px;
-  padding: 10px 25px; }
+  padding: 6px 25px;
+  border: 2px solid #54c9e8; }
 
 .round-btn:hover {
   background-color: #0290b5;
-  transition: all ease .3s; }
+  transition: all ease .3s;
+  border: 2px solid #0290b5; }
+
+.btn-border {
+  border: 2px solid #54c9e8;
+  background-color: transparent;
+  color: #000; }
+
+.btn-border:hover {
+  border: 2px solid #0290b5;
+  color: #fff; }
 
 .submit-events span {
   color: #b6b6b6;
@@ -157,12 +175,12 @@ button:focus {
 
 .form-footer {
   border-top: 1px solid #f8f8f8;
-  margin: 20px 80px 0 80px;
+  margin: 20px 45px 0 45px;
   text-align: center; }
 
 .form-footer p {
   color: #555;
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 22px;
   padding-top: 10px; }
@@ -190,12 +208,13 @@ button:focus {
 .forgot-pwd .form-inner {
   margin-top: 40px; }
 
+.forgot-pwd .form-footer {
+  margin: 20px 80px 0 75px;
+  text-align: left; }
+
 .forgot-pwd .submit-events {
   margin: 20px 0 40px;
   text-align: center; }
-
-.forgot-pwd .form-footer {
-  text-align: left; }
 
 .forgot-pwd .form-footer h2 {
   color: #54c9e8;
@@ -203,7 +222,7 @@ button:focus {
   font-weight: 400; }
 
 .forgot-pwd .form-footer span {
-  color: #000;
+  color: #555;
   cursor: pointer;
   font-weight: 500; }
 
@@ -315,7 +334,8 @@ button:focus {
   margin: 18px 0 15px; }
 
 .profile p {
-  font-size: 15px; }
+  font-size: 15px;
+  margin: 0; }
 
 .nav {
   margin-top: 1px;
@@ -331,6 +351,10 @@ button:focus {
 
 .nav li a:hover {
   background: rgba(84, 201, 232, 0.2);
+  color: #000; }
+
+.nav li .active:hover {
+  background: #54c9e8;
   color: #000; }
 
 .active {
