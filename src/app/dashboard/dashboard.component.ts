@@ -36,6 +36,8 @@ export class DashboardComponent implements OnInit {
           });
       },
       (err) => {
+        localStorage.clear();
+        this.router.navigate(['login']);
         console.log(err);
       });
   }

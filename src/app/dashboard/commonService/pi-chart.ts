@@ -70,6 +70,11 @@ export class PiChart {
           color: 'white'
         },
       },
+      plotOptions: {
+        scatter: {
+          lineWidth: 2,
+        }
+      },
       series: [
         {
           name: 'Target',
@@ -95,6 +100,7 @@ export class PiChart {
         },
         {
           name: 'Grade',
+          type: 'scatter',
           color: color,
           data: (function () {
             const data = [];
