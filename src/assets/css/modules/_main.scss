@@ -286,24 +286,27 @@ li {list-style: none;}
 	background: $white;
 	border: 1px solid #d2d2d2;
 	height: 100%;
-	overflow-y: auto;
+	overflow: hidden;
 	position: relative;
+	width: 1033px;
  }
-.dashboard-main::-webkit-scrollbar-track
+.fixed-header tbody::-webkit-scrollbar-track
 {
 	background-color: #F5F5F5;
 }
 
-.dashboard-main::-webkit-scrollbar
+.fixed-header tbody::-webkit-scrollbar
 {
 	width: 6px;
 	background-color: #F5F5F5;
 }
 
-.dashboard-main::-webkit-scrollbar-thumb
+.fixed-header tbody::-webkit-scrollbar-thumb
 {
 	background-color: $primary-color;
 }
+.fixed-header tbody tr td, .fixed-header th{width: 258px;}
+
 .profile {
 	background: $primary-color;
 	color: $white;
@@ -352,7 +355,7 @@ li {list-style: none;}
  }
 
 .inner-main {
-	height: calc(768px - 280px);
+	height: calc(768px - 220px);
 	padding: 20px 0 0;
  }
 
@@ -364,15 +367,21 @@ li {list-style: none;}
 
 .performance table {
 	border-collapse: collapse;
-	width: 100%;
+	width: 1033px;
+	table-layout: fixed;
  }
-
+.fixed-header thead tr{display: block; position: relative;}
 .performance th, td {
 	font-size: 15px;
 	font-weight: 500;
 	padding: 10px;
 	text-align: center;
  }
+.fixed-header tbody {
+    display: block;
+    overflow: auto;
+    height: 510px;
+}
 
  .performance .lft {
  	text-align: left;
@@ -658,15 +667,17 @@ canvas {
 .class-three{
   color: #ff3c1f ;
 }
-.performance .loader{
+.loader{
   display: none;
   position: absolute;
   top: 0;
   background-color: #27a9e3 ;
   width: 100%;
+  opacity: 1;
   height: 100%;
+  transition: all ease 0.5s;
 }
-.performance .loader img{
+.loader img{
   position: absolute;
   top: 50%;
   left: 50%;
