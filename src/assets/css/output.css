@@ -352,8 +352,9 @@ button:focus, a:focus {
   text-decoration: none; }
 
 .nav li a:hover {
-  background: rgba(84, 201, 232, 0.2);
-  color: #000; }
+  background: #e7f0f9;
+  color: #000;
+  transition: all ease 0.5s; }
 
 .nav li .active:hover {
   background: #2671be;
