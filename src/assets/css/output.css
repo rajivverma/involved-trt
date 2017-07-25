@@ -28,7 +28,7 @@ button:focus, a:focus {
   margin: 0 auto 10px;
   padding: 15px 0;
   position: relative;
-  top: 50px;
+  top: 40px;
   width: 585px;
   z-index: 9; }
 
@@ -49,7 +49,7 @@ button:focus, a:focus {
   color: #000;
   font-size: 30px;
   font-weight: 400;
-  margin: 0 0 25px; }
+  margin: 0 0 20px; }
 
 .custom-input {
   -moz-transition: all 0.4s ease-in-out 0s;
@@ -178,12 +178,14 @@ button:focus, a:focus {
   margin: 20px 45px 0 45px;
   text-align: center; }
 
+.forgot-pwd .form-inner h2 {
+  margin: 0 -15px 20px; }
+
 .form-footer p {
   color: #555;
   font-size: 14px;
   font-weight: 400;
-  line-height: 22px;
-  padding-top: 10px; }
+  line-height: 22px; }
 
 .form-footer p strong {
   color: #54c9e8;
@@ -363,7 +365,7 @@ button:focus, a:focus {
   transition: all ease 0.3s; }
 
 .inner-main {
-  height: calc(768px - 220px);
+  height: calc(768px - 250px);
   padding: 20px 0 0; }
 
 .dashboard-head {
@@ -741,13 +743,13 @@ canvas {
 
 .notification {
   display: inline-block;
-  height: 18px;
-  width: 18px;
+  height: 21px;
+  width: 21px;
   background-color: red;
   border-radius: 50%;
   text-align: center;
   color: #fff;
   font-size: 12px;
-  line-height: 18px; }
+  line-height: 22px; }
 
 /*# sourceMappingURL=output.css.map */

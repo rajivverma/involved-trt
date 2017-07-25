@@ -24,7 +24,7 @@ button:focus, a:focus{outline: none;}
 	margin: 0 auto 10px;
 	padding: 15px 0;
 	position: relative;
-	top: 50px;
+	top: 40px;
 	width: 585px;
 	z-index: 9;
  }
@@ -45,7 +45,7 @@ button:focus, a:focus{outline: none;}
 		color: $black;
 		font-size: 30px;
 		font-weight: 400;
-		margin: 0 0 25px;
+		margin: 0 0 20px;
 	 }
 
 .custom-input {
@@ -172,13 +172,13 @@ button:focus, a:focus{outline: none;}
 	margin: 20px 45px 0 45px;
 	text-align: center;
  }
+ .forgot-pwd .form-inner h2{margin: 0 -15px 20px;}
 
 	.form-footer p {
 		color: $light-font;
 		font-size: 14px;
 		font-weight: 400;
 		line-height: 22px;
-		padding-top: 10px;
 	 }
 
 		.form-footer p strong {
@@ -361,7 +361,7 @@ button:focus, a:focus{outline: none;}
  }
 
 .inner-main {
-	height: calc(768px - 220px);
+	height: calc(768px - 250px);
 	padding: 20px 0 0;
  }
 
@@ -735,13 +735,13 @@ canvas {
 
 .notification{
     display: inline-block;
-    height: 18px;
-    width: 18px;
+    height: 21px;
+    width: 21px;
     background-color: red;
     border-radius: 50%;
     text-align: center;
     color: #fff;
     font-size: 12px;
-    line-height: 18px;
+    line-height: 22px;
 }
 
