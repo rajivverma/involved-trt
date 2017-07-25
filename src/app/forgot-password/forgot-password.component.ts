@@ -6,15 +6,15 @@ import { ParticalService } from '../commonService/partical.service';
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
-  providers: [ForgotPaswordService,ParticalService]
+  providers: [ForgotPaswordService, ParticalService]
 })
 export class ForgotPasswordComponent implements OnInit {
   public username: string;
   particalStyle: object = {};
   particalParams: object = {};
   constructor(private router: Router,
-  private forgotPaswordService: ForgotPaswordService,
-  private particalService : ParticalService) { }
+    private forgotPaswordService: ForgotPaswordService,
+    private particalService: ParticalService) { }
   ngOnInit() {
     this.particalStyle = this.particalService.getParticalStyle();
     this.particalParams = this.particalService.getParticalParams();

@@ -43,7 +43,7 @@ export class PerformanceComponent implements OnInit {
       (data) => {
         console.log(data);
         this.mainService.hide('performance-loader');
-        this.subjectsData = data;
+          this.subjectsData = data;
         const c = 2;
         const that = this;
         setTimeout(function () {

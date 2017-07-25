@@ -26,19 +26,19 @@ export class ParticalService {
           }
         },
         color: {
-          value: "#54c9e8"
+          value: '#54c9e8'
         },
         shape: {
-          type: "circle",
+          type: 'circle',
             stroke: {
             width: 0,
-              color: "#54c9e8"
+              color: '#54c9e8'
           },
           polygon: {
             nb_sides: 5
           },
           image: {
-            src: "img/github.svg",
+            src: 'img/github.svg',
               width: 100,
                 height: 100
           }
@@ -66,17 +66,17 @@ export class ParticalService {
         line_linked: {
           enable: true,
             distance: 100,
-              color: "#54c9e8",
+              color: '#54c9e8',
                 opacity: 0.4,
                   width: 0
         },
         move: {
           enable: true,
             speed: 6,
-              direction: "none",
+              direction: 'none',
                 random: false,
                   straight: false,
-                    out_mode: "out",
+                    out_mode: 'out',
                       bounce: false,
                         attract: {
             enable: false,
@@ -86,15 +86,15 @@ export class ParticalService {
         }
       },
       interactivity: {
-        detect_on: "canvas",
+        detect_on: 'canvas',
           events: {
           onhover: {
             enable: true,
-              mode: "grab"
+              mode: 'grab'
           },
           onclick: {
             enable: true,
-              mode: "push"
+              mode: 'push'
           },
           resize: true
         },

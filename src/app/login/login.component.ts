@@ -25,9 +25,8 @@ export class LoginComponent implements OnInit {
   particalParams: object = {};
   constructor(private loginService: LoginService,
   private router: Router,
-  private particalService : ParticalService) { }
+  private particalService: ParticalService) { }
   ngOnInit() {
-    let that = this;
     this.particalStyle = this.particalService.getParticalStyle();
     this.particalParams = this.particalService.getParticalParams();
     if (localStorage.token) {
