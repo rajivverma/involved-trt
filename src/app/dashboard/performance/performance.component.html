@@ -7,48 +7,48 @@
   <table class="fixed-header">
     <thead>
       <tr>
-      <th class="lft-subject">Subject</th>
-      <th>Attendance</th>
-      <th>Target</th>
-      <th>Grade</th>
+        <th class="lft-subject">Subject</th>
+        <th>Attendance</th>
+        <th>Target</th>
+        <th>Grade</th>
       </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let subject of subjectsData" (click)="getSubjectDetails(subject)">
-      <td>
-        <div></div>
-        <div class="table-profile-pic lft" id="t{{subject.Id}}">
-          <img class="teacher-image" *ngFor="let teacher of subject.ClassTeachers" [src]="'data:image/png;base64,'+teacher.Image" />
-        </div>
-        <div class="subject-name lft" id="{{subject.Id}}">
-          <p class="first">{{subject.SubjectName}}</p>
-          <span class="second" *ngFor="let teacher of subject.ClassTeachers; trackBy: index;">{{teacher.Name}}</span>
-        </div>
-      </td>
-      <td>
-        <p class="success" [ngStyle]="{ 'color': getColor(subject.Performance.Column1.Trend)}">{{subject.Performance.Column1.Value}} {{subject.Performance.Column1.Unit}}
-          <span class="up" *ngIf="subject.Performance.Column1.Trend == 1">
+      <tr *ngFor="let subject of subjectsData" (click)="getSubjectDetails(subject)">
+        <td>
+          <div></div>
+          <div class="table-profile-pic lft" id="t{{subject.Id}}">
+            <img class="teacher-image" *ngFor="let teacher of subject.ClassTeachers" [src]="'data:image/png;base64,'+teacher.Image" />
+          </div>
+          <div class="subject-name lft" id="{{subject.Id}}">
+            <p class="first">{{subject.SubjectName}}</p>
+            <span class="second" *ngFor="let teacher of subject.ClassTeachers; trackBy: index;">{{teacher.Name}}</span>
+          </div>
+        </td>
+        <td>
+          <p class="success" [ngStyle]="{ 'color': getColor(subject.Performance.Column1.Trend)}">{{subject.Performance.Column1.Value}} {{subject.Performance.Column1.Unit}}
+            <span class="up" *ngIf="subject.Performance.Column1.Trend == 1">
             <i class="fa fa-caret-up" aria-hidden="true"></i>
           </span>
-          <span class="down" *ngIf="subject.Performance.Column1.Trend == 3">
+            <span class="down" *ngIf="subject.Performance.Column1.Trend == 3">
             <i class="fa fa-caret-down" aria-hidden="true"></i>
           </span>
-        </p>
-      </td>
-      <td>
-        <p class="black" [ngStyle]="{ 'color': getColor(subject.Performance.Column2.Trend)}">{{subject.Performance.Column2.Value}}</p>
-      </td>
-      <td>
-        <p class="success" [ngStyle]="{ 'color': getColor(subject.Performance.Column3.Trend)}">{{subject.Performance.Column3.Value}}
-          <span class="up" *ngIf="subject.Performance.Column3.Trend == 1">
+          </p>
+        </td>
+        <td>
+          <p class="black" [ngStyle]="{ 'color': getColor(subject.Performance.Column2.Trend)}">{{subject.Performance.Column2.Value}}</p>
+        </td>
+        <td>
+          <p class="success" [ngStyle]="{ 'color': getColor(subject.Performance.Column3.Trend)}">{{subject.Performance.Column3.Value}}
+            <span class="up" *ngIf="subject.Performance.Column3.Trend == 1">
             <i class="fa fa-caret-up" aria-hidden="true"></i>
           </span>
-          <span class="down" *ngIf="subject.Performance.Column3.Trend == 3">
+            <span class="down" *ngIf="subject.Performance.Column3.Trend == 3">
             <i class="fa fa-caret-down" aria-hidden="true"></i>
           </span>
-        </p>
-      </td>
-    </tr>
+          </p>
+        </td>
+      </tr>
     </tbody>
   </table>
   <div class="loader" id="performance-loader">
@@ -86,6 +86,14 @@
               <td>
                 <div class="rating-outer">
                   <div class="circle" id="attendance-circles"></div>
+                  <p class="success" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column1.Trend)}">
+                    <span class="up" *ngIf="subjectDetails.subject.Performance.Column1.Trend == 1">
+                      <i class="fa fa-caret-up" aria-hidden="true"></i>
+                    </span>
+                    <span class="down" *ngIf="subjectDetails.subject.Performance.Column1.Trend == 3">
+                      <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </span>
+                  </p>
                 </div>
               </td>
               <td>
@@ -96,6 +104,14 @@
               <td>
                 <div class="rating-outer">
                   <div class="circle" id="grade-circles"></div>
+                  <p class="success" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column3.Trend)}">
+                    <span class="up" *ngIf="subjectDetails.subject.Performance.Column3.Trend == 1">
+                      <i class="fa fa-caret-up" aria-hidden="true"></i>
+                    </span>
+                    <span class="down" *ngIf="subjectDetails.subject.Performance.Column3.Trend == 3">
+                      <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </span>
+                  </p>
                 </div>
               </td>
             </tr>
