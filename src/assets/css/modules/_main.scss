@@ -10,7 +10,7 @@ ul {
  }
 
 li {list-style: none;}
-
+button:focus{outline: none;}
 .main {
 	background-color: $body-bg;
 	height: 100vh;
@@ -322,7 +322,7 @@ li {list-style: none;}
 	overflow: hidden;
 	width: 80px;
  }
-
+.profile-pic img {width: 100%; max-width: 100%;}
 .profile h2 {
 	font-size: 18px;
 	font-weight: 700;
@@ -370,25 +370,33 @@ li {list-style: none;}
 	width: 1033px;
 	table-layout: fixed;
  }
+ .modal-body table{border-collapse: collapse;
+ 	width: 100%;
+ }
 .fixed-header thead tr{display: block; position: relative;}
-.performance th, td {
+.performance th, td{
 	font-size: 15px;
 	font-weight: 500;
 	padding: 10px;
 	text-align: center;
  }
+ .modal-body th, td{
+ 	font-size: 15px;
+	font-weight: 500;
+	padding: 10px;
+	text-align: center;
+}
 .fixed-header tbody {
     display: block;
     overflow: auto;
     height: 510px;
 }
 
- .performance .lft {
+ .lft {
  	text-align: left;
  }
- .performance .lft-subject {
- 	padding-left: 6%;
- 	text-align: left;
+.lft-subject {
+ 	text-align: left !important;
  }
 
 /*tr:nth-child(even){background-color: #f2f2f2}*/
@@ -404,10 +412,9 @@ li {list-style: none;}
 	cursor: pointer;
  }
 
-	.performance tr:hover {background-color: #e7f0f9;}
-
+.performance tr:hover {background-color: #e7f0f9;}
+.modal-body tr:hover {background-color: #e7f0f9;}
 .table-profile-pic {
-  background-color: #f77c32;
   border-radius: 50%;
   display: inline-block;
   height: 47px;
@@ -425,7 +432,6 @@ li {list-style: none;}
 .table-profile-pic img{
   width: 100%;
   max-width: 100%;
-  position: absolute;
 }
 .subject-name {
 	display: inline-block;
@@ -558,17 +564,16 @@ li {list-style: none;}
 	 }
 
 	.modal-table .subject-name {top: 20 px;}
-
+	.modal-table tr{border-bottom:1px solid #eeeeee !important;}
 	.rating-outer {
 		display: inline-block;
-		height: 100px;
-		/*left: -20px;*/
 		margin: 0px auto;
 		position: relative;
 		vertical-align: middle;
 		width: 100px;
+		height: 70px;
 	 }
-
+	.rating-outer .up, .rating-outer .down{position: absolute; top: 42px; left: 0; right: 0;}
 	.value {
 		font-size: 20px;
 		font-weight: bold;
@@ -698,6 +703,7 @@ canvas {
 #logout.show-logout{
   z-index: 9999;
   opacity: 1;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 #logout .modal-dialog{
@@ -719,23 +725,7 @@ canvas {
     color: #434242;
     text-align: center;
 }
-#logout .modal-dialog button{
-    cursor: pointer;
-    vertical-align: middle;
-    margin: 0 5px;
-    border: 2px solid #54c9e8;
-    border-radius: 25px;
-    padding: 5px 30px;
-    font-size: 14px;
-    background: #54c9e8;
-    color: white;
-    margin: 10px 5px;
-    transition: all 0.5s ease;
-}
-#logout .modal-dialog button:hover{
-    background: #0585a7;
-    border-color: #0585a7;
-}
+
 
 
 
