@@ -441,7 +441,7 @@ li {
   left: 0;
   overflow: auto;
   /* Enable scroll if needed */
-  padding-top: 100px;
+  padding-top: 4%;
   /* Location of the box */
   position: fixed;
   /* Stay in place */
