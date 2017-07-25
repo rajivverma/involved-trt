@@ -28,9 +28,8 @@ export class DashboardComponent implements OnInit {
           this.router.navigate(['dashboard/performance']);
         }
         this.dashboardService.getCounter(data.Id).subscribe(
-          (data) => {
-            console.log(data);
-            this.counterData = data;
+          (dataC) => {
+            this.counterData = dataC;
           },
           (err) => {
             console.log(err);

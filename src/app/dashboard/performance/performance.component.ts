@@ -22,7 +22,7 @@ export class PerformanceComponent implements OnInit {
   public intervalCount = 0;
   public intervalsId: any = [];
   public studentDetailInterval: any;
-  public studentName : string;
+  public studentName: string;
   public monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
   ];
