@@ -26,7 +26,7 @@
           </div>
         </td>
         <td>
-          <p class="success" *ngIf="subject.Performance.Column1.Value != null" [ngStyle]="{ 'color': getColor(subject.Performance.Column1.Trend)}">{{subject.Performance.Column1.Value}} {{subject.Performance.Column1.Unit}}
+          <p class="success" *ngIf="subject.Performance.Column1.Value != null" [ngStyle]="{ 'color': getColor(subject.Performance.Column1.Trend)}">{{subject.Performance.Column1.Value}}{{subject.Performance.Column1.Unit}}
             <span class="up" *ngIf="subject.Performance.Column1.Trend == 1">
             <i class="fa fa-caret-up" aria-hidden="true"></i>
           </span>

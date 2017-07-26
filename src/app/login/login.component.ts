@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { LoginService, User } from './login.service';
 import { ParticalService } from '../commonService/partical.service';
+import { MainService } from '../commonService/main.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  providers: [LoginService, ParticalService]
+  providers: [LoginService, ParticalService, MainService]
 })
 
 export class LoginComponent implements OnInit {
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
   particalParams: object = {};
   constructor(private loginService: LoginService,
     private router: Router,
-    private particalService: ParticalService) { }
+    private particalService: ParticalService,
+    private mainService: MainService) { }
   ngOnInit() {
     this.particalStyle = this.particalService.getParticalStyle();
     this.particalParams = this.particalService.getParticalParams();
@@ -95,9 +97,9 @@ export class LoginComponent implements OnInit {
       },
       (err) => {
         if (err.status === 400) {
-          // document.getElementById('server-failed').innerHTML = 'Invalid username or password';
-        } else {
           document.getElementById('login-error').innerHTML = 'Invalid username or password';
+        } else {
+          this.mainService.show('server-failed');
         }
       });
   }

@@ -151,7 +151,7 @@ export class PerformanceComponent implements OnInit {
             that.subjectDetails.subject.Performance.Column1.Value,
             '#b981d1',
             that.getClassName(that.subjectDetails.subject.Performance.Column1.Trend),
-            that.subjectDetails.subject.Performance.Column1.Value + '%'
+            that.subjectDetails.subject.Performance.Column1.Value + that.subjectDetails.subject.Performance.Column1.Unit
           );
           that.createCircle('target-circles',
             100,

@@ -5,6 +5,7 @@ export class MainService {
   constructor() { }
   show(id) {
     document.getElementById(id).style.display = 'block';
+    document.getElementById(id).style.opacity = '1';
   }
   hide(id) {
     document.getElementById(id).style.opacity = '0';
