@@ -102,12 +102,15 @@ export class PerformanceComponent implements OnInit {
   getSubjectDetails(subject, e) {
     e.stopPropagation();
     const id = localStorage.getItem('userid');
+    clearInterval(this.studentDetailInterval);
     this.performanceService.getStudentPerformanceData(id, subject.Id).subscribe(
       (data) => {
         this.subjectDetails = data;
         this.subjectDetails.subject = subject;
         const d = document.getElementById('performance-modal');
-        d.className += ' in';
+        if (!d.className.includes('in')) {
+          d.className += ' in';
+        }
         const GradeSet = [];
         const GradeResults = [];
         const XaxisGrades = [];

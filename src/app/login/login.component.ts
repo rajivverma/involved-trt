@@ -74,7 +74,17 @@ export class LoginComponent implements OnInit {
     const platform = this.browser.name + '_' + this.browser.version + '_' + navigator.platform + '_' + version[0];
     return platform;
   }
-  login() {
+  login(e) {
+    if (this.user.username === undefined || this.user.password === '') {
+      return false;
+    }
+    if (this.user.username.trim().length === 0) {
+      this.user.username = undefined;
+      const form = (<HTMLInputElement>document.getElementById('signIn'));
+      form.click();
+      return false;
+    }
+    e.stopPropagation();
     const devicetoken = this.getDeviceToken();
     const platform = this.getPlateform();
     const user = {

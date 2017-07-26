@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ForgotPasswordRoutingModule } from './forgot-password.routing';
 import { ForgotPasswordComponent } from './forgot-password.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ParticlesModule } from 'angular-particle';
 

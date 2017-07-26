@@ -65,6 +65,7 @@
     <div class="modal-header">
       <span class="close" (click)="closeModal()">&times;</span>
       <p>{{studentName}}</p>
+      <!--<span *ngFor="let s of subjectsData; trackBy: index" (click)="getSubjectDetails(s,$event)">{{s.SubjectName}}</span>-->
     </div>
     <div class="modal-body" *ngIf="subjectDetails.subject != undefined">
       <div class="modal-table">

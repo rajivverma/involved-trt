@@ -12,7 +12,7 @@
       <img src="../assets/img/logo.png">
     </div>
     <h1>Welcome</h1>
-    <form (ngSubmit)="login()" ngNativeValidate>
+    <form (ngSubmit)="login($event)" #loginForm="ngForm" ngNativeValidate>
       <div class="form-inner" (keyup.enter)="login()">
         <h2>Sign In</h2>
         <input type="text" name="username" [(ngModel)]="user.username" (ngModelChange)="changedExtraHandler()" class="custom-input"
@@ -25,7 +25,7 @@
           <div id="login-error"></div>
         </div>
         <div class="submit-events">
-          <button type="submit" class="round-btn">Sign In</button>
+          <button type="submit" class="round-btn" (click)="loginForm.ngSubmit.emit()" id="signIn">Sign In</button>
           <span [routerLink]="['/forgotPassword']">Forgot Password</span>
         </div>
       </div>
