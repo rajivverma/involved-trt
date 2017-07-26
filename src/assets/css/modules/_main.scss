@@ -27,6 +27,7 @@ button:focus, a:focus{outline: none;}
 	top: 40px;
 	width: 585px;
 	z-index: 9;
+	height: 525px;
  }
 
 .logo {text-align: center;}
@@ -605,6 +606,7 @@ button:focus, a:focus{outline: none;}
 	.down, .up{
 		position: relative;
 		font-size: 20px;
+		margin-left: 6px;
 	 }
 
 #login-error {
@@ -756,6 +758,7 @@ canvas {
     width: 100%;
     background: rgba(255,255,255,0.5);
     top: 0;
+    display: none;
 }
 #server-failed .round-btn{margin-right: 0;}
 #server-failed .modal-dialog{padding:25px;}

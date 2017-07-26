@@ -30,7 +30,8 @@ button:focus, a:focus {
   position: relative;
   top: 40px;
   width: 585px;
-  z-index: 9; }
+  z-index: 9;
+  height: 525px; }
 
 .logo {
   text-align: center; }
@@ -151,9 +152,9 @@ button:focus, a:focus {
   border: 2px solid #2671be; }
 
 .round-btn:hover {
-  background-color: #0290b5;
+  background-color: #165391;
   transition: all ease .3s;
-  border: 2px solid #0290b5; }
+  border: 2px solid #165391; }
 
 .btn-border {
   border: 2px solid #2671be;
@@ -161,7 +162,7 @@ button:focus, a:focus {
   color: #000; }
 
 .btn-border:hover {
-  border: 2px solid #0290b5;
+  border: 2px solid #165391;
   color: #fff; }
 
 .submit-events span {
@@ -633,7 +634,8 @@ button:focus, a:focus {
 
 .down, .up {
   position: relative;
-  font-size: 20px; }
+  font-size: 20px;
+  margin-left: 6px; }
 
 #login-error {
   color: #f00;
@@ -772,7 +774,8 @@ canvas {
   height: 100%;
   width: 100%;
   background: rgba(255, 255, 255, 0.5);
-  top: 0; }
+  top: 0;
+  display: none; }
 
 #server-failed .round-btn {
   margin-right: 0; }
