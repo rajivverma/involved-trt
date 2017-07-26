@@ -438,8 +438,10 @@ button:focus, a:focus {
   font-weight: 400; }
 
 .performance tr {
-  border-bottom: 1px solid #eeeeee;
-  cursor: pointer; }
+  border-bottom: 1px solid #eeeeee; }
+
+.performance td p {
+  position: relative; }
 
 .performance tr:hover {
   background-color: #e7f0f9;
@@ -658,9 +660,10 @@ button:focus, a:focus {
   text-align: center; }
 
 .down, .up {
-  position: relative;
+  position: absolute;
   font-size: 20px;
-  margin-left: 6px; }
+  margin-left: 8px;
+  top: -3px; }
 
 #login-error {
   color: #f00;
