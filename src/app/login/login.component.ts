@@ -94,7 +94,11 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['dashboard']);
       },
       (err) => {
-        document.getElementById('login-error').innerHTML = 'Invalid username or password';
+        if (err.status === 400) {
+          // document.getElementById('server-failed').innerHTML = 'Invalid username or password';
+        } else {
+          document.getElementById('login-error').innerHTML = 'Invalid username or password';
+        }
       });
   }
   changedExtraHandler() {
