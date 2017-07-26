@@ -632,9 +632,14 @@ button:focus, a:focus{outline: none;}
 
 #login-error {
 	color: $danger;
-	font-size: 12px;
+	font-size: 13px;
 	position: absolute;
 	top: -18px;
+ }
+#username-error{
+ 	color: $danger;
+	font-size: 13px;
+	position: absolute;
  }
 canvas {
   display: block;

@@ -667,9 +667,14 @@ button:focus, a:focus {
 
 #login-error {
   color: #f00;
-  font-size: 12px;
+  font-size: 13px;
   position: absolute;
   top: -18px; }
+
+#username-error {
+  color: #f00;
+  font-size: 13px;
+  position: absolute; }
 
 canvas {
   display: block;
