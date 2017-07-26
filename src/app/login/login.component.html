@@ -15,10 +15,12 @@
     <form (ngSubmit)="login()" ngNativeValidate>
       <div class="form-inner" (keyup.enter)="login()">
         <h2>Sign In</h2>
-        <input type="text" name="username" [(ngModel)]="user.username" class="custom-input" placeholder="Username" required>
-        <input type="password" name="password" [(ngModel)]="user.password" class="custom-input" placeholder="Password" required>
+        <input type="text" name="username" [(ngModel)]="user.username" (ngModelChange)="changedExtraHandler()" class="custom-input"
+          placeholder="Username" required>
+        <input type="password" name="password" [(ngModel)]="user.password" (ngModelChange)="changedExtraHandler()" class="custom-input"
+          placeholder="Password" required>
         <div class="remember-me">
-          <input type="checkbox" id="test2" checked="checked" />
+          <input type="checkbox" id="test2" (change)="setRememberMe($event)" checked="checked" />
           <label for="test2">Remember Me</label>
           <div id="login-error"></div>
         </div>

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Rx';
@@ -8,7 +7,7 @@ import { URL } from '../app.service';
 
 @Injectable()
 export class DashboardService {
-  constructor(private router: Router, private http: Http) {
+  constructor(private http: Http) {
 
   }
   getToken() {
@@ -27,7 +26,8 @@ export class DashboardService {
       .map((res: Response) => res.json());
   }
   logout() {
-    localStorage.clear();
-    this.router.navigate(['login']);
+    const token = this.getToken();
+    return this.http.post(URL + '/api/settings/logout', {}, token)
+      .map((res: Response) => res.json());
   }
 }

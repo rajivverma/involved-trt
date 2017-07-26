@@ -24,11 +24,12 @@ export class LoginComponent implements OnInit {
   particalStyle: object = {};
   particalParams: object = {};
   constructor(private loginService: LoginService,
-  private router: Router,
-  private particalService: ParticalService) { }
+    private router: Router,
+    private particalService: ParticalService) { }
   ngOnInit() {
     this.particalStyle = this.particalService.getParticalStyle();
     this.particalParams = this.particalService.getParticalParams();
+    this.user.username = localStorage.getItem('username');
     if (localStorage.token) {
       this.router.navigate(['dashboard']);
     }
@@ -84,6 +85,10 @@ export class LoginComponent implements OnInit {
     };
     this.loginService.login(user).subscribe(
       (data) => {
+        const val = (<HTMLInputElement>document.getElementById('test2')).checked;
+        if (val) {
+          localStorage.setItem('username', this.user.username);
+        }
         localStorage.setItem('token', 'Bearer ' + data.access_token);
         localStorage.setItem('userid', data.userid);
         this.router.navigate(['dashboard']);
@@ -91,6 +96,18 @@ export class LoginComponent implements OnInit {
       (err) => {
         document.getElementById('login-error').innerHTML = 'Invalid username or password';
       });
+  }
+  changedExtraHandler() {
+    document.getElementById('login-error').innerHTML = '';
+  }
+  setRememberMe(e) {
+    if (e.target.checked) {
+      if (this.user.username) {
+        localStorage.setItem('username', this.user.username);
+      }
+    } else {
+      localStorage.removeItem('username');
+    }
   }
 }
 declare global {

@@ -52,6 +52,16 @@ export class DashboardComponent implements OnInit {
     document.getElementById('logout').className = '';
   }
   logout() {
-    this.dashboardService.logout();
+    this.dashboardService.logout().subscribe(
+      (data) => {
+        console.log(data);
+        localStorage.removeItem('token');
+        localStorage.removeItem('userid');
+        localStorage.removeItem('fullname');
+        this.router.navigate(['login']);
+      },
+      (err) => {
+        console.log(err);
+      });
   }
 }
