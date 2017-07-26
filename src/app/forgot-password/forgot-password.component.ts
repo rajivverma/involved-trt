@@ -20,10 +20,6 @@ export class ForgotPasswordComponent implements OnInit {
     this.particalParams = this.particalService.getParticalParams();
   }
   submit(e) {
-    if (e === undefined) {
-      return;
-    }
-    e.stopPropagation();
     if (this.username === undefined) {
       return false;
     }
@@ -33,6 +29,10 @@ export class ForgotPasswordComponent implements OnInit {
       form.click();
       return false;
     }
+    if (e === undefined) {
+      return;
+    }
+    e.stopPropagation();
     this.forgotPaswordService.submit(this.username).subscribe(
       (data) => {
         console.log(data);

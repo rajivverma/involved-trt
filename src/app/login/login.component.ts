@@ -75,10 +75,6 @@ export class LoginComponent implements OnInit {
     return platform;
   }
   login(e) {
-    if (e === undefined) {
-      return;
-    }
-    e.stopPropagation();
     if (this.user.username === undefined) {
       return false;
     }
@@ -90,6 +86,9 @@ export class LoginComponent implements OnInit {
     }
     if (this.user.password === '') {
       return false;
+    }
+    if (e === undefined) {
+      return;
     }
     e.stopPropagation();
     const devicetoken = this.getDeviceToken();
