@@ -40,7 +40,7 @@ button:focus, a:focus{outline: none;}
 	padding: 0 80px;
  }
 
-.form-inner {padding: 0 80px;}
+.form-inner {padding: 0 80px; position: relative;}
 
 	.form-inner h2 {
 		color: $black;
@@ -305,7 +305,6 @@ button:focus, a:focus{outline: none;}
 	height: 100%;
 	overflow: hidden;
 	position: relative;
-	width: 1033px;
  }
 .fixed-header tbody::-webkit-scrollbar-track
 {
@@ -795,4 +794,45 @@ canvas {
     border-radius: 50px;
     text-align: center;
     line-height: 36px;
+    cursor: pointer;
+}
+.info{
+    position: absolute;
+    font-size: 20px;
+    color: #2671be;
+    cursor: pointer;
+    top: 45px;
+    right: 50px;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 100px;
+    background-color: $primary-color;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -50px;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: $primary-color transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    transition: all ease 0.5s;
 }

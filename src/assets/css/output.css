@@ -44,7 +44,8 @@ button:focus, a:focus {
   padding: 0 80px; }
 
 .form-inner {
-  padding: 0 80px; }
+  padding: 0 80px;
+  position: relative; }
 
 .form-inner h2 {
   color: #000;
@@ -316,8 +317,7 @@ button:focus, a:focus {
   border: 1px solid #d2d2d2;
   height: 100%;
   overflow: hidden;
-  position: relative;
-  width: 1033px; }
+  position: relative; }
 
 .fixed-header tbody::-webkit-scrollbar-track {
   background-color: #F5F5F5; }
@@ -823,6 +823,45 @@ canvas {
   background: #2671be;
   border-radius: 50px;
   text-align: center;
-  line-height: 36px; }
+  line-height: 36px;
+  cursor: pointer; }
+
+.info {
+  position: absolute;
+  font-size: 20px;
+  color: #2671be;
+  cursor: pointer;
+  top: 45px;
+  right: 50px; }
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 100px;
+  background-color: #2671be;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -50px;
+  font-weight: 400;
+  font-size: 14px; }
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #2671be transparent transparent transparent; }
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  transition: all ease 0.5s; }
 
 /*# sourceMappingURL=output.css.map */
