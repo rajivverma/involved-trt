@@ -23,12 +23,12 @@ export class DashboardComponent implements OnInit {
         this.studentInfo = data;
         localStorage.setItem('userid', data.Id);
         localStorage.setItem('fullname', data.Firstname + ' ' + data.Lastname);
-        console.log(data);
         if (this.router.url === '/dashboard') {
           this.router.navigate(['dashboard/performance']);
         }
         this.dashboardService.getCounter(data.Id).subscribe(
           (dataC) => {
+            console.log(dataC);
             this.counterData = dataC;
           },
           (err) => {
@@ -40,6 +40,10 @@ export class DashboardComponent implements OnInit {
         this.router.navigate(['login']);
         console.log(err);
       });
+    document.getElementById('mainDiv').addEventListener('click', function () {
+      const d = document.getElementById('performance-modal');
+      d.className = d.className.replace('in', '');
+    });
   }
   logoutPopup() {
     document.getElementById('logout').style.display = 'block';

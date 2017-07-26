@@ -84,6 +84,9 @@ export class PerformanceComponent implements OnInit {
       (err) => {
         // alert('something wrong');
       });
+    document.getElementById('performance-modal').addEventListener('click', function (e) {
+      e.stopPropagation();
+    });
   }
   getColor(val) {
     if (val === 0) {
@@ -96,7 +99,8 @@ export class PerformanceComponent implements OnInit {
       return '#ff3c1f';
     }
   }
-  getSubjectDetails(subject) {
+  getSubjectDetails(subject, e) {
+    e.stopPropagation();
     const id = localStorage.getItem('userid');
     this.performanceService.getStudentPerformanceData(id, subject.Id).subscribe(
       (data) => {

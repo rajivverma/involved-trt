@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" id="mainDiv">
   <div class="header">
     <div class="container">
       <div class="header-logo">
@@ -7,7 +7,7 @@
       <div class="header-controls">
       	<div class="announcements">
       		<i class="fa fa-bullhorn" aria-hidden="true"></i>
-      		<div class="notification">5</div>
+      		<div class="notification" *ngIf="counterData.UnreadAnnouncementCount != null">{{counterData.UnreadAnnouncementCount}}</div>
       	</div>
         <div class="settings">
           <img src="../assets/img/settiing_icon.png">

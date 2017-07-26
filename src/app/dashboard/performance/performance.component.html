@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let subject of subjectsData" (click)="getSubjectDetails(subject)">
+      <tr *ngFor="let subject of subjectsData">
         <td>
           <div></div>
           <div class="table-profile-pic lft" id="t{{subject.Id}}">
@@ -47,7 +47,7 @@
             <i class="fa fa-caret-down" aria-hidden="true"></i>
           </span>
           </p>
-          <div class="graph-icon"><img src="../../assets/img/prfrmnc.png"></div>
+          <div (click)="getSubjectDetails(subject,$event)" class="graph-icon"><img src="../../assets/img/prfrmnc.png"></div>
         </td>
       </tr>
     </tbody>
@@ -59,73 +59,73 @@
 
 </div>
 <!-- The Modal -->
-  <div id="performance-modal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-      <div class="modal-header">
-        <span class="close" (click)="closeModal()">&times;</span>
-        <p>{{studentName}}</p>
-      </div>
-      <div class="modal-body" *ngIf="subjectDetails.subject != undefined">
-        <div class="modal-table">
-          <table>
-            <tr>
-              <th class="lft-subject">Subject</th>
-              <th>Attendance</th>
-              <th>Target</th>
-              <th>Grade</th>
-            </tr>
-            <tr>
-              <td id="sd{{subjectDetails.subject.Id}}" class="lft-subject">
-                <div class="table-profile-pic lft">
-                  <img class="teacher-image" *ngFor="let teacher of subjectDetails.subject.ClassTeachers" [src]="'data:image/png;base64,'+teacher.Image"
-                  />
-                </div>
-                <div class="subject-name lft">
-                  <p class="first">{{subjectDetails.subject.SubjectName}}</p>
-                  <span class="second" *ngFor="let teacher of subjectDetails.subject.ClassTeachers; trackBy: index">{{teacher.Name}}</span>
-                </div>
-              </td>
-              <td>
-                <div class="rating-outer" *ngIf="subjectDetails.subject.Performance.Column1.Value != null">
-                  <div class="circle" id="attendance-circles"></div>
-                  <p class="success" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column1.Trend)}">{{subjectDetails.subject.Performance.Column1.Value}}{{subjectDetails.subject.Performance.Column1.Unit}}
-                    <span class="up" *ngIf="subjectDetails.subject.Performance.Column1.Trend == 1">
-                      <i class="fa fa-caret-up" aria-hidden="true"></i>
-                    </span>
-                    <span class="down" *ngIf="subjectDetails.subject.Performance.Column1.Trend == 3">
-                      <i class="fa fa-caret-down" aria-hidden="true"></i>
-                    </span>
-                  </p>
-                </div>
-              </td>
-              <td>
-                <div class="rating-outer" *ngIf="subjectDetails.subject.Performance.Column2.Value != null">
-                  <div class="circle" id="target-circles"></div>
-                  <p class="success">{{subjectDetails.subject.Performance.Column2.Value}}</p>
-                </div>
-              </td>
-              <td>
-                <div class="rating-outer" *ngIf="subjectDetails.subject.Performance.Column3.Value != null">
-                  <div class="circle" id="grade-circles"></div>
-                  <p class="success" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column3.Trend)}">{{subjectDetails.subject.Performance.Column3.Value}}
-                    <span class="up" *ngIf="subjectDetails.subject.Performance.Column3.Trend == 1">
-                      <i class="fa fa-caret-up" aria-hidden="true"></i>
-                    </span>
-                    <span class="down" *ngIf="subjectDetails.subject.Performance.Column3.Trend == 3">
-                      <i class="fa fa-caret-down" aria-hidden="true"></i>
-                    </span>
-                  </p>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="graph">
-          <chart [options]="options" class="chart-hight">
-          </chart>
-        </div>
-      </div>
-
+<div id="performance-modal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <p>{{studentName}}</p>
     </div>
+    <div class="modal-body" *ngIf="subjectDetails.subject != undefined">
+      <div class="modal-table">
+        <table>
+          <tr>
+            <th class="lft-subject">Subject</th>
+            <th>Attendance</th>
+            <th>Target</th>
+            <th>Grade</th>
+          </tr>
+          <tr>
+            <td id="sd{{subjectDetails.subject.Id}}" class="lft-subject">
+              <div class="table-profile-pic lft">
+                <img class="teacher-image" *ngFor="let teacher of subjectDetails.subject.ClassTeachers" [src]="'data:image/png;base64,'+teacher.Image"
+                />
+              </div>
+              <div class="subject-name lft">
+                <p class="first">{{subjectDetails.subject.SubjectName}}</p>
+                <span class="second" *ngFor="let teacher of subjectDetails.subject.ClassTeachers; trackBy: index">{{teacher.Name}}</span>
+              </div>
+            </td>
+            <td>
+              <div class="rating-outer" *ngIf="subjectDetails.subject.Performance.Column1.Value != null">
+                <div class="circle" id="attendance-circles"></div>
+                <p class="success" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column1.Trend)}">{{subjectDetails.subject.Performance.Column1.Value}}{{subjectDetails.subject.Performance.Column1.Unit}}
+                  <span class="up" *ngIf="subjectDetails.subject.Performance.Column1.Trend == 1">
+                      <i class="fa fa-caret-up" aria-hidden="true"></i>
+                    </span>
+                  <span class="down" *ngIf="subjectDetails.subject.Performance.Column1.Trend == 3">
+                      <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </span>
+                </p>
+              </div>
+            </td>
+            <td>
+              <div class="rating-outer" *ngIf="subjectDetails.subject.Performance.Column2.Value != null">
+                <div class="circle" id="target-circles"></div>
+                <p class="success">{{subjectDetails.subject.Performance.Column2.Value}}</p>
+              </div>
+            </td>
+            <td>
+              <div class="rating-outer" *ngIf="subjectDetails.subject.Performance.Column3.Value != null">
+                <div class="circle" id="grade-circles"></div>
+                <p class="success" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column3.Trend)}">{{subjectDetails.subject.Performance.Column3.Value}}
+                  <span class="up" *ngIf="subjectDetails.subject.Performance.Column3.Trend == 1">
+                      <i class="fa fa-caret-up" aria-hidden="true"></i>
+                    </span>
+                  <span class="down" *ngIf="subjectDetails.subject.Performance.Column3.Trend == 3">
+                      <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </span>
+                </p>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="graph">
+        <chart [options]="options" class="chart-hight">
+        </chart>
+      </div>
+    </div>
+
   </div>
+</div>
