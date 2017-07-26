@@ -75,6 +75,10 @@ export class LoginComponent implements OnInit {
     return platform;
   }
   login(e) {
+    if (e === undefined) {
+      return;
+    }
+    e.stopPropagation();
     if (this.user.username === undefined) {
       return false;
     }
