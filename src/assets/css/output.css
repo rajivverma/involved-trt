@@ -735,7 +735,7 @@ canvas {
   opacity: 1;
   background-color: rgba(255, 255, 255, 0.5); }
 
-#logout .modal-dialog {
+.modal-dialog {
   padding: 10px 25px 39px;
   width: 215px;
   background: white;
@@ -749,7 +749,7 @@ canvas {
   display: inline-block;
   position: absolute; }
 
-#logout .modal-dialog p {
+.modal-dialog p {
   font-size: 14px;
   color: #434242;
   text-align: center;
@@ -765,5 +765,19 @@ canvas {
   color: #fff;
   font-size: 12px;
   line-height: 22px; }
+
+#server-failed {
+  position: absolute;
+  z-index: 9999;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  top: 0; }
+
+#server-failed .round-btn {
+  margin-right: 0; }
+
+#server-failed .modal-dialog {
+  padding: 25px; }
 
 /*# sourceMappingURL=output.css.map */
