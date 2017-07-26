@@ -150,20 +150,17 @@ export class PerformanceComponent implements OnInit {
           that.createCircle('attendance-circles',
             that.subjectDetails.subject.Performance.Column1.Value,
             '#b981d1',
-            that.getClassName(that.subjectDetails.subject.Performance.Column1.Trend),
-            that.subjectDetails.subject.Performance.Column1.Value + that.subjectDetails.subject.Performance.Column1.Unit
+            that.getClassName(that.subjectDetails.subject.Performance.Column1.Trend)
           );
           that.createCircle('target-circles',
             100,
             '#48cae5',
-            that.getClassName(that.subjectDetails.subject.Performance.Column2.Trend),
-            that.subjectDetails.subject.Performance.Column2.Value
+            that.getClassName(that.subjectDetails.subject.Performance.Column2.Trend)
           );
           that.createCircle('grade-circles',
             100,
             that.getColor(that.subjectDetails.subject.Performance.Column3.Trend),
-            that.getClassName(that.subjectDetails.subject.Performance.Column3.Trend),
-            that.subjectDetails.subject.Performance.Column3.Value
+            that.getClassName(that.subjectDetails.subject.Performance.Column3.Trend)
           );
         });
       },
@@ -182,14 +179,14 @@ export class PerformanceComponent implements OnInit {
       return 'class-three';
     }
   }
-  createCircle(id, val, color, txtColor, txtValue) {
+  createCircle(id, val, color, txtColor) {
     Circles.create({
       id: id,
       radius: 35,
       value: val,
       maxValue: 100,
       width: 3,
-      text: txtValue,
+      text: '',
       colors: ['transparent', color],
       duration: 100,
       wrpClass: 'circles-wrp',

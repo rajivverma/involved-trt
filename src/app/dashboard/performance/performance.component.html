@@ -88,7 +88,7 @@
               <td>
                 <div class="rating-outer" *ngIf="subjectDetails.subject.Performance.Column1.Value != null">
                   <div class="circle" id="attendance-circles"></div>
-                  <p class="success" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column1.Trend)}">
+                  <p class="success" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column1.Trend)}">{{subjectDetails.subject.Performance.Column1.Value}}{{subjectDetails.subject.Performance.Column1.Unit}}
                     <span class="up" *ngIf="subjectDetails.subject.Performance.Column1.Trend == 1">
                       <i class="fa fa-caret-up" aria-hidden="true"></i>
                     </span>
@@ -101,12 +101,13 @@
               <td>
                 <div class="rating-outer" *ngIf="subjectDetails.subject.Performance.Column2.Value != null">
                   <div class="circle" id="target-circles"></div>
+                  <p class="success">{{subjectDetails.subject.Performance.Column2.Value}}</p>
                 </div>
               </td>
               <td>
                 <div class="rating-outer" *ngIf="subjectDetails.subject.Performance.Column3.Value != null">
                   <div class="circle" id="grade-circles"></div>
-                  <p class="success" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column3.Trend)}">
+                  <p class="success" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column3.Trend)}">{{subjectDetails.subject.Performance.Column3.Value}}
                     <span class="up" *ngIf="subjectDetails.subject.Performance.Column3.Trend == 1">
                       <i class="fa fa-caret-up" aria-hidden="true"></i>
                     </span>
