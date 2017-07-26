@@ -75,13 +75,16 @@ export class LoginComponent implements OnInit {
     return platform;
   }
   login(e) {
-    if (this.user.username === undefined || this.user.password === '') {
+    if (this.user.username === undefined) {
       return false;
     }
     if (this.user.username.trim().length === 0) {
       this.user.username = undefined;
       const form = (<HTMLInputElement>document.getElementById('signIn'));
       form.click();
+      return false;
+    }
+    if (this.user.password === '') {
       return false;
     }
     e.stopPropagation();
