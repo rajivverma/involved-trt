@@ -38,7 +38,7 @@
         <td>
           <p class="black" *ngIf="subject.Performance.Column2.Value != null" [ngStyle]="{ 'color': getColor(subject.Performance.Column2.Trend)}">{{subject.Performance.Column2.Value}}</p>
         </td>
-        <td>
+        <td class="graph-td">
           <p class="success" *ngIf="subject.Performance.Column3.Value != null" [ngStyle]="{ 'color': getColor(subject.Performance.Column3.Trend)}">{{subject.Performance.Column3.Value}}
             <span class="up" *ngIf="subject.Performance.Column3.Trend == 1">
             <i class="fa fa-caret-up" aria-hidden="true"></i>
@@ -47,6 +47,7 @@
             <i class="fa fa-caret-down" aria-hidden="true"></i>
           </span>
           </p>
+          <div class="graph-icon"><img src="../../assets/img/prfrmnc.png"></div>
         </td>
       </tr>
     </tbody>
