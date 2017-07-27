@@ -23,6 +23,7 @@ export class PerformanceComponent implements OnInit {
   public intervalsId: any = [];
   public studentDetailInterval: any;
   public studentName: string;
+  public selectedId: string;
   public monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
   ];
@@ -99,10 +100,13 @@ export class PerformanceComponent implements OnInit {
       return '#ff3c1f';
     }
   }
-  getSubjectDetails(subject, e) {
+  getSubjectDetails(subject, e, index) {
     e.stopPropagation();
     const id = localStorage.getItem('userid');
     clearInterval(this.studentDetailInterval);
+    const target = e.target || e.srcElement || e.currentTarget;
+    const activeClassName = target.attributes.class;
+    this.selectedId = subject.Id;
     this.performanceService.getStudentPerformanceData(id, subject.Id).subscribe(
       (data) => {
         this.subjectDetails = data;

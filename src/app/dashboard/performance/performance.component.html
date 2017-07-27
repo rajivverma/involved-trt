@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let subject of subjectsData">
+      <tr *ngFor="let subject of subjectsData; trackBy index;">
         <td>
           <div></div>
           <div class="table-profile-pic lft" id="t{{subject.Id}}">
@@ -47,7 +47,7 @@
             <i class="fa fa-caret-down" aria-hidden="true"></i>
           </span>
           </p>
-          <div (click)="getSubjectDetails(subject,$event)" class="graph-icon"><img src="../../assets/img/prfrmnc.png"></div>
+          <div (click)="getSubjectDetails(subject,$event,index)" class="graph-icon"><img src="../../assets/img/prfrmnc.png"></div>
         </td>
       </tr>
     </tbody>
@@ -64,8 +64,11 @@
   <div class="modal-content">
     <div class="modal-header">
       <span class="close" (click)="closeModal()">&times;</span>
-      <p>{{studentName}}</p>
-      <!--<span *ngFor="let s of subjectsData; trackBy: index" (click)="getSubjectDetails(s,$event)">{{s.SubjectName}}</span>-->
+      <!--<p>{{studentName}}</p>-->
+      <div class="subject-list">
+        <p class="subject-list-name" *ngFor="let s of subjectsData; trackBy: index" [ngClass]="{ 'active': s.Id == selectedId }"
+          (click)="getSubjectDetails(s,$event,index)">{{s.SubjectName}}</p>
+      </div>
     </div>
     <div class="modal-body" *ngIf="subjectDetails.subject != undefined">
       <div class="modal-table">

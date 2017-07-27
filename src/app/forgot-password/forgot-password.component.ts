@@ -39,7 +39,20 @@ export class ForgotPasswordComponent implements OnInit {
         this.router.navigate(['login']);
       },
       (err) => {
-        document.getElementById('username-error').innerHTML = 'Invalid username';
+        const data = JSON.parse(err._body);
+        let msg = '';
+        if (data.Message === 'ERROR_NOTFOUND_ACCOUNT') {
+          msg = 'Username entered is not registered with InvolvEd.';
+        } else if (data.Message === 'ERROR_INACTIVE_ACCOUNT') {
+          msg = 'Account is not active. Please email your query to support@involvedtech.co.uk.';
+        } else if (data.Message === 'ERROR_INCOMPATIBLE_CLIENT') {
+          msg = 'Please enter valid student login username to reset password.';
+        } else if (data.Message === 'ERROR_INVALID_CLIENT') {
+          msg = 'Account is not active. Please email your query to support@involvedtech.co.uk';
+        } else {
+          msg = 'Server failed to respondServer failed to respond. Please check your internet connection.';
+        }
+        document.getElementById('username-error').innerHTML = msg;
       });
   }
   changedExtraHandler() {

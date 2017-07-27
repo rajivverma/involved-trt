@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DashboardService } from './dashboard.service';
 import { MainService } from '../commonService/main.service';
+import { DashboardMainService } from '../dashboard/commonService/dashboard.main.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  providers: [DashboardService, MainService]
+  providers: [DashboardService, MainService, DashboardMainService]
 })
 export class DashboardComponent implements OnInit {
 
@@ -14,13 +15,15 @@ export class DashboardComponent implements OnInit {
   public counterData: any = {};
   constructor(private dashboardService: DashboardService,
     private router: Router,
-    private mainService: MainService) { }
+    private mainService: MainService,
+    private dashboardMainService: DashboardMainService) { }
   ngOnInit() {
     this.mainService.show('dashboard-loader');
     this.dashboardService.getStudentDetails().subscribe(
       (data) => {
         this.mainService.hide('dashboard-loader');
         this.studentInfo = data;
+        this.dashboardMainService.setStudentInfo(data);
         localStorage.setItem('userid', data.Id);
         localStorage.setItem('fullname', data.Firstname + ' ' + data.Lastname);
         if (this.router.url === '/dashboard') {
