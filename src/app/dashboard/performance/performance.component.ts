@@ -100,7 +100,7 @@ export class PerformanceComponent implements OnInit {
       return '#ff3c1f';
     }
   }
-  getSubjectDetails(subject, e, index) {
+  getSubjectDetails(subject, e) {
     e.stopPropagation();
     const id = localStorage.getItem('userid');
     clearInterval(this.studentDetailInterval);

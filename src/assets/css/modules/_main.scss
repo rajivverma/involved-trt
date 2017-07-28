@@ -182,12 +182,13 @@ button:focus, a:focus{outline: none;}
 		line-height: 22px;
 	 }
 
-		.form-footer p strong {
+		.form-footer p strong a{
 			color: $primary-color;
 			cursor: pointer;
+      text-decoration: navajowhite
 		 }
 
-			.form-footer p strong:hover {
+			.form-footer p strong a:hover {
 				color: $light-font;
 				transition: all ease 0.3s;
 			 }

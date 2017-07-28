@@ -189,11 +189,12 @@ button:focus, a:focus {
   font-weight: 400;
   line-height: 22px; }
 
-.form-footer p strong {
+.form-footer p strong a {
   color: #2671be;
-  cursor: pointer; }
+  cursor: pointer;
+  text-decoration: navajowhite; }
 
-.form-footer p strong:hover {
+.form-footer p strong a:hover {
   color: #555;
   transition: all ease 0.3s; }
 
