@@ -694,7 +694,11 @@ button:focus, a:focus {
 #username-error {
   color: #f00;
   font-size: 13px;
-  position: absolute; }
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 165px;
+  text-align: center; }
 
 canvas {
   display: block;

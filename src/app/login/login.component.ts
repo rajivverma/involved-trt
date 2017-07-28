@@ -103,6 +103,10 @@ export class LoginComponent implements OnInit {
     };
     this.loginService.login(user).subscribe(
       (data) => {
+        if(data.isactivated === 'False') {
+          document.getElementById('login-error').innerHTML = 'Authorization has been denied for this request.';
+          return;
+        }
         const val = (<HTMLInputElement>document.getElementById('test2')).checked;
         if (val) {
           localStorage.setItem('username', this.user.username);
@@ -113,7 +117,6 @@ export class LoginComponent implements OnInit {
       },
       (err) => {
         if (err.status === 400) {
-          document.getElementById('login-error').innerHTML = 'Invalid username or password';
         } else {
           this.mainService.show('server-failed');
         }

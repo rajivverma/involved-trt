@@ -663,6 +663,10 @@ button:focus, a:focus{outline: none;}
  	color: $danger;
 	font-size: 13px;
 	position: absolute;
+	left: 0;
+	right: 0;
+	top: 165px;
+	text-align: center;
  }
 canvas {
   display: block;
