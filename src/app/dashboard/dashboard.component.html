@@ -7,7 +7,7 @@
       <div class="header-controls">
       	<div class="announcements">
       		<i class="fa fa-bullhorn" aria-hidden="true"></i>
-      		<div class="notification" *ngIf="counterData.UnreadAnnouncementCount != null">{{counterData.UnreadAnnouncementCount}}</div>
+      		<div class="notification" *ngIf="counterData.UnreadAnnouncementCount != null && counterData.UnreadAnnouncementCount != 0">{{counterData.UnreadAnnouncementCount}}</div>
       	</div>
         <div class="settings">
           <img src="../assets/img/settiing_icon.png">
@@ -34,9 +34,9 @@
         </div>
         <ul class="nav">
           <li><a [routerLinkActive]="['active']" id="dashboard" [routerLink]="['./performance']">Performance</a></li>
-          <li><a [routerLinkActive]="['active']" id="domains" [routerLink]="['./tasks']">Tasks <div class="notification">{{counterData.UnreadTaskCount}}</div></a></li>
+          <li><a [routerLinkActive]="['active']" id="domains" [routerLink]="['./tasks']">Tasks <div class="notification" *ngIf="counterData.UnreadTaskCount != null && counterData.UnreadTaskCount != 0">{{counterData.UnreadTaskCount}}</div></a></li>
           <li><a [routerLinkActive]="['active']" id="lists" [routerLink]="['./timetable']">Timetable</a></li>
-          <li><a [routerLinkActive]="['active']" id="campaigns" [routerLink]="['./announcements']">Announcements <div class="notification">{{counterData.UnreadAnnouncementCount}}</div></a></li>
+        
         </ul>
       </div>
       <div class="dashboard-main">

@@ -397,7 +397,7 @@ button:focus, a:focus{outline: none;}
  }
 
 .inner-main {
-	height: calc(768px - 250px);
+	height:calc(768px - 53px - 60px);
 	padding: 20px 0 0;
  }
 
@@ -431,7 +431,7 @@ button:focus, a:focus{outline: none;}
 .fixed-header tbody {
     display: block;
     overflow: auto;
-    height: 480px;
+    height: 615px;
 }
 
  .lft {
@@ -526,7 +526,7 @@ button:focus, a:focus{outline: none;}
 	height: 100%; /* Full height */
 	left: 0;
 	overflow: auto; /* Enable scroll if needed */
-	padding-top: 2%; /* Location of the box */
+	padding-top: 30px; /* Location of the box */
 	position: fixed; /* Stay in place */
 	top: 0;
 	width: 100%; /* Full width */
@@ -564,22 +564,22 @@ button:focus, a:focus{outline: none;}
 
 	/* The Close Button */
 .close {
-		background: rgba(0,0,0,0.9);
+		background: rgba(48,48,48,1);
 		border-radius: 50px;
 		color: white;
 		cursor: pointer;
 		float: right;
 		font-size: 24px;
 		font-weight: lighter;
-		height: 30px;
+		height: 37px;
 		position: absolute;
 		right: -15px;
 		text-align: center;
-		top: -20px;
-		width: 30px;
-		line-height: 23px;
+		top: -18px;
+		width: 37px;
+		line-height: 30px;
 	 }
-
+.close:hover{background-color: rgba(48,48,48,0.8); transition: all ease 0.3s;}
 	.modal-header {
 		background-color: $primary-color;
 		padding: 9px 23px;
@@ -834,19 +834,19 @@ canvas {
 }
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 100px;
-    background-color: $primary-color;
+    width: 255px;
+    background-color: #2671be;
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
+    padding: 9px;
     position: absolute;
     z-index: 1;
     bottom: 150%;
-    left: 50%;
-    margin-left: -50px;
-    font-weight: 400;
-    font-size: 14px;
+    left: 0px;
+    margin-left: -128px;
+    font-weight: 300;
+    font-size: 13px;
 }
 
 .tooltip .tooltiptext::after {
