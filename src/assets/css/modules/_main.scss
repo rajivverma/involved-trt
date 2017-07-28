@@ -218,10 +218,14 @@ button:focus, a:focus{outline: none;}
 		font-weight: 400;
 	 }
 
-	.forgot-pwd .form-footer span {
+	.forgot-pwd .form-footer a {
 		color: $light-font;
 		cursor: pointer;
 		font-weight: 500;
+    text-decoration: none;
+	 }
+   .forgot-pwd .form-footer a:hover {
+		text-decoration: underline;
 	 }
 
 .back {
@@ -321,6 +325,22 @@ button:focus, a:focus{outline: none;}
 {
 	background-color: $primary-color;
 }
+
+.subject-list::-webkit-scrollbar-track
+{
+	background-color: #69d3e9;
+}
+
+.subject-list::-webkit-scrollbar
+{
+	background-color: #F5F5F5;
+  height: 3px;
+}
+.subject-list::-webkit-scrollbar-thumb
+{
+	background-color: #F5F5F5;
+}
+
 .fixed-header tbody tr td, .fixed-header th{width: 258px;}
 
 .profile {
@@ -563,6 +583,8 @@ button:focus, a:focus{outline: none;}
 		background-color: $primary-color;
 		padding: 9px 23px;
 		position: relative;
+
+    text-align: center;
 	 }
 
 		.modal-header p {
@@ -790,9 +812,9 @@ canvas {
 #server-failed .modal-dialog{padding:25px;}
 .graph-td{position: relative;}
 .graph-icon{
-	position: absolute; 
-	right: 30px; 
-	top: 20px; 
+	position: absolute;
+	right: 30px;
+	top: 20px;
 	height: 30px;
     width: 30px;
     background: #2671be;
@@ -840,4 +862,24 @@ canvas {
 .tooltip:hover .tooltiptext {
     visibility: visible;
     transition: all ease 0.5s;
+}
+.subject-list{
+  width: 60%;
+  display: inline-block;
+  overflow: auto;
+  padding-bottom: 5px;
+  white-space: nowrap;
+}
+.subject-list p{
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: none;
+  border-bottom: 2px solid transparent;
+}
+.subject-list p.active{
+  font-weight: 900;
+  font-size: 17px;
+  border-bottom: 2px solid white;
 }
