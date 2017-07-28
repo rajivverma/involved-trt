@@ -73,23 +73,13 @@
     <div class="modal-body" *ngIf="subjectDetails.subject != undefined">
       <div class="modal-table">
         <table>
-          <tr>
+          <!-- <tr>
             <th class="lft-subject">Subject</th>
             <th>Attendance</th>
             <th>Target</th>
             <th>Grade</th>
-          </tr>
+          </tr> -->
           <tr>
-            <td id="sd{{subjectDetails.subject.Id}}" class="lft-subject">
-              <div class="table-profile-pic lft">
-                <img class="teacher-image" *ngFor="let teacher of subjectDetails.subject.ClassTeachers" [src]="'data:image/png;base64,'+teacher.Image"
-                />
-              </div>
-              <div class="subject-name lft">
-                <p class="first">{{subjectDetails.subject.SubjectName}}</p>
-                <span class="second" *ngFor="let teacher of subjectDetails.subject.ClassTeachers; trackBy: index">{{teacher.Name}}</span>
-              </div>
-            </td>
             <td>
               <div class="rating-outer" *ngIf="subjectDetails.subject.Performance.Column1.Value != null">
                 <div class="circle" id="attendance-circles"></div>
@@ -102,12 +92,14 @@
                     </span>
                 </p>
               </div>
+              <p>Attendance</p>
             </td>
             <td>
               <div class="rating-outer" *ngIf="subjectDetails.subject.Performance.Column2.Value != null">
                 <div class="circle" id="target-circles"></div>
                 <p class="success">{{subjectDetails.subject.Performance.Column2.Value}}</p>
               </div>
+              <p>Target</p>
             </td>
             <td>
               <div class="rating-outer" *ngIf="subjectDetails.subject.Performance.Column3.Value != null">
@@ -121,6 +113,7 @@
                     </span>
                 </p>
               </div>
+              <p>Grade</p>
             </td>
           </tr>
         </table>

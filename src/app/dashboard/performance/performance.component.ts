@@ -130,34 +130,6 @@ export class PerformanceComponent implements OnInit {
         );
         const that = this;
         setTimeout(function () {
-          document.getElementById('sd' + that.subjectDetails.subject.Id).children[1].children[1].className += ' subject-name-active';
-          document.getElementById('sd' + that.subjectDetails.subject.Id).children[0].children[0].className += ' teacher-image-active';
-          (function () {
-            const ds = document.getElementById('sd' + that.subjectDetails.subject.Id).children[1];
-            const dp = document.getElementById('sd' + that.subjectDetails.subject.Id).children[0];
-            let iCount = 0;
-            if (ds.childElementCount > 2) {
-              iCount++;
-              that.studentDetailInterval = setInterval(function () {
-                if (iCount === 1) {
-                  ds.children[iCount + 1].className = 'second';
-                  ds.children[iCount].className = 'second subject-name-active';
-                  dp.children[iCount - 1].className = 'teacher-image teacher-image-active';
-                  dp.children[iCount].className = 'teacher-image';
-                } else {
-                  ds.children[iCount - 1].className = 'second';
-                  ds.children[iCount].className = 'second subject-name-active';
-                  dp.children[iCount - 2].className = 'teacher-image';
-                  dp.children[iCount - 1].className = 'teacher-image teacher-image-active';
-                }
-                if (iCount === (ds.childElementCount - 1)) {
-                  iCount = 1;
-                } else {
-                  iCount++;
-                }
-              }, 5000);
-            }
-          })();
           that.createCircle('attendance-circles',
             that.subjectDetails.subject.Performance.Column1.Value,
             '#b981d1',

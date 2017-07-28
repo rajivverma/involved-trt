@@ -291,7 +291,7 @@ button:focus, a:focus{outline: none;}
 .container {
 	margin: 0 auto;
 	position: relative;
-	width: 1280px;
+	width: 1250px;
  }
 
 /*sidebar*/
@@ -409,7 +409,7 @@ button:focus, a:focus{outline: none;}
 
 .performance table {
 	border-collapse: collapse;
-	width: 1033px;
+	width: 1003px;
 	table-layout: fixed;
  }
  .modal-body table{border-collapse: collapse;
@@ -865,7 +865,7 @@ canvas {
     transition: all ease 0.5s;
 }
 .subject-list{
-  width: 60%;
+  width: 1160px;
   display: inline-block;
   overflow: auto;
   padding-bottom: 5px;
@@ -882,5 +882,5 @@ canvas {
 .subject-list p.active{
   font-weight: 900;
   font-size: 17px;
-  border-bottom: 2px solid white;
+  color: #8fc6ff !important;
 }
