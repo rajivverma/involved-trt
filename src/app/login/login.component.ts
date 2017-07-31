@@ -117,6 +117,8 @@ export class LoginComponent implements OnInit {
       },
       (err) => {
         if (err.status === 400) {
+          console.log(err);
+          document.getElementById('login-error').innerHTML = JSON.parse(err._body).error;
         } else {
           this.mainService.show('server-failed');
         }

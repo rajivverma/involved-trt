@@ -22,12 +22,11 @@ button:focus, a:focus{outline: none;}
 	background: $white;
 	border-top: 4px solid $primary-color;
 	margin: 0 auto 10px;
-	padding: 15px 0;
+	padding: 14px 0 40px;
 	position: relative;
-	top: 40px;
+	top: 50px;
 	width: 585px;
 	z-index: 9;
-	height: 525px;
  }
 
 .logo {text-align: center;}
@@ -36,7 +35,7 @@ button:focus, a:focus{outline: none;}
 	border-bottom: 1px solid $primary-color;
 	font-size: 90px;
 	font-weight: 100;
-	margin: 25px 0 15px;
+	margin: 40px 0 15px;
 	padding: 0 80px;
  }
 
@@ -46,7 +45,7 @@ button:focus, a:focus{outline: none;}
 		color: $black;
 		font-size: 30px;
 		font-weight: 400;
-		margin: 0 0 20px;
+		margin: 0 0 25px;
 	 }
 
 .custom-input {
@@ -56,14 +55,13 @@ button:focus, a:focus{outline: none;}
 	border: none;
 	color: $black;
 	font-size: 14px;
-	margin-bottom: 5px;
 	outline: none;
 	padding: 12px 8px 15px;
 	transition: all 0.4s ease-in-out 0s;
 	width: calc(100% - 16px);
  }
 .custom-input:focus{border-bottom: 1px solid $primary-color !important; transition: all ease 0.3s;}
-.remember-me {margin: 15px 0;}
+.remember-me {margin: 30px 0 25px;}
 
 /* Base for label styling */
 [type="checkbox"]:not(:checked),
@@ -170,16 +168,18 @@ button:focus, a:focus{outline: none;}
 
 .form-footer {
 	border-top: 1px solid #f8f8f8;
-	margin: 20px 45px 0 45px;
+	margin: 38px 50px 0;
+	padding: 30px 40px 0;
 	text-align: center;
  }
- .forgot-pwd .form-inner h2{margin: 0 -15px 20px;}
+ .forgot-pwd .form-inner h2{margin: 0 -15px 42px;}
 
 	.form-footer p {
 		color: $light-font;
 		font-size: 14px;
 		font-weight: 400;
 		line-height: 22px;
+		margin: 0;
 	 }
 
 		.form-footer p strong a{
@@ -194,7 +194,7 @@ button:focus, a:focus{outline: none;}
 			 }
 
 .copyright {
-	bottom: -30px;
+	bottom: -38px;
 	color: $very-light-font;
 	font-size: 14px;
 	left: 50%;
@@ -207,7 +207,7 @@ button:focus, a:focus{outline: none;}
 
 /*forgot pwd*/
 .forgot-pwd .form-inner {margin-top: 40px;}
-.forgot-pwd .form-footer{margin: 20px 80px 0 75px; text-align: left;}
+.forgot-pwd .form-footer{margin: 50px 80px 0 75px; padding: 50px 0 0; text-align: left;}
 .forgot-pwd .submit-events {
 	margin: 20px 0 40px;
 	text-align: center;
@@ -231,7 +231,7 @@ button:focus, a:focus{outline: none;}
 
 .back {
 	font-size: 19px !important;
-	margin: 30px 0;
+	margin: 50px 0 0  !important;
 	text-align: center;
  }
 
@@ -453,8 +453,8 @@ button:focus, a:focus{outline: none;}
 	border-bottom: 1px solid #eeeeee;
  }
 .performance td p{position: relative;}
-.performance tr:hover {background-color: #e7f0f9; transition: all ease 0.5s;}
-.modal-body tr:hover {background-color: #e7f0f9; transition: all ease 0.5s;}
+/*.performance tr:hover {background-color: #e7f0f9; transition: all ease 0.5s;}*/
+/*.modal-body tr:hover {background-color: #e7f0f9; transition: all ease 0.5s;}*/
 .table-profile-pic {
   border-radius: 50%;
   display: inline-block;

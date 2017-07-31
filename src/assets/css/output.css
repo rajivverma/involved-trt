@@ -26,12 +26,11 @@ button:focus, a:focus {
   background: #fff;
   border-top: 4px solid #2671be;
   margin: 0 auto 10px;
-  padding: 15px 0;
+  padding: 14px 0 40px;
   position: relative;
-  top: 40px;
+  top: 50px;
   width: 585px;
-  z-index: 9;
-  height: 525px; }
+  z-index: 9; }
 
 .logo {
   text-align: center; }
@@ -40,7 +39,7 @@ button:focus, a:focus {
   border-bottom: 1px solid #2671be;
   font-size: 90px;
   font-weight: 100;
-  margin: 25px 0 15px;
+  margin: 40px 0 15px;
   padding: 0 80px; }
 
 .form-inner {
@@ -51,7 +50,7 @@ button:focus, a:focus {
   color: #000;
   font-size: 30px;
   font-weight: 400;
-  margin: 0 0 20px; }
+  margin: 0 0 25px; }
 
 .custom-input {
   -moz-transition: all 0.4s ease-in-out 0s;
@@ -60,7 +59,6 @@ button:focus, a:focus {
   border: none;
   color: #000;
   font-size: 14px;
-  margin-bottom: 5px;
   outline: none;
   padding: 12px 8px 15px;
   transition: all 0.4s ease-in-out 0s;
@@ -71,7 +69,7 @@ button:focus, a:focus {
   transition: all ease 0.3s; }
 
 .remember-me {
-  margin: 15px 0; }
+  margin: 30px 0 25px; }
 
 /* Base for label styling */
 [type="checkbox"]:not(:checked),
@@ -177,17 +175,19 @@ button:focus, a:focus {
 
 .form-footer {
   border-top: 1px solid #f8f8f8;
-  margin: 20px 45px 0 45px;
+  margin: 38px 50px 0;
+  padding: 30px 40px 0;
   text-align: center; }
 
 .forgot-pwd .form-inner h2 {
-  margin: 0 -15px 20px; }
+  margin: 0 -15px 42px; }
 
 .form-footer p {
   color: #555;
   font-size: 14px;
   font-weight: 400;
-  line-height: 22px; }
+  line-height: 22px;
+  margin: 0; }
 
 .form-footer p strong a {
   color: #2671be;
@@ -199,7 +199,7 @@ button:focus, a:focus {
   transition: all ease 0.3s; }
 
 .copyright {
-  bottom: -30px;
+  bottom: -38px;
   color: #7c7c7c;
   font-size: 14px;
   left: 50%;
@@ -214,7 +214,8 @@ button:focus, a:focus {
   margin-top: 40px; }
 
 .forgot-pwd .form-footer {
-  margin: 20px 80px 0 75px;
+  margin: 50px 80px 0 75px;
+  padding: 50px 0 0;
   text-align: left; }
 
 .forgot-pwd .submit-events {
@@ -237,7 +238,7 @@ button:focus, a:focus {
 
 .back {
   font-size: 19px !important;
-  margin: 30px 0;
+  margin: 50px 0 0  !important;
   text-align: center; }
 
 .back span {
@@ -458,14 +459,8 @@ button:focus, a:focus {
 .performance td p {
   position: relative; }
 
-.performance tr:hover {
-  background-color: #e7f0f9;
-  transition: all ease 0.5s; }
-
-.modal-body tr:hover {
-  background-color: #e7f0f9;
-  transition: all ease 0.5s; }
-
+/*.performance tr:hover {background-color: #e7f0f9; transition: all ease 0.5s;}*/
+/*.modal-body tr:hover {background-color: #e7f0f9; transition: all ease 0.5s;}*/
 .table-profile-pic {
   border-radius: 50%;
   display: inline-block;
