@@ -5,7 +5,7 @@
       <div class="header-search">
         <div class="search-area">
           <input type="text" [(ngModel)]="searchTask" (keyup.enter)="searchStudentTasks($event)" (click)="searchTextValidation($event)"
-            (ngModelChange)="searchTextValidation()" placeholder="Search a task: Type task title">
+            (ngModelChange)="searchTextValidation(undefined)" placeholder="Search a task: Type task title">
           <button id="tasksrch" (click)="searchStudentTasks($event)"><i aria-hidden="true" class="fa fa-search"></i></button>
         </div>
         <div class="search-task" id="searchTask">

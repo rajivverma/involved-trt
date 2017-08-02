@@ -12,7 +12,7 @@
       <img src="../assets/img/logo.png">
     </div>
     <h1>Welcome</h1>
-      <div class="form-inner" (keyup.enter)="login($event)">
+      <div class="form-inner" (keyup.enter)="login()">
         <h2>Sign In</h2>
         <input type="text" id="username" name="username" [(ngModel)]="user.username" (ngModelChange)="changedExtraHandler()" class="custom-input"
           placeholder="Username">
