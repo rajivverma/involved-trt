@@ -74,23 +74,23 @@ export class LoginComponent implements OnInit {
     const platform = this.browser.name + '_' + this.browser.version + '_' + navigator.platform + '_' + version[0];
     return platform;
   }
-  login(e) {
-    if (this.user.username === undefined) {
-      return false;
-    }
-    if (this.user.username.trim().length === 0) {
-      this.user.username = undefined;
-      const form = (<HTMLInputElement>document.getElementById('signIn'));
-      form.click();
-      return false;
-    }
-    if (this.user.password === '') {
-      return false;
-    }
-    if (e === undefined) {
+  login() {
+    if (this.user.username === undefined || this.user.username === '') {
+      const username = (<HTMLInputElement>document.getElementById('username'));
+      if (!username.className.includes('p-error')) {
+        username.placeholder = 'Please enter username';
+        username.className += ' p-error';
+      }
       return;
     }
-    e.stopPropagation();
+    if (this.user.password === undefined || this.user.password === '') {
+      const password = (<HTMLInputElement>document.getElementById('password'));
+      if (!password.className.includes('p-error')) {
+        password.placeholder = 'Please enter password';
+        password.className += ' p-error';
+      }
+      return;
+    }
     const devicetoken = this.getDeviceToken();
     const platform = this.getPlateform();
     const user = {
@@ -103,7 +103,7 @@ export class LoginComponent implements OnInit {
     };
     this.loginService.login(user).subscribe(
       (data) => {
-        if(data.isactivated === 'False') {
+        if (data.isactivated === 'False') {
           document.getElementById('login-error').innerHTML = 'Authorization has been denied for this request.';
           return;
         }
@@ -126,6 +126,12 @@ export class LoginComponent implements OnInit {
   }
   changedExtraHandler() {
     document.getElementById('login-error').innerHTML = '';
+    const username = (<HTMLInputElement>document.getElementById('username'));
+    username.className = username.className.replace('p-error', '');
+    username.placeholder = 'Username';
+    const password = (<HTMLInputElement>document.getElementById('password'));
+    password.className = password.className.replace('p-error', '');
+    password.placeholder = 'Password';
   }
   setRememberMe(e) {
     if (e.target.checked) {
