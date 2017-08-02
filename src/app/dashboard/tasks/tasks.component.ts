@@ -15,6 +15,7 @@ export class TasksComponent implements OnInit {
     private taskService: TaskService,
   ) { }
   public studentId = localStorage.getItem('userid');
+  public taskDescription: any;
   public weekList: any = [];
   public taskList: any = [];
   public searchTask = '';
@@ -27,6 +28,7 @@ export class TasksComponent implements OnInit {
     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
   ];
   ngOnInit() {
+    this.taskDescription = document.getElementById('task-description');
     this.firstday.setDate(this.firstday.getDate() - 22);
     this.lastday.setDate(this.lastday.getDate() + 22);
     this.taskService.getWeekList(
@@ -45,6 +47,7 @@ export class TasksComponent implements OnInit {
       });
     document.getElementsByTagName('body')[0].addEventListener('click', function () {
       const d = document.getElementById('dropdown-week');
+      const taskDescription = document.getElementById('task-description');
       if (d != null) {
         d.style.display = '';
       }
@@ -52,7 +55,11 @@ export class TasksComponent implements OnInit {
       if (sT != null) {
         sT.style.display = '';
       }
+      taskDescription.style.display = '';
     });
+  }
+  preventDefault(e) {
+    e.stopPropagation();
   }
   convertDate(date) {
     return date.getFullYear() +
@@ -257,17 +264,21 @@ export class TasksComponent implements OnInit {
     const msg = document.getElementById('userChar');
     const d = document.getElementById('searchTask');
     msg.style.display = 'block';
-    this.searchResultData = [];
     if (e !== undefined) {
       e.stopPropagation();
+      if (this.searchResultData.length !== 0) {
+        this.searchResultData = [];
+        msg.innerHTML = 'Press Enter to search';
+      }
       d.style.display = 'block';
-      if (this.searchTask.length < 4) {
+      if (this.searchTask.length < 3) {
         msg.innerHTML = 'Enter a minimum of 3 characters';
       }
       return;
     }
     if (this.searchTask !== undefined) {
-      if (this.searchTask.length > 3) {
+      this.searchResultData = [];
+      if (this.searchTask.length > 2) {
         msg.innerHTML = 'Press Enter to search';
       } else if (msg.innerHTML === 'Enter a minimum of 3 characters') {
       } else {
@@ -279,5 +290,12 @@ export class TasksComponent implements OnInit {
     this.searchTask = '';
     const msg = document.getElementById('userChar');
     msg.innerHTML = 'Enter a minimum of 3 characters';
+  }
+  openTaskDescription(task, e) {
+    this.preventDefault(e);
+    this.taskDescription.style.display = 'block';
+  }
+  closeTaskDescription() {
+    this.taskDescription.style.display = '';
   }
 }
