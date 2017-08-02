@@ -55,7 +55,9 @@ export class TasksComponent implements OnInit {
       if (sT != null) {
         sT.style.display = '';
       }
-      taskDescription.style.display = '';
+      if (taskDescription != null) {
+        taskDescription.style.display = '';
+      }
     });
   }
   preventDefault(e) {
