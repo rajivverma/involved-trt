@@ -4,14 +4,18 @@
     <div class="header-right">
       <div class="header-search">
         <div class="search-area">
-          <input type="text" [(ngModel)]="searchTask" (keyup.enter)="searchStudentTasks($event)" (click)="searchTextValidation($event)" (ngModelChange)="searchTextValidation()" placeholder="Search a task: Type task title">
+          <input type="text" [(ngModel)]="searchTask" (keyup.enter)="searchStudentTasks($event)" (click)="searchTextValidation($event)"
+            (ngModelChange)="searchTextValidation()" placeholder="Search a task: Type task title">
           <button id="tasksrch" (click)="searchStudentTasks($event)"><i aria-hidden="true" class="fa fa-search"></i></button>
         </div>
         <div class="search-task" id="searchTask">
           <div class="user-char" id="userChar"></div>
-          <div *ngFor="let sd of searchResultData">
-            <p>{{sd.TaskType}}</p><span>{{sd.Title}}</span>
-            <p>{{sd.SubjectName}}</p>
+          <div *ngFor="let sd of searchResultData" class="search-after">
+            <div class="f-left">
+              <p class="success p-name">{{sd.TaskType}}</p><span>{{sd.Title}}</span>
+            </div>
+            <p class="f-right s-name">{{sd.SubjectName}}</p>
+            <div class="clear"></div>
           </div>
           <div class="clear-search" (click)="clearSearch()"><b>Clear Search</b></div>
         </div>
@@ -49,7 +53,7 @@
       </div>
       <table>
         <tbody>
-          <tr *ngFor="let task of t.Tasks">
+          <tr *ngFor="let task of t.Tasks;" (click)="openTaskDescription(task, $event)">
             <td width="150">
               <p>{{task.TaskType}}</p><span>{{task.Title}}</span></td>
             <td class="sub">{{task.SubjectName}}</td>
@@ -168,9 +172,9 @@
 
   <!-- task description modal -->
   <div class="modal modal-add-task modal-task-description" id="task-description">
-    <div class="modal-content">
+    <div class="modal-content" (click)="preventDefault($event)">
       <div class="modal-header">
-        <span class="close">x</span>
+        <span class="close" (click)="closeTaskDescription()">x</span>
         <p>Task Description</p>
       </div>
       <div class="modal-body">
