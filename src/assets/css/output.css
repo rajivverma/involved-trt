@@ -941,14 +941,15 @@ canvas {
 
 .header-search {
   float: left;
-  position: relative; }
+  position: relative;
+  width: 295px; }
 
 .search-task {
   position: absolute;
   width: 100%;
   background-color: #fff;
   top: 36px;
-  border: solid 1px #54c9e8;
+  border: solid 1px #2671be;
   z-index: 99;
   display: none;
   left: 0; }
@@ -957,7 +958,17 @@ canvas {
   text-align: center;
   padding: 10px;
   border-bottom: 1px solid #d7d7d7;
-  background: #fff; }
+  background: #fff;
+  font-size: 14px; }
+
+.clear-search {
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  background-color: gray;
+  padding: 5px;
+  display: block;
+  font-size: 14px; }
 
 .search-area {
   float: left;
@@ -1004,10 +1015,9 @@ canvas {
 
 .blue-fix-hd {
   background: #2671be;
-  text-align: center;
-  height: 38px;
-  position: fixed;
-  width: 1003px; }
+  height: 24px;
+  padding: 7px 15px;
+  text-align: center; }
 
 .blue-fix-hd a {
   font-size: 17px;
@@ -1019,21 +1029,15 @@ canvas {
   color: #000; }
 
 .next {
-  position: absolute;
-  right: 15px;
-  top: 8px; }
+  float: right; }
 
 .prev {
-  position: absolute;
-  left: 15px;
-  top: 8px;
+  float: left;
   z-index: 999; }
 
 .week-dp {
-  position: absolute;
-  top: 8px;
-  left: 0;
-  right: 0; }
+  display: inline-block;
+  position: relative; }
 
 .week-dp i {
   font-size: 15px;
@@ -1049,7 +1053,6 @@ canvas {
   text-align: center; }
 
 .task-table {
-  margin-top: 38px;
   height: 500px;
   overflow-y: auto;
   overflow-x: hidden; }
@@ -1121,5 +1124,52 @@ canvas {
 .ft-progress p {
   margin-bottom: 5px;
   margin-top: 0; }
+
+.dropdown-week {
+  width: 250px;
+  height: 373px;
+  text-align: center;
+  position: absolute;
+  border: 1px solid #2671be;
+  margin-top: 10px;
+  background-color: #fff;
+  left: 50%;
+  right: -50%;
+  transform: translate(-50%);
+  overflow: auto;
+  z-index: 999;
+  display: none; }
+
+.dropdown-week ul li a {
+  display: block;
+  font-size: 15px;
+  color: #4d4d4d;
+  padding: 15px 10px;
+  cursor: pointer; }
+
+.dropdown-week ul li {
+  border-bottom: 1px solid #e9f4ff; }
+
+.load-more {
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  background-color: gray;
+  padding: 5px;
+  font-weight: 500; }
+
+.active-week a {
+  background-color: #2671be;
+  color: #fff !important; }
+
+.dropdown-week::-webkit-scrollbar-track {
+  background-color: #F5F5F5; }
+
+.dropdown-week::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5; }
+
+.dropdown-week::-webkit-scrollbar-thumb {
+  background-color: #2671be; }
 
 /*# sourceMappingURL=output.css.map */
