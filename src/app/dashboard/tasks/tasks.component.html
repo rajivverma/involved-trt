@@ -1,117 +1,91 @@
 <div class="tasks dashboard-table">
-	<div class="task-hd">
-		<h3>Weekly Tasks Due</h3>
-		<div class="header-right">
-			<div class="header-search">
-				<div class="search-area">
-					<input type="text" placeholder="Search a task: Type task title">
-					<button id="tasksrch"><i aria-hidden="true" class="fa fa-search"></i></button>
-				</div>
-				<div class="search-task">
-					<div class="user-char">Enter a minimum of 3 characters</div>
-					<!-- <div id="task_srch_data">
+  <div class="task-hd">
+    <h3>Weekly Tasks Due</h3>
+    <div class="header-right">
+      <div class="header-search">
+        <div class="search-area">
+          <input type="text" placeholder="Search a task: Type task title">
+          <button id="tasksrch"><i aria-hidden="true" class="fa fa-search"></i></button>
+        </div>
+        <div class="search-task">
+          <div class="user-char">Enter a minimum of 3 characters</div>
+          <!-- <div id="task_srch_data">
                     <ul class="content nav mCustomScrollbar _mCS_6 mCS_no_scrollbar" style="position: relative; overflow: visible;"><div id="mCSB_6" class="mCustomScrollBox mCS-3d mCSB_vertical mCSB_outside" style="max-height: none;" tabindex="0"><div id="mCSB_6_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
                     </div></div><div id="mCSB_6_scrollbar_vertical" class="mCSB_scrollTools mCSB_6_scrollbar mCS-3d mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_6_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 70px; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="line-height: 70px;"></div></div><div class="mCSB_draggerRail"></div></div></div></ul>
 					</div> -->
-					<!-- <input type="hidden" id="task_hover_div" value="-1"> -->
-					<div class="clear-search"><b>Clear Search</b></div>
-                </div>
-			</div>
-			<div class="create-task">
-				<a href="">Create Task</a>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
-	<div class="blue-fix-hd">
-		<div class="prev">
-			<a href=""><i class="fa fa-angle-left" aria-hidden="true"></i> Prev</a>
-		</div>
-		<div class="week-dp">
-			<a href="">Jul 31 - Aug 06 <i class="fa fa-sort-desc" aria-hidden="true"></i></a>
-			<div class="dropdown-week">
-				<ul>
-				<li class="load-more">Load More</li>
-				<li><a>Jul 31 - Aug 06</a></li>
-				<li><a>Jul 31 - Aug 06</a></li>
-				<li><a>Jul 31 - Aug 06</a></li>
-				<li class="active-week"><a>Jul 31 - Aug 06</a></li>
-				<li><a>Jul 31 - Aug 06</a></li>
-				<li><a>Jul 31 - Aug 06</a></li>
-				<li><a>Jul 31 - Aug 06</a></li>
-				<li class="load-more">Load More</li>
-				</ul>
-			</div>
-		</div>
-		<div class="next">
-			<a href="">Next <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-		</div>
-	</div>
-	<div class="task-table">
-		<div class="table-task-hd">
-			Jul 31 - Aug 06 
-		</div>
-		<table>
-			<tbody>
-				<tr>
-					<td width="150"><p>Task type</p><span>School Planner</span></td>
-					<td class="sub">Subject</td>
-					<td class="status"><div class="status-txt">New</div></td>
-				</tr>
-				<tr>
-					<td><p>Task type</p><span>School Planner</span></td>
-					<td class="sub">Subject</td>
-					<td class="status"><div class="status-txt">Completed</div></td>
-				</tr>
-				<tr>
-					<td><p>Task type</p><span>School Planner</span></td>
-					<td class="sub">Subject</td>
-					<td class="status"><div class="status-txt">Cancelled</div></td>
-				</tr>
+          <!-- <input type="hidden" id="task_hover_div" value="-1"> -->
+          <div class="clear-search"><b>Clear Search</b></div>
+        </div>
+      </div>
+      <div class="create-task">
+        <a>Create Task</a>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="blue-fix-hd" *ngIf="weekList.length != 0">
+    <div class="prev" (click)="loadMorePreviousWeekTask()">
+      <a><i class="fa fa-angle-left" aria-hidden="true"></i> Prev</a>
+    </div>
+    <div class="week-dp" (click)="openWeekList($event)">
+      <a>{{weekList[activeWeekIndex].displayStartDate}} - {{weekList[activeWeekIndex].displayEndDate}} <i class="fa fa-sort-desc" aria-hidden="true"></i></a>
+      <div class="dropdown-week" id="dropdown-week">
+        <ul>
+          <li class="load-more" (click)="loadMorePreviousWeek($event)">Load More</li>
+          <li *ngFor="let i of weekList;let in = index" [ngClass]="{'active-week': in == activeWeekIndex}">
+            <a (click)="getWeekTaskLIst(in)">{{i.displayStartDate}} - {{i.displayEndDate}}</a>
+          </li>
+          <li class="load-more" (click)="loadMoreNextWeek($event)">Load More</li>
+        </ul>
+      </div>
+    </div>
+    <div class="next" (click)="loadMoreNextWeekTask()">
+      <a>Next <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <div class="task-table" *ngIf="taskList.length != 0">
+    <div *ngFor="let t of taskList[0].DayTasks;let in = index">
+      <div class="table-task-hd">
+        {{t.Date | dateFormat }}
+      </div>
+      <table>
+        <tbody>
+          <tr>
+            <td width="150">
+              <p>Task type</p><span>School Planner</span></td>
+            <td class="sub">Subject</td>
+            <td class="status">
+              <div class="status-txt">New</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Task type</p><span>School Planner</span></td>
+            <td class="sub">Subject</td>
+            <td class="status">
+              <div class="status-txt">Completed</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Task type</p><span>School Planner</span></td>
+            <td class="sub">Subject</td>
+            <td class="status">
+              <div class="status-txt">Cancelled</div>
+            </td>
+          </tr>
 
-			</tbody>
-		</table>
-		<div class="clear"></div>
-		<div class="table-task-hd">
-			Jul 31 - Aug 06 
-		</div>
-		<table>
-			<tbody>
-				<tr>
-					<td width="150"><p>Task type</p><span>School Planner</span></td>
-					<td class="sub">Subject</td>
-					<td class="status"><div class="status-txt">New</div></td>
-				</tr>
-				<tr>
-					<td><p>Task type</p><span>School Planner</span></td>
-					<td class="sub">Subject</td>
-					<td class="status"><div class="status-txt">Completed</div></td>
-				</tr>
-				<tr>
-					<td><p>Task type</p><span>School Planner</span></td>
-					<td class="sub">Subject</td>
-					<td class="status"><div class="status-txt">Cancelled</div></td>
-				</tr>
-				<tr>
-					<td><p>Task type</p><span>School Planner</span></td>
-					<td class="sub">Subject</td>
-					<td class="status"><div class="status-txt">Cancelled</div></td>
-				</tr>
-				<tr>
-					<td><p>Task type</p><span>School Planner</span></td>
-					<td class="sub">Subject</td>
-					<td class="status"><div class="status-txt">Cancelled</div></td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="clear"></div>
-	</div>
-	<div class="ft-progress">
-		<p class="f-left">Weekly Progress</p>
-		<p class="f-right">2/3</p>
-		<div class="clear"></div>
-		<div class="bar-holder">
-		  <div class="bar-fill" style="height:10px;width:25%"></div>
-		</div>
-	</div>
+        </tbody>
+      </table>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="ft-progress">
+    <p class="f-left">Weekly Progress</p>
+    <p class="f-right">2/3</p>
+    <div class="clear"></div>
+    <div class="bar-holder">
+      <div class="bar-fill" style="height:10px;width:25%"></div>
+    </div>
+  </div>
 </div>
