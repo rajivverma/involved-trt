@@ -31,7 +31,6 @@ export class DashboardComponent implements OnInit {
         }
         this.dashboardService.getCounter(data.Id).subscribe(
           (dataC) => {
-            console.log(dataC);
             this.counterData = dataC;
           },
           (err) => {
@@ -45,7 +44,9 @@ export class DashboardComponent implements OnInit {
       });
     document.getElementById('mainDiv').addEventListener('click', function () {
       const d = document.getElementById('performance-modal');
-      d.className = d.className.replace('in', '');
+      if (d != null) {
+        d.className = d.className.replace('in', '');
+      }
     });
   }
   logoutPopup() {

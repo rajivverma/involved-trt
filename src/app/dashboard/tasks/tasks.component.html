@@ -4,17 +4,16 @@
     <div class="header-right">
       <div class="header-search">
         <div class="search-area">
-          <input type="text" placeholder="Search a task: Type task title">
-          <button id="tasksrch"><i aria-hidden="true" class="fa fa-search"></i></button>
+          <input type="text" [(ngModel)]="searchTask" (keyup.enter)="searchStudentTasks($event)" (click)="searchTextValidation($event)" (ngModelChange)="searchTextValidation()" placeholder="Search a task: Type task title">
+          <button id="tasksrch" (click)="searchStudentTasks($event)"><i aria-hidden="true" class="fa fa-search"></i></button>
         </div>
-        <div class="search-task">
-          <div class="user-char">Enter a minimum of 3 characters</div>
-          <!-- <div id="task_srch_data">
-                    <ul class="content nav mCustomScrollbar _mCS_6 mCS_no_scrollbar" style="position: relative; overflow: visible;"><div id="mCSB_6" class="mCustomScrollBox mCS-3d mCSB_vertical mCSB_outside" style="max-height: none;" tabindex="0"><div id="mCSB_6_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
-                    </div></div><div id="mCSB_6_scrollbar_vertical" class="mCSB_scrollTools mCSB_6_scrollbar mCS-3d mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_6_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 70px; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="line-height: 70px;"></div></div><div class="mCSB_draggerRail"></div></div></div></ul>
-					</div> -->
-          <!-- <input type="hidden" id="task_hover_div" value="-1"> -->
-          <div class="clear-search"><b>Clear Search</b></div>
+        <div class="search-task" id="searchTask">
+          <div class="user-char" id="userChar"></div>
+          <div *ngFor="let sd of searchResultData">
+            <p>{{sd.TaskType}}</p><span>{{sd.Title}}</span>
+            <p>{{sd.SubjectName}}</p>
+          </div>
+          <div class="clear-search" (click)="clearSearch()"><b>Clear Search</b></div>
         </div>
       </div>
       <div class="create-task">
@@ -43,42 +42,29 @@
       <a>Next <i class="fa fa-angle-right" aria-hidden="true"></i></a>
     </div>
   </div>
-  <div class="task-table" *ngIf="taskList.length != 0">
+  <div class="task-table" *ngIf="taskList.length != 0 && taskList[0].TotalTaskCount != 0">
     <div *ngFor="let t of taskList[0].DayTasks;let in = index">
-      <div class="table-task-hd">
+      <div class="table-task-hd" *ngIf="t.Tasks.length != 0">
         {{t.Date | dateFormat }}
       </div>
       <table>
         <tbody>
-          <tr>
+          <tr *ngFor="let task of t.Tasks">
             <td width="150">
-              <p>Task type</p><span>School Planner</span></td>
-            <td class="sub">Subject</td>
+              <p>{{task.TaskType}}</p><span>{{task.Title}}</span></td>
+            <td class="sub">{{task.SubjectName}}</td>
             <td class="status">
               <div class="status-txt">New</div>
             </td>
           </tr>
-          <tr>
-            <td>
-              <p>Task type</p><span>School Planner</span></td>
-            <td class="sub">Subject</td>
-            <td class="status">
-              <div class="status-txt">Completed</div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Task type</p><span>School Planner</span></td>
-            <td class="sub">Subject</td>
-            <td class="status">
-              <div class="status-txt">Cancelled</div>
-            </td>
-          </tr>
-
         </tbody>
       </table>
       <div class="clear"></div>
     </div>
+  </div>
+  <div *ngIf="taskList[0] != undefined && taskList[0].TotalTaskCount == 0">
+    <p>Tasks Due this week.</p>
+    <p>Click on Create Task to set a task</p>
   </div>
   <div class="ft-progress">
     <p class="f-left">Weekly Progress</p>
@@ -86,6 +72,189 @@
     <div class="clear"></div>
     <div class="bar-holder">
       <div class="bar-fill" style="height:10px;width:25%"></div>
+    </div>
+  </div>
+
+  <!-- add task modal -->
+  <div class="modal modal-add-task" id="add-task">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">×</span>
+        <p>Add Task</p>
+      </div>
+      <div class="modal-body">
+        <div class="add-task-form">
+          <input type="" name="" class="custom-input" placeholder="Title">
+          <textarea class="custom-input" placeholder="Description" maxlength="2000"></textarea>
+          <div class="date-select">
+            <label>Due Date</label>
+            <div class="select-cell">
+              <div class="date-cell date">
+                2 <i class="fa fa-caret-down" aria-hidden="true"></i>
+                <div class="dropdown-date dd">
+                  <ul>
+                    <li>dd</li>
+                    <li>1</li>
+                    <li class="active-week">2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                    <li>11</li>
+                    <li>12</li>
+                    <li>13</li>
+                    <li>14</li>
+                    <li>15</li>
+                    <li>16</li>
+                    <li>17</li>
+                    <li>18</li>
+                    <li>19</li>
+                    <li>20</li>
+                    <li>21</li>
+                    <li>22</li>
+                    <li>23</li>
+                    <li>24</li>
+                    <li>25</li>
+                    <li>26</li>
+                    <li>27</li>
+                    <li>28</li>
+                    <li>29</li>
+                    <li>30</li>
+                    <li>31</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="date-cell month">
+                Aug <i class="fa fa-caret-down" aria-hidden="true"></i>
+                <div class="dropdown-date mm">
+                  <ul>
+                    <li>mm</li>
+                    <li>Jan</li>
+                    <li>Feb</li>
+                    <li>Mar</li>
+                    <li>Apr</li>
+                    <li>May</li>
+                    <li>Jun</li>
+                    <li>Jul</li>
+                    <li class="active-week">Aug</li>
+                    <li>Sep</li>
+                    <li>Oct</li>
+                    <li>Nov</li>
+                    <li>Dec</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="date-cell year">
+                2017 <i class="fa fa-caret-down" aria-hidden="true"></i>
+                <div class="dropdown-date yy">
+                  <ul>
+                    <li>yyyy</li>
+                    <li>2016</li>
+                    <li class="active-week">2017</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <button class="round-btn" align="center">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- task description modal -->
+  <div class="modal modal-add-task modal-task-description" id="task-description">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">x</span>
+        <p>Task Description</p>
+      </div>
+      <div class="modal-body">
+        <div class="description-area">
+          <div class="description-hd">
+            <div class="f-left">
+              <p>Personal Task</p>
+              <span>School Planner</span>
+              <div class="subject">Subject Name</div>
+              <div class="teacher-name">Teacher Name: Mrs D Darbey</div>
+            </div>
+            <div class="f-right task-status">
+              <p>Completed?</p>
+              <button class="round-btn success-btn">Yes</button> <button class="round-btn btn-border">No</button>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="date-display">
+            <div class="set-date f-left">
+              <input type="text" value="11 Jul 2017" disabled="" class="custom-input">
+              <div class="date-label">
+                <i class="fa fa-calendar" aria-hidden="true"></i> Set Date
+              </div>
+
+            </div>
+            <div class="set-date f-right">
+              <div class="date-label">
+                <i class="fa fa-calendar" aria-hidden="true"></i> Due Date
+              </div>
+              <input type="text" value="18 Jul 2017" disabled="" class="custom-input">
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="description-txt">
+            <p>Description</p>
+            <textarea class="custom-input" disabled=""></textarea>
+          </div>
+          <div class="file-upload">
+            <div class="file-name">Attachment</div>
+            <span><img src="../assets/img/attach_pic.png" alt=""></span>
+            <div class="clear"></div>
+          </div>
+          <div class="attached-files">
+            <div class="f-left file-left">
+              <div class="f-left">
+                <img src="../assets/img/attach_pic.png" alt="">
+              </div>
+              <div class="f-right file-desc">
+                <p>Filename.jpg</p>
+                <a>Download</a> <span>(2 MB)</span>
+              </div>
+            </div>
+            <div class="f-right file-right">
+              <div class="f-left">
+                <img src="../assets/img/attach_pic.png" alt="">
+              </div>
+              <div class="f-right file-desc">
+                <p>Filename.jpg</p>
+                <a>Download</a> <span>(2 MB)</span>
+              </div>
+            </div>
+            <div class="clear"></div>
+            <div class="f-left file-left">
+              <div class="f-left">
+                <img src="../assets/img/attach_pic.png" alt="">
+              </div>
+              <div class="f-right file-desc">
+                <p>Filename.jpg</p>
+                <a>Download</a> <span>(2 MB)</span>
+              </div>
+            </div>
+            <div class="f-right file-right">
+              <div class="f-left">
+                <img src="../assets/img/attach_pic.png" alt="">
+              </div>
+              <div class="f-right file-desc">
+                <p>Filename.jpg</p>
+                <a>Download</a> <span>(2 MB)</span>
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

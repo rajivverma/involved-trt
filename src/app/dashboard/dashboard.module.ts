@@ -12,6 +12,8 @@ import { PerformanceComponent } from './performance/performance.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
+import { DateFormatPipe } from '../filter/dateformat.filter';
+
 
 declare var require: any;
 export function highchartsFactory() {
@@ -30,7 +32,14 @@ export function highchartsFactory() {
     CommonModule,
   ],
   exports: [],
-  declarations: [DashboardComponent, PerformanceComponent, TasksComponent, TimetableComponent, AnnouncementsComponent],
+  declarations: [
+    DashboardComponent,
+    DateFormatPipe,
+    PerformanceComponent,
+    TasksComponent,
+    TimetableComponent,
+    AnnouncementsComponent
+  ],
   providers: [{
     provide: HighchartsStatic,
     useFactory: highchartsFactory
