@@ -17,7 +17,7 @@ export class TasksComponent implements OnInit {
   public studentId = localStorage.getItem('userid');
   public weekList: any = [];
   public taskList: any = [];
-  public searchTask: string = '';
+  public searchTask = '';
   public firstday = new Date();
   public lastday = new Date();
   public nextWeekCount = 0;
@@ -98,7 +98,7 @@ export class TasksComponent implements OnInit {
         this.lastday.setDate(this.lastday.getDate() - (7 * (3 - index)));
         const timeDiff = Math.abs(this.lastday.getTime() - this.firstday.getTime());
         const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-        if (diffDays != 44) {
+        if (diffDays !== 44) {
           this.lastday = new Date(this.firstday);
           this.lastday.setDate(this.lastday.getDate() + 44);
         }
@@ -107,10 +107,10 @@ export class TasksComponent implements OnInit {
           this.convertDate(this.firstday),
           this.convertDate(this.lastday)
         ).subscribe(
-          (data) => {
-            this.weekList = data;
+          (dataC) => {
+            this.weekList = dataC;
             this.activeWeekIndex = 3;
-            this.displayDropDownDate(data);
+            this.displayDropDownDate(dataC);
           },
           (err) => {
             console.log(err);
@@ -124,10 +124,8 @@ export class TasksComponent implements OnInit {
     e.stopPropagation();
     if (this.searchTask === undefined) {
       console.log(this.searchTask);
-    }
-    else if (this.searchTask.length < 3) {
-    }
-    else {
+    } else if (this.searchTask.length < 3) {
+    } else {
       this.taskService.searchStudentTasks(
         this.studentId,
         this.searchTask
@@ -136,11 +134,9 @@ export class TasksComponent implements OnInit {
           const msg = document.getElementById('userChar');
           if (data.Data === null) {
             msg.innerHTML = 'No task found Please refine your search';
-          }
-          else if (data.Data.length === 0) {
+          } else if (data.Data.length === 0) {
             msg.innerHTML = 'No task found Please refine your search';
-          }
-          else {
+          } else {
             msg.innerHTML = '';
             msg.style.display = 'none';
             this.searchResultData = data.Data;
@@ -169,10 +165,10 @@ export class TasksComponent implements OnInit {
           this.convertDate(this.firstday),
           this.convertDate(this.lastday)
         ).subscribe(
-          (data) => {
-            this.weekList = data;
+          (dataC) => {
+            this.weekList = dataC;
             this.activeWeekIndex = 3;
-            this.displayDropDownDate(data);
+            this.displayDropDownDate(dataC);
           },
           (err) => {
             console.log(err);
@@ -199,10 +195,10 @@ export class TasksComponent implements OnInit {
           this.convertDate(this.firstday),
           this.convertDate(this.lastday)
         ).subscribe(
-          (data) => {
-            this.weekList = data;
+          (dataC) => {
+            this.weekList = dataC;
             this.activeWeekIndex = 3;
-            this.displayDropDownDate(data);
+            this.displayDropDownDate(dataC);
           },
           (err) => {
             console.log(err);
@@ -251,7 +247,7 @@ export class TasksComponent implements OnInit {
   openWeekList(e) {
     e.stopPropagation();
     const d = document.getElementById('dropdown-week');
-    if (d.style.display != 'block') {
+    if (d.style.display !== 'block') {
       d.style.display = 'block';
     } else {
       d.style.display = '';
@@ -262,7 +258,7 @@ export class TasksComponent implements OnInit {
     const d = document.getElementById('searchTask');
     msg.style.display = 'block';
     this.searchResultData = [];
-    if (e != undefined) {
+    if (e !== undefined) {
       e.stopPropagation();
       d.style.display = 'block';
       if (this.searchTask.length < 4) {
@@ -270,13 +266,11 @@ export class TasksComponent implements OnInit {
       }
       return;
     }
-    if (this.searchTask != undefined) {
+    if (this.searchTask !== undefined) {
       if (this.searchTask.length > 3) {
         msg.innerHTML = 'Press Enter to search';
-      }
-      else if (msg.innerHTML === 'Enter a minimum of 3 characters') {
-      }
-      else {
+      } else if (msg.innerHTML === 'Enter a minimum of 3 characters') {
+      } else {
         msg.innerHTML = 'Enter a minimum of 3 characters';
       }
     }
