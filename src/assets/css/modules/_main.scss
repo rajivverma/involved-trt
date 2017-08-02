@@ -979,6 +979,18 @@ canvas {
     border-radius: 3px;
     position: relative;
 }
+.search-after{
+	padding: 15px 12px;
+}
+.search-after p{
+	margin: 0;
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+.s-name{
+	color: $very-light-font;
+	margin-right: 35px !important;
+}
 .search-area input{
     padding: 3px 12px;
     margin: 7px 0;
@@ -1002,6 +1014,7 @@ canvas {
 .create-task{
 	margin: 11px 0 0 12px;
 	float: left;
+	cursor: pointer;
 }
 .create-task a{
 	float: left;
@@ -1032,14 +1045,17 @@ canvas {
 }
 .next{
 	float: right;
+	cursor: pointer;
 }
 .prev{
 	float: left;
 	z-index: 999;
+	cursor: pointer;
 }
 .week-dp{
 	display: inline-block;
 	position: relative;
+	cursor: pointer;
 }
 .week-dp i{
     font-size: 15px;
