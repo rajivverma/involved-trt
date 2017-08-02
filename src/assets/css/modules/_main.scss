@@ -13,6 +13,31 @@ h1, h2, h3, h4, h5, h6{margin: 0;}
 li {list-style: none;}
 button:focus, a:focus{outline: none;}
 :focus{outline: none !important;}
+::-webkit-input-placeholder {
+    font-family: $roboto;
+}
+:-moz-placeholder {
+    font-family: $roboto;
+}
+::-moz-placeholder {
+    font-family: $roboto;
+}
+:-ms-input-placeholder {
+    font-family: $roboto;
+}
+
+::-webkit-textarea-placeholder {
+    font-family: $roboto;
+}
+:-moz-placeholder {
+    font-family: $roboto;
+}
+::-moz-placeholder {
+    font-family: $roboto;
+}
+:-ms-textarea-placeholder {
+    font-family: $roboto;
+}
 .f-left{
 	float: left;
 }
@@ -1140,9 +1165,12 @@ canvas {
     padding: 5px;
     font-weight: 500;
 }
-.active-week a{
+.active-week a, .active-week{
 	background-color: $primary-color;
 	color: $white !important;
+}
+.active-week:hover{
+	background-color: $primary-color !important;
 }
 .dropdown-week::-webkit-scrollbar-track
 {
@@ -1158,4 +1186,183 @@ canvas {
 .dropdown-week::-webkit-scrollbar-thumb
 {
 	background-color: $primary-color;
+}
+.modal-add-task .modal-header{
+	text-align: left;
+}
+.modal-add-task .modal-content{
+	width: 550px;
+}
+.add-task-form, .description-area{
+	padding: 5px 20px 20px;
+	text-align: center;
+}
+.add-task-form textarea, .description-txt textarea{
+	resize: none;
+	height: 175px;
+	overflow: auto;
+}
+.select-cell{
+	margin: 20px 0;
+}
+.date-select label{
+	float: left;
+    font-size: 14px;
+    color: #434242;
+    font-weight: 400;
+    margin: 15px 25px 0 0;
+}
+.date-cell{
+    font-size: 14px;
+    color: $black;
+    padding: 12px 8px;
+    border-bottom: 1px solid #dedede;
+    display: inline-block;
+    width: 109px;
+    margin-left: 15px;
+    position: relative;
+    text-align: left;
+}
+.date-cell i{
+	font-size: 18px;
+	position: absolute;
+	right: 10px;
+	color: #a9a8a8;
+}
+.add-task-form button{
+	width: 50%;
+}
+.dropdown-date{
+	position: absolute;
+	bottom: 100%;
+	top: inherit;
+	width: 109px;
+	max-height: 200px;
+	border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    background-color: $white;
+    overflow: auto;
+    padding: 10px 0;
+}
+.dropdown-date li{
+	padding: 3px 20px;
+	line-height: 1.42857143;
+    color: #333;
+    cursor: pointer;
+}
+.dropdown-date li:first-child{
+	cursor: not-allowed;
+}
+.dropdown-date li:first-child:hover{
+	background-color: $white;
+}
+.dropdown-date li:hover, .dropdown-week li:hover{
+	background-color: $list-hover;
+	transition: all ease 0.5s;
+}
+.load-more:hover{
+	background-color: grey !important;
+}
+.dd, .mm, .yy{display: none;}
+.success-btn{
+	background-color: $success;
+	border: 1px solid $success;
+}
+.task-status .btn-border{
+	border: 1px solid $black;
+}
+.task-status button:hover{
+	background-color: $success;
+	border: 1px solid $success;
+}
+.description-hd .task-status p{
+	font-size: 18px !important;
+	color: $light-font !important;
+	text-align: center;
+}
+.description-hd p {
+    font-size: 15px;
+    color: $warning;
+    font-weight: 400;
+}
+.description-hd span {
+    font-size: 18px;
+    color: #000;
+    font-weight: 300;
+}
+.description-hd{
+	text-align: left;
+}
+.subject{
+	font-size: 16px;
+	margin: 10px 0;
+	font-weight: 500;
+}
+input:disabled, textarea:disabled{
+	background-color: transparent;
+}
+.date-label{
+	pointer-events: none;
+    color: $primary-color;
+    font-size: 14px;
+    left: 12px;
+    position: absolute;
+    top: 12px;
+}
+.set-date input{
+	padding: 12px 18px 12px 95px;
+    font-size: 14px;
+    width: 45%;
+}
+.set-date{
+	position: relative;
+	width: 45%;
+}
+.date-display{
+	margin: 20px 0;
+}
+.description-txt{
+	text-align: left;
+}
+.file-upload{
+	padding: 15px 12px;
+	position: relative;
+	border-bottom: 1px solid $input;
+}
+.file-name {
+    float: left;
+    font-size: 16px;
+    color: $primary-color;
+}
+.file-upload span{float: right;}
+.attached-files{
+	text-align: left;
+	margin: 15px 0 0;
+}
+.attached-files p{
+	margin: 0;
+	font-weight: 500;
+	font-size: 16px;
+	margin-bottom: 2px;
+}
+.attached-files a{
+	text-decoration: underline;
+	font-weight: 400;
+	font-size: 14px;
+	cursor: pointer;
+}
+.attached-files span{
+	text-decoration: none !important;
+	font-size: 14px;
+}
+.file-desc{
+	margin-left: 10px;
+}
+.file-left, .file-right{
+	margin-bottom: 20px;
+}
+.file-right{
+	margin-right: 50px;
 }
