@@ -811,7 +811,7 @@ canvas {
 .modal-table .subject-name {
   top: 15px; }
 
-#logout {
+#logout, .close-modal {
   display: none;
   position: fixed;
   z-index: -1;
@@ -821,10 +821,21 @@ canvas {
   height: 100%;
   transition: all 0.5s ease; }
 
-#logout.show-logout {
+#logout.show-logout, .close-modal.show-logout {
   z-index: 9999;
   opacity: 1;
   background-color: rgba(255, 255, 255, 0.5); }
+
+.close-modal .modal-dialog {
+  padding: 30px 70px;
+  width: auto;
+  border: 1px solid #d3d3d3;
+  border-radius: 0; }
+
+.modal-dialog span {
+  color: #2671be;
+  font-weight: 500;
+  font-size: 16px; }
 
 .modal-dialog {
   padding: 10px 25px 39px;
@@ -1399,5 +1410,21 @@ input:disabled, textarea:disabled {
 
 .file-right {
   margin-right: 50px; }
+
+.no-task {
+  padding: 150px 0 0 10%; }
+
+.no-task p {
+  margin: 0;
+  font-size: 14px;
+  color: #333; }
+
+.no-task p a {
+  color: #2671be;
+  cursor: pointer; }
+
+.no-task p a:hover {
+  color: #20568d;
+  transition: all ease 0.5s; }
 
 /*# sourceMappingURL=output.css.map */
