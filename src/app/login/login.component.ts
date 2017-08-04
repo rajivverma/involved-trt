@@ -32,11 +32,10 @@ export class LoginComponent implements OnInit {
     this.particalStyle = this.particalService.getParticalStyle();
     this.particalParams = this.particalService.getParticalParams();
     this.user.username = localStorage.getItem('username');
-    if (localStorage.token) {
+    if (this.mainService.getCookie('token')) {
       this.router.navigate(['dashboard']);
     }
   }
-
   get_browser = function () {
     const ua = navigator.userAgent;
     let tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
@@ -83,6 +82,10 @@ export class LoginComponent implements OnInit {
       }
       return;
     }
+    if (this.user.username.includes(' ')) {
+      document.getElementById('login-error').innerHTML = 'Invalid Username';
+      return;
+    }
     if (this.user.password === undefined || this.user.password === '') {
       const password = (<HTMLInputElement>document.getElementById('password'));
       if (!password.className.includes('p-error')) {
@@ -91,6 +94,7 @@ export class LoginComponent implements OnInit {
       }
       return;
     }
+    this.user.username = this.user.username.trim();
     const devicetoken = this.getDeviceToken();
     const platform = this.getPlateform();
     const user = {
@@ -104,23 +108,22 @@ export class LoginComponent implements OnInit {
     this.loginService.login(user).subscribe(
       (data) => {
         if (data.isactivated === 'False') {
-          document.getElementById('login-error').innerHTML = 'Authorization has been denied for this request.';
+          document.getElementById('login-error').innerHTML = 'Locked.Parent has not unlocked this account.';
           return;
         }
         const val = (<HTMLInputElement>document.getElementById('test2')).checked;
         if (val) {
           localStorage.setItem('username', this.user.username);
         }
-        localStorage.setItem('token', 'Bearer ' + data.access_token);
-        localStorage.setItem('userid', data.userid);
+        document.cookie = 'userid' + "=" + data.userid;
+        document.cookie = 'token' + "=" + data.access_token;
         this.router.navigate(['dashboard']);
       },
       (err) => {
         if (err.status === 400) {
-          console.log(err);
-          document.getElementById('login-error').innerHTML = JSON.parse(err._body).error;
-        } else {
-          this.mainService.show('server-failed');
+          document.getElementById('login-error').innerHTML = 'Invalid username or password';
+        } else if (err.status === 0) {
+          document.getElementById('login-error').innerHTML = 'Server failed to respond!';
         }
       });
   }

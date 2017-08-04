@@ -13,6 +13,7 @@ import { TasksComponent } from './tasks/tasks.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { DateFormatPipe } from '../filter/dateformat.filter';
+import { SafeHtmlPipe } from '../filter/safeHTML.filter';
 
 
 declare var require: any;
@@ -35,6 +36,7 @@ export function highchartsFactory() {
   declarations: [
     DashboardComponent,
     DateFormatPipe,
+    SafeHtmlPipe,
     PerformanceComponent,
     TasksComponent,
     TimetableComponent,

@@ -19,11 +19,15 @@ export class AuthGuard implements CanLoad {
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     return this.canActivate(route, state);
   }
-
+  getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+  }
   checkLogin(url: string): boolean {
     if (this.authService.isLoggedIn) { return true; }
     this.authService.redirectUrl = url;
-    const sessionId = localStorage.getItem('token');
+    const sessionId = 'Bearer ' + this.getCookie('token');
     if (sessionId == null) {
       this.router.navigate(['login']);
       return false;

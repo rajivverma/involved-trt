@@ -4,13 +4,14 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
 import { URL } from '../../app.service';
+import { MainService } from '../../commonService/main.service';
 
 @Injectable()
 export class PerformanceService {
-  constructor(private http: Http) {
+  constructor(private http: Http, private mainService: MainService) {
   }
   getToken() {
-    const headers = new Headers({ 'Authorization': localStorage.getItem('token') });
+    const headers = new Headers({ 'Authorization': 'Bearer ' + this.mainService.getCookie('token') });
     const options = new RequestOptions({ headers: headers });
     return options;
   }

@@ -6,10 +6,12 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './auth/auth-gaurd.service';
 import { AuthService } from './auth/auth.service';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

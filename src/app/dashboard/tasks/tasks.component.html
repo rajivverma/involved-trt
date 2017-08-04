@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="create-task">
-        <a>Create Task</a>
+        <a (click)="createTask()">Create Task</a>
       </div>
     </div>
     <div class="clear"></div>
@@ -169,20 +169,20 @@
       </div>
     </div>
     <div class="close-modal show-logout" id="confirm-close">
-    <div class="modal-dialog">
-      <span>Any updated task data will be lost</span>
-      <p>Are you sure you want to leave this screen?</p>
-      <div class="modal-dialog-footer">
-        <button class="round-btn" (click)="logout()">Yes</button>
-        <button class="round-btn btn-border" (click)="cancelLogout($event)">No</button>
+      <div class="modal-dialog">
+        <span>Any updated task data will be lost</span>
+        <p>Are you sure you want to leave this screen?</p>
+        <div class="modal-dialog-footer">
+          <button class="round-btn" (click)="logout()">Yes</button>
+          <button class="round-btn btn-border" (click)="cancelLogout($event)">No</button>
+        </div>
       </div>
     </div>
-  </div>
   </div>
 
   <!-- task description modal -->
   <div class="modal modal-add-task modal-task-description" id="task-description">
-    <div class="modal-content" (click)="preventDefault($event)">
+    <div class="modal-content" (click)="preventDefault($event)" *ngIf="taskDescriptionDetails != undefined">
       <div class="modal-header">
         <span class="close" (click)="closeTaskDescription()">×</span>
         <p>Task Description</p>
@@ -191,20 +191,21 @@
         <div class="description-area">
           <div class="description-hd">
             <div class="f-left">
-              <p>Personal Task</p>
-              <span>School Planner</span>
-              <div class="subject">Subject Name</div>
-              <div class="teacher-name">Teacher Name: Mrs D Darbey</div>
+              <p>{{taskDescriptionDetails.TaskType}}</p>
+              <span>{{taskDescriptionDetails.Title}}</span>
+              <div class="subject">{{taskDescriptionDetails.SubjectName}}</div>
+              <div class="teacher-name">Teacher Name: {{taskDescriptionDetails.TeacherName}}</div>
             </div>
             <div class="f-right task-status">
               <p>Completed?</p>
-              <button class="round-btn success-btn">Yes</button> <button class="round-btn btn-border">No</button>
+              <button class="round-btn" (click)="setTaskStatus()" [ngClass]="{' success-btn': taskDescriptionDetails.IsCompleted, 'btn-border' : !taskDescriptionDetails.IsCompleted}">Yes</button>
+              <button class="round-btn" (click)="setTaskStatus()" [ngClass]="{' success-btn': !taskDescriptionDetails.IsCompleted, 'btn-border' : taskDescriptionDetails.IsCompleted}">No</button>
             </div>
             <div class="clear"></div>
           </div>
           <div class="date-display">
             <div class="set-date f-left">
-              <input type="text" value="11 Jul 2017" disabled="" class="custom-input">
+              <input type="text" value="{{taskDescriptionDetails.CreatedDate | date : 'd MMM y'}}" disabled="" class="custom-input">
               <div class="date-label">
                 <i class="fa fa-calendar" aria-hidden="true"></i> Set Date
               </div>
@@ -214,65 +215,44 @@
               <div class="date-label">
                 <i class="fa fa-calendar" aria-hidden="true"></i> Due Date
               </div>
-              <input type="text" value="18 Jul 2017" disabled="" class="custom-input">
+              <input type="text" value="{{taskDescriptionDetails.DueDate | date : 'd MMM y'}}" disabled="" class="custom-input">
             </div>
             <div class="clear"></div>
           </div>
           <div class="description-txt">
             <p>Description</p>
-            <textarea class="custom-input" disabled=""></textarea>
+            <div [innerHTML]="taskDescriptionDetails.Description | safeHtml"></div>
           </div>
           <div class="file-upload">
             <div class="file-name">Attachment</div>
             <span><img src="../assets/img/attach_pic.png" alt=""></span>
             <div class="clear"></div>
           </div>
-          <div class="attached-files">
-            <div class="f-left file-left">
+          <div class="attached-files" *ngIf="taskDescriptionDetails.Attachments.length != 0">
+            <div class="f-left file-left" *ngFor="let a of taskDescriptionDetails.Attachments">
               <div class="f-left">
                 <img src="../assets/img/attach_pic.png" alt="">
               </div>
               <div class="f-right file-desc">
-                <p>Filename.jpg</p>
-                <a>Download</a> <span>(2 MB)</span>
-              </div>
-            </div>
-            <div class="f-right file-right">
-              <div class="f-left">
-                <img src="../assets/img/attach_pic.png" alt="">
-              </div>
-              <div class="f-right file-desc">
-                <p>Filename.jpg</p>
-                <a>Download</a> <span>(2 MB)</span>
-              </div>
-            </div>
-            <div class="clear"></div>
-            <div class="f-left file-left">
-              <div class="f-left">
-                <img src="../assets/img/attach_pic.png" alt="">
-              </div>
-              <div class="f-right file-desc">
-                <p>Filename.jpg</p>
-                <a>Download</a> <span>(2 MB)</span>
-              </div>
-            </div>
-            <div class="f-right file-right">
-              <div class="f-left">
-                <img src="../assets/img/attach_pic.png" alt="">
-              </div>
-              <div class="f-right file-desc">
-                <p>Filename.jpg</p>
-                <a>Download</a> <span>(2 MB)</span>
+                <p>{{a.Name}}</p>
+                <a (click)="downloadAttachment(a.Id,a.Name)">Download</a> <span>(2 MB)</span>
               </div>
             </div>
             <div class="clear"></div>
           </div>
-          <button class="round-btn" align="center">Request Teacher Support</button>
+          <div class="attached-files" *ngIf="taskDescriptionDetails.Attachments.length == 0">
+            No attachments added.
+            <div class="clear"></div>
+          </div>
+          <button class="round-btn" align="center" [ngStyle]="{'background-color': taskDescriptionDetails.IsSupportRequested ? 'red':'',
+            'border':taskDescriptionDetails.IsSupportRequested ? 'none':'',
+            'cursor': taskDescriptionDetails.IsSupportRequested ? 'not-allowed':''}" [disabled]="taskDescriptionDetails.IsSupportRequested"
+            (click)="requestTeacherSupport(taskDescriptionDetails.Id)">Request Teacher Support</button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- confirm close modal -->
-  
+
 </div>

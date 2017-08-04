@@ -9,7 +9,9 @@ export class PiChart {
     xAxixData: any,
     GradeResults: any,
     TargetGrades: any,
-    color: any) {
+    color: any,
+    Column2: any,
+    Column3: any) {
     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
       'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
     ];
@@ -39,7 +41,7 @@ export class PiChart {
         endOnTick: true,
         min: 0,
         max: 5,
-        title: { text: 'Grade' },
+        title: { text: Column3.Header },
         labels: {
           formatter: function () {
             if (GradeSet[this.value] !== undefined) {
@@ -77,7 +79,7 @@ export class PiChart {
       },
       series: [
         {
-          name: 'Target',
+          name: Column2.Header,
           color: '#48CAE5',
           data: (function () {
             const data1 = [];
@@ -99,7 +101,7 @@ export class PiChart {
           }
         },
         {
-          name: 'Grade',
+          name: Column3.Header,
           type: 'scatter',
           color: color,
           data: (function () {

@@ -27,6 +27,8 @@ export class PerformanceComponent implements OnInit {
   public monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
   ];
+  public PerformanceGradeUrl;
+  public PerformanceGraph;
   constructor(private router: Router,
     private performanceService: PerformanceService,
     private dashboardService: DashboardService,
@@ -42,6 +44,8 @@ export class PerformanceComponent implements OnInit {
   ngOnInit() {
     const id = localStorage.getItem('userid');
     this.studentName = localStorage.getItem('fullname');
+    this.PerformanceGradeUrl = localStorage.getItem('PerformanceGradeUrl');
+    this.PerformanceGraph = localStorage.getItem('PerformanceGraph');
     this.mainService.show('performance-loader');
     this.performanceService.getSubjectData(id).subscribe(
       (data) => {
@@ -85,8 +89,17 @@ export class PerformanceComponent implements OnInit {
       (err) => {
         // alert('something wrong');
       });
-    document.getElementById('performance-modal').addEventListener('click', function (e) {
-      e.stopPropagation();
+    document.getElementById('performance-modal')
+      .getElementsByClassName('modal-content')[0]
+      .addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+    document.getElementsByTagName('body')[0].addEventListener('click', function () {
+      const d = document.getElementById('performance-modal')
+        .getElementsByClassName('modal-contentl')[0];
+      if (d != null) {
+        d.className = d.className.replace('in', '');
+      }
     });
   }
   getColor(val) {
@@ -126,7 +139,9 @@ export class PerformanceComponent implements OnInit {
           this.subjectDetails.XaxisGrades,
           this.subjectDetails.GradeResults,
           this.subjectDetails.TargetGrades,
-          this.getColor(this.subjectDetails.subject.Performance.Column3.Trend)
+          this.getColor(this.subjectDetails.subject.Performance.Column3.Trend),
+          this.subjectDetails.subject.Performance.Column2,
+          this.subjectDetails.subject.Performance.Column3
         );
         const that = this;
         setTimeout(function () {

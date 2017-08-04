@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MainService } from '../../commonService/main.service';
 import { TaskService } from './tasks.service';
 import { DateFormatPipe } from '../../filter/dateformat.filter';
+import { SafeHtmlPipe } from '../../filter/safeHTML.filter';
+
+import 'rxjs/Rx';
 
 @Component({
   selector: 'app-tasks',
@@ -24,6 +27,7 @@ export class TasksComponent implements OnInit {
   public nextWeekCount = 0;
   public activeWeekIndex = 3;
   public searchResultData: any = [];
+  public taskDescriptionDetails: any;
   public monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
   ];
@@ -133,7 +137,7 @@ export class TasksComponent implements OnInit {
     e.stopPropagation();
     if (this.searchTask === undefined) {
       console.log(this.searchTask);
-    } else if (this.searchTask.length < 3) {
+    } else if (this.searchTask.length < 3 || this.searchTask.length > 10) {
     } else {
       this.taskService.searchStudentTasks(
         this.studentId,
@@ -142,8 +146,8 @@ export class TasksComponent implements OnInit {
         (data) => {
           const msg = document.getElementById('userChar');
           if (data.Data === null) {
-            msg.innerHTML = 'No task found Please refine your search';
-          } else if (data.Data.length === 0) {
+            msg.innerHTML = 'The search text should be make more specific as it matches more than 20 records';
+          } else if (data.Count === 0) {
             msg.innerHTML = 'No task found Please refine your search';
           } else {
             msg.innerHTML = '';
@@ -251,10 +255,10 @@ export class TasksComponent implements OnInit {
       (err) => {
         console.log(err);
       });
-
   }
   openWeekList(e) {
     e.stopPropagation();
+    document.getElementsByTagName('body')[0].click();
     const d = document.getElementById('dropdown-week');
     if (d.style.display !== 'block') {
       d.style.display = 'block';
@@ -268,6 +272,7 @@ export class TasksComponent implements OnInit {
     msg.style.display = 'block';
     if (e !== undefined) {
       e.stopPropagation();
+      document.getElementsByTagName('body')[0].click();
       if (this.searchResultData.length !== 0) {
         this.searchResultData = [];
         msg.innerHTML = 'Press Enter to search';
@@ -280,8 +285,11 @@ export class TasksComponent implements OnInit {
     }
     if (this.searchTask !== undefined) {
       this.searchResultData = [];
-      if (this.searchTask.length > 2) {
+      this.searchTask = this.searchTask.trim();
+      if (this.searchTask.length > 2 && this.searchTask.length < 11) {
         msg.innerHTML = 'Press Enter to search';
+      } else if (this.searchTask.length > 10) {
+        msg.innerHTML = 'You can enter a maximum of 10 characters';
       } else if (msg.innerHTML === 'Enter a minimum of 3 characters') {
       } else {
         msg.innerHTML = 'Enter a minimum of 3 characters';
@@ -294,10 +302,70 @@ export class TasksComponent implements OnInit {
     msg.innerHTML = 'Enter a minimum of 3 characters';
   }
   openTaskDescription(task, e) {
-    this.preventDefault(e);
+    e.stopPropagation();
+    document.getElementsByTagName('body')[0].click();
     this.taskDescription.style.display = 'block';
+    this.taskService.getTaskDetails(task.Id).subscribe(
+      (data) => {
+        this.taskDescriptionDetails = data;
+        console.log(data);
+        if (data.IsRead === false) {
+          this.taskService.markAsRead(data.Id).subscribe(
+            (dataC) => {
+            },
+            (err) => {
+              console.log(err);
+            });
+        }
+      },
+      (err) => {
+        console.log(err);
+      });
   }
   closeTaskDescription() {
     this.taskDescription.style.display = '';
+  }
+  downloadAttachment(id, filename) {
+    console.log(id);
+    this.taskService.downloadAttachment(id).subscribe(
+      (data) => {
+        console.log(data);
+        var file = new Blob([data['_body']], { type: "octet/stream" });
+        var fileURL = URL.createObjectURL(file);
+        var anchor = document.createElement("a");
+        anchor.download = filename;
+        anchor.href = fileURL;
+        anchor.id = 'download_myfile';
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
+      },
+      (err) => {
+        console.log(err);
+      });
+  }
+  requestTeacherSupport(id) {
+    this.taskService.requestTeacherSupport(id).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (err) => {
+        console.log(err);
+      });
+  }
+  setTaskStatus() {
+    const status = !this.taskDescriptionDetails.IsCompleted;
+    this.taskService.setTaskStatus(this.taskDescriptionDetails.Id, status).subscribe(
+      (data) => {
+        this.taskDescriptionDetails.IsCompleted = !this.taskDescriptionDetails.IsCompleted;
+        console.log(data);
+      },
+      (err) => {
+        console.log(err);
+      });
+  }
+  createTask() {
+    const ct = document.getElementById('add-task');
+    ct.style.display = 'block';
   }
 }

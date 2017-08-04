@@ -28,10 +28,15 @@ export class ForgotPasswordComponent implements OnInit {
       }
       return false;
     }
+    this.username = this.username.trim();
+    if (this.username.includes(' ')) {
+      document.getElementById('username-error').innerHTML = 'Invalid Username';
+      return;
+    }
     this.forgotPaswordService.submit(this.username).subscribe(
       (data) => {
         console.log(data);
-        this.router.navigate(['login']);
+        document.getElementById('username-error').innerHTML = 'A new temporary password has been sent to the registered email address of the parent/guardians.';
       },
       (err) => {
         const data = JSON.parse(err._body);
@@ -39,7 +44,7 @@ export class ForgotPasswordComponent implements OnInit {
         if (data.Message === 'ERROR_NOTFOUND_ACCOUNT') {
           msg = 'Username entered is not registered with InvolvEd.';
         } else if (data.Message === 'ERROR_INACTIVE_ACCOUNT') {
-          msg = 'Account is not active. Please email your query to support@involvedtech.co.uk.';
+          msg = 'Account has not been unlocked by parent/guardian.';
         } else if (data.Message === 'ERROR_INCOMPATIBLE_CLIENT') {
           msg = 'Please enter valid student login username to reset password.';
         } else if (data.Message === 'ERROR_INVALID_CLIENT') {

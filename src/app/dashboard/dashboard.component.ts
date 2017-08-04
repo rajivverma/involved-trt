@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
 
   public studentInfo: any = {};
   public counterData: any = {};
+  public cookieInterval;
   constructor(private dashboardService: DashboardService,
     private router: Router,
     private mainService: MainService,
@@ -23,6 +24,8 @@ export class DashboardComponent implements OnInit {
       (data) => {
         this.mainService.hide('dashboard-loader');
         this.studentInfo = data;
+        localStorage.setItem('PerformanceGradeUrl',data.PerformanceGradeUrl);
+        localStorage.setItem('PerformanceGraph',data.SupportedFeatures.PerformanceGraph);
         this.dashboardMainService.setStudentInfo(data);
         localStorage.setItem('userid', data.Id);
         localStorage.setItem('fullname', data.Firstname + ' ' + data.Lastname);
@@ -38,7 +41,7 @@ export class DashboardComponent implements OnInit {
           });
       },
       (err) => {
-        localStorage.clear();
+        this.clearCookies();
         this.router.navigate(['login']);
         console.log(err);
       });
@@ -48,6 +51,13 @@ export class DashboardComponent implements OnInit {
         d.className = d.className.replace('in', '');
       }
     });
+    const that = this;
+    this.cookieInterval = setInterval(function () {
+      const val = that.mainService.getCookie('token');
+      if (val === undefined || val === '') {
+        that.mainService.show('cookie-delete');
+      }
+    }, 1000);
   }
   logoutPopup() {
     document.getElementById('logout').style.display = 'block';
@@ -63,13 +73,25 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.logout().subscribe(
       (data) => {
         console.log(data);
-        localStorage.removeItem('token');
-        localStorage.removeItem('userid');
-        localStorage.removeItem('fullname');
+        this.clearCookies();
+        clearInterval(this.cookieInterval);
+        this.cookieInterval = undefined;
         this.router.navigate(['login']);
       },
       (err) => {
         console.log(err);
       });
+  }
+  goToLogin() {
+    this.clearCookies();
+    clearInterval(this.cookieInterval);
+    this.cookieInterval = undefined;
+    this.router.navigate(['login']);
+  }
+  clearCookies() {
+    document.cookie = 'token' + "=";
+    document.cookie = 'userid' + "=";
+    document.cookie = 'token' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = 'userid' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 }

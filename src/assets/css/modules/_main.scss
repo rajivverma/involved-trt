@@ -251,8 +251,11 @@ button:focus, a:focus{outline: none;}
 		color: $primary-color;
 		font-size: 19px;
 		font-weight: 400;
+    margin-bottom: 10px;
 	 }
-
+  .forgot-pwd .form-footer .lasttext{
+    margin-top: 10px;
+  }
 	.forgot-pwd .form-footer a {
 		color: $light-font;
 		cursor: pointer;
@@ -271,8 +274,12 @@ button:focus, a:focus{outline: none;}
 
 	.back span {
 		color: $clr-highlight !important;
+    transition: all 0.5s ease;
 		cursor: pointer;
 	 }
+   .back span:hover{
+		color: $primary-color !important;
+  }
 
 /*error*/
 .p-error::-webkit-input-placeholder {color: $danger;}
@@ -459,7 +466,7 @@ button:focus, a:focus{outline: none;}
  }
  .modal-body th, td{
  	font-size: 15px;
-	font-weight: 500;
+	font-weight: 400;
 	padding: 10px;
 	text-align: center;
 }
@@ -475,7 +482,12 @@ button:focus, a:focus{outline: none;}
 .lft-subject {
  	text-align: left !important;
  }
-
+.lft-subject i{
+  margin-left: 5px;
+}
+.lft-subject a{
+  color: white;
+}
 /*tr:nth-child(even){background-color: #f2f2f2}*/
 .dashboard-table th {
 	background-color: $primary-color;
@@ -489,7 +501,7 @@ button:focus, a:focus{outline: none;}
  }
 .dashboard-table td p{position: relative;}
 /*.performance tr:hover {background-color: #e7f0f9; transition: all ease 0.5s;}*/
-/*.modal-body tr:hover {background-color: #e7f0f9; transition: all ease 0.5s;}*/	
+/*.modal-body tr:hover {background-color: #e7f0f9; transition: all ease 0.5s;}*/
 .table-profile-pic {
   border-radius: 50%;
   display: inline-block;
@@ -700,7 +712,7 @@ button:focus, a:focus{outline: none;}
 	position: absolute;
 	left: 0;
 	right: 0;
-	top: 165px;
+	top: 105%;
 	text-align: center;
  }
 canvas {
@@ -849,7 +861,31 @@ canvas {
     font-size: 12px;
     line-height: 22px;
 }
-
+#cookie-delete{
+  position: absolute;
+  z-index: 9999;
+  height: 100%;
+  width: 100%;
+  background: rgba(255,255,255,0.5);
+  top: 0;
+  transition: all 0.5s ease;
+  display: none;
+}
+#cookie-delete .modal-dialog{
+  width: 430px;
+  padding: 15px 25px;
+  text-align: left;
+}
+#cookie-delete .modal-dialog p{
+  text-align: left;
+}
+#cookie-delete .modal-dialog-footer{
+  text-align: center
+}
+#cookie-delete h4{
+  color: #165391;
+  font-size: 18px;
+}
 #server-failed{
     position: absolute;
     z-index: 9999;
@@ -857,7 +893,31 @@ canvas {
     width: 100%;
     background: rgba(255,255,255,0.5);
     top: 0;
+    transition: all 0.5s ease;
     display: none;
+}
+#network-failed{
+    position: absolute;
+    z-index: 9999;
+    height: 100%;
+    width: 100%;
+    background: rgba(255,255,255,0.5);
+    top: 0;
+    transition: all 0.5s ease;
+    opacity:  0;
+    display: none;
+}
+#network-failed h4{
+  color: #93b8df;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+#network-failed .modal-dialog{
+  width: 280px;
+  padding: 15px 10px;
+}
+#network-failed .modal-dialog p{
+  margin-bottom: 30px;
 }
 #server-failed .round-btn{margin-right: 0;}
 #server-failed .modal-dialog{padding:25px;}
@@ -1054,7 +1114,7 @@ canvas {
 }
 .blue-fix-hd a:hover{
 	transition: all ease 0.5s;
-	color: $black; 
+	color: $black;
 }
 .next{
 	float: right;
@@ -1158,7 +1218,7 @@ canvas {
 	background-color: $white;
 }
 .ft-progress p{
-	margin-bottom: 5px;	
+	margin-bottom: 5px;
 	margin-top: 0;
 }
 .dropdown-week{

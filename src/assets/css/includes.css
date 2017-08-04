@@ -261,11 +261,7 @@ button:focus, a:focus {
 .forgot-pwd .form-footer h2 {
   color: #2671be;
   font-size: 19px;
-  font-weight: 400;
-  margin-bottom: 10px; }
-
-.forgot-pwd .form-footer .lasttext {
-  margin-top: 10px; }
+  font-weight: 400; }
 
 .forgot-pwd .form-footer a {
   color: #555;
@@ -283,11 +279,7 @@ button:focus, a:focus {
 
 .back span {
   color: #ff7800 !important;
-  transition: all 0.5s ease;
   cursor: pointer; }
-
-.back span:hover {
-  color: #2671be !important; }
 
 /*error*/
 .p-error::-webkit-input-placeholder {
@@ -476,7 +468,7 @@ button:focus, a:focus {
 
 .modal-body th, td {
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 500;
   padding: 10px;
   text-align: center; }
 
@@ -490,12 +482,6 @@ button:focus, a:focus {
 
 .lft-subject {
   text-align: left !important; }
-
-.lft-subject i {
-  margin-left: 5px; }
-
-.lft-subject a {
-  color: white; }
 
 /*tr:nth-child(even){background-color: #f2f2f2}*/
 .dashboard-table th {
@@ -743,7 +729,7 @@ button:focus, a:focus {
   position: absolute;
   left: 0;
   right: 0;
-  top: 105%;
+  top: 165px;
   text-align: center; }
 
 canvas {
@@ -882,31 +868,6 @@ canvas {
   font-size: 12px;
   line-height: 22px; }
 
-#cookie-delete {
-  position: absolute;
-  z-index: 9999;
-  height: 100%;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.5);
-  top: 0;
-  transition: all 0.5s ease;
-  display: none; }
-
-#cookie-delete .modal-dialog {
-  width: 430px;
-  padding: 15px 25px;
-  text-align: left; }
-
-#cookie-delete .modal-dialog p {
-  text-align: left; }
-
-#cookie-delete .modal-dialog-footer {
-  text-align: center; }
-
-#cookie-delete h4 {
-  color: #165391;
-  font-size: 18px; }
-
 #server-failed {
   position: absolute;
   z-index: 9999;
@@ -914,7 +875,6 @@ canvas {
   width: 100%;
   background: rgba(255, 255, 255, 0.5);
   top: 0;
-  transition: all 0.5s ease;
   display: none; }
 
 #network-failed {
@@ -924,21 +884,7 @@ canvas {
   width: 100%;
   background: rgba(255, 255, 255, 0.5);
   top: 0;
-  transition: all 0.5s ease;
-  opacity: 0;
   display: none; }
-
-#network-failed h4 {
-  color: #93b8df;
-  margin-bottom: 20px;
-  font-size: 18px; }
-
-#network-failed .modal-dialog {
-  width: 280px;
-  padding: 15px 10px; }
-
-#network-failed .modal-dialog p {
-  margin-bottom: 30px; }
 
 #server-failed .round-btn {
   margin-right: 0; }
@@ -1490,4 +1436,4 @@ input:disabled, textarea:disabled {
   color: #20568d;
   transition: all ease 0.5s; }
 
-/*# sourceMappingURL=output.css.map */
+/*# sourceMappingURL=includes.css.map */

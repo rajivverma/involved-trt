@@ -1,8 +1,14 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth-gaurd.service';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+
 
 const appRoutes: Routes = [
+  {
+    path: '',
+    loadChildren: 'app/login/login.module#LoginModule'
+  },
   {
     path: 'login',
     loadChildren: 'app/login/login.module#LoginModule'
@@ -17,8 +23,12 @@ const appRoutes: Routes = [
     canLoad: [AuthGuard]
   },
   {
+    path: 'pageNotFound',
+    component: PagenotfoundComponent
+  },
+  {
     path: '**',
-    redirectTo: 'login',
+    redirectTo: 'pageNotFound',
     pathMatch: 'full'
   }
 ];
