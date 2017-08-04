@@ -36,7 +36,8 @@ export class ForgotPasswordComponent implements OnInit {
     this.forgotPaswordService.submit(this.username).subscribe(
       (data) => {
         console.log(data);
-        document.getElementById('username-error').innerHTML = 'A new temporary password has been sent to the registered email address of the parent/guardians.';
+        document.getElementById('username-error').innerHTML = 'A new temporary password has' +
+         ' been sent to the registered email address of the parent/guardians.';
       },
       (err) => {
         const data = JSON.parse(err._body);

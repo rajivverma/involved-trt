@@ -24,8 +24,8 @@ export class DashboardComponent implements OnInit {
       (data) => {
         this.mainService.hide('dashboard-loader');
         this.studentInfo = data;
-        localStorage.setItem('PerformanceGradeUrl',data.PerformanceGradeUrl);
-        localStorage.setItem('PerformanceGraph',data.SupportedFeatures.PerformanceGraph);
+        localStorage.setItem('PerformanceGradeUrl', data.PerformanceGradeUrl);
+        localStorage.setItem('PerformanceGraph', data.SupportedFeatures.PerformanceGraph);
         this.dashboardMainService.setStudentInfo(data);
         localStorage.setItem('userid', data.Id);
         localStorage.setItem('fullname', data.Firstname + ' ' + data.Lastname);
@@ -89,8 +89,8 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['login']);
   }
   clearCookies() {
-    document.cookie = 'token' + "=";
-    document.cookie = 'userid' + "=";
+    document.cookie = 'token' + '=';
+    document.cookie = 'userid' + '=';
     document.cookie = 'token' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = 'userid' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }

@@ -115,8 +115,8 @@ export class LoginComponent implements OnInit {
         if (val) {
           localStorage.setItem('username', this.user.username);
         }
-        document.cookie = 'userid' + "=" + data.userid;
-        document.cookie = 'token' + "=" + data.access_token;
+        document.cookie = 'userid' + '=' + data.userid;
+        document.cookie = 'token' + '=' + data.access_token;
         this.router.navigate(['dashboard']);
       },
       (err) => {

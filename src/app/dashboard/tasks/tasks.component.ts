@@ -330,9 +330,9 @@ export class TasksComponent implements OnInit {
     this.taskService.downloadAttachment(id).subscribe(
       (data) => {
         console.log(data);
-        var file = new Blob([data['_body']], { type: "octet/stream" });
-        var fileURL = URL.createObjectURL(file);
-        var anchor = document.createElement("a");
+        const file = new Blob([data['_body']], { type: 'octet/stream' });
+        const fileURL = URL.createObjectURL(file);
+        const anchor = document.createElement('a');
         anchor.download = filename;
         anchor.href = fileURL;
         anchor.id = 'download_myfile';
