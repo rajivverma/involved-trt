@@ -179,6 +179,9 @@ button:focus, a:focus {
   font-weight: 400;
   padding: 3px 30px; }
 
+.modal-dialog-footer button:last-child {
+  margin-right: 0; }
+
 .round-btn {
   background: #2671be;
   border-radius: 30px;
@@ -374,7 +377,7 @@ button:focus, a:focus {
   background-color: #F5F5F5; }
 
 .fixed-header tbody::-webkit-scrollbar {
-  width: 6px;
+  width: 9px;
   background-color: #F5F5F5; }
 
 .fixed-header tbody::-webkit-scrollbar-thumb {
@@ -418,7 +421,7 @@ button:focus, a:focus {
 
 .profile p {
   font-size: 15px;
-  margin: 0; }
+  margin: 5px 0; }
 
 .nav {
   margin-top: 1px;
@@ -483,13 +486,19 @@ button:focus, a:focus {
 .fixed-header tbody {
   display: block;
   overflow: auto;
-  height: 615px; }
+  height: 615px;
+  position: relative;
+  top: -1px; }
 
 .lft {
   text-align: left; }
 
 .lft-subject {
   text-align: left !important; }
+
+.lft-subject span {
+  position: relative;
+  top: -4px; }
 
 .lft-subject i {
   margin-left: 5px; }
@@ -518,7 +527,8 @@ button:focus, a:focus {
   height: 47px;
   overflow: hidden;
   position: relative;
-  width: 47px; }
+  width: 47px;
+  left: -5px; }
 
 .table-profile-pic .teacher-image {
   opacity: 0;
@@ -534,7 +544,6 @@ button:focus, a:focus {
 
 .subject-name {
   display: inline-block;
-  left: 10px;
   position: relative;
   vertical-align: top;
   top: 5px;
@@ -548,7 +557,7 @@ button:focus, a:focus {
 
 .subject-name span {
   color: #7c7c7c;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   position: absolute;
   width: 100%; }
@@ -691,11 +700,12 @@ button:focus, a:focus {
 
 .rating-outer p {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   margin: 0;
   transform: translate(-50%, -50%);
-  width: 30px; }
+  width: 30px;
+  line-height: 13px; }
 
 .rating-outer .down {
   position: absolute;
@@ -873,14 +883,14 @@ canvas {
 
 .notification {
   display: inline-block;
-  height: 21px;
-  width: 21px;
+  height: 20px;
+  width: 20px;
   background-color: red;
   border-radius: 50%;
   text-align: center;
   color: #fff;
   font-size: 12px;
-  line-height: 22px; }
+  line-height: 20.5px; }
 
 #cookie-delete {
   position: absolute;
@@ -961,6 +971,9 @@ canvas {
   line-height: 36px;
   cursor: pointer; }
 
+.graph-icon:hover .dashboard-table tr {
+  background-color: #e7f0f9 !important; }
+
 .info {
   position: absolute;
   font-size: 20px;
@@ -983,7 +996,8 @@ canvas {
   left: 0px;
   margin-left: -128px;
   font-weight: 300;
-  font-size: 13px; }
+  font-size: 13px;
+  line-height: 19px; }
 
 .tooltip .tooltiptext::after {
   content: "";
@@ -1177,7 +1191,7 @@ canvas {
   background-color: #F5F5F5; }
 
 .task-table::-webkit-scrollbar {
-  width: 6px;
+  width: 9px;
   background-color: #F5F5F5; }
 
 .task-table::-webkit-scrollbar-thumb {
@@ -1285,7 +1299,7 @@ canvas {
   background-color: #F5F5F5; }
 
 .dropdown-week::-webkit-scrollbar {
-  width: 6px;
+  width: 9px;
   background-color: #F5F5F5; }
 
 .dropdown-week::-webkit-scrollbar-thumb {

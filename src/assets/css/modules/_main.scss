@@ -167,13 +167,15 @@ button:focus, a:focus{outline: none;}
 
 .remember-me {position: relative;}
 
-	.remember-me label {
-		color: #404040;
-		font-size: 12px;
-		font-weight: 400;
-		padding: 3px 30px;
-	 }
-
+.remember-me label {
+	color: #404040;
+	font-size: 12px;
+	font-weight: 400;
+	padding: 3px 30px;
+ }
+.modal-dialog-footer button:last-child{
+	margin-right: 0;
+}
 .round-btn {
 	background: $primary-color;
 	border-radius: 30px;
@@ -185,11 +187,11 @@ button:focus, a:focus{outline: none;}
 	border:2px solid $primary-color;
  }
 
-	.round-btn:hover {
-		background-color: $hover-btn;
-		transition: all ease .3s;
-		border:2px solid $hover-btn;
-	 }
+.round-btn:hover {
+	background-color: $hover-btn;
+	transition: all ease .3s;
+	border:2px solid $hover-btn;
+ }
 .header-controls{
 	position: relative;
 }
@@ -360,7 +362,7 @@ button:focus, a:focus{outline: none;}
 
 .fixed-header tbody::-webkit-scrollbar
 {
-	width: 6px;
+	width: 9px;
 	background-color: #F5F5F5;
 }
 
@@ -408,7 +410,7 @@ button:focus, a:focus{outline: none;}
 	margin: 18px 0 15px;
  }
 
-.profile p {font-size: 15px; margin: 0;}
+.profile p {font-size: 15px; margin: 5px 0; }
 
 .nav {
 	margin-top: 1px;
@@ -474,6 +476,8 @@ button:focus, a:focus{outline: none;}
     display: block;
     overflow: auto;
     height: 615px;
+    position: relative;
+    top: -1px;
 }
 
  .lft {
@@ -482,6 +486,7 @@ button:focus, a:focus{outline: none;}
 .lft-subject {
  	text-align: left !important;
  }
+ .lft-subject span{position: relative; top: -4px;}
 .lft-subject i{
   margin-left: 5px;
 }
@@ -509,6 +514,7 @@ button:focus, a:focus{outline: none;}
   overflow: hidden;
   position: relative;
   width: 47px;
+  left: -5px;
 }
 .table-profile-pic .teacher-image {
   opacity: 0;
@@ -524,7 +530,6 @@ button:focus, a:focus{outline: none;}
 }
 .subject-name {
 	display: inline-block;
-	left: 10px;
 	position: relative;
   vertical-align: top;
   top: 5px;
@@ -540,15 +545,16 @@ button:focus, a:focus{outline: none;}
 
 .subject-name span {
   color: #7c7c7c;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   position: absolute;
-    width: 100%; }
+  width: 100%; 
+}
 
-       .subject-name .second{
-      opacity: 0;
-      transition: all 1s ease;
-    }
+.subject-name .second{
+  opacity: 0;
+  transition: all 1s ease;
+}
 .subject-name .second.subject-name-active{
   opacity: 1;
 }
@@ -667,11 +673,12 @@ button:focus, a:focus{outline: none;}
 	 }
 	.rating-outer p{
 		position: absolute;
-	    top: 50%;
+	    top: 55%;
 	    left: 50%;
 	    margin: 0;
 	    transform: translate(-50%, -50%);
 	    width: 30px;
+	    line-height: 13px;
 	}
 	.rating-outer .down{position: absolute; top: 10px; left: 3px;}
 	.rating-outer .up{position: absolute; top: -19px; left: 3px;}
@@ -852,14 +859,14 @@ canvas {
 
 .notification{
     display: inline-block;
-    height: 21px;
-    width: 21px;
+    height: 20px;
+    width: 20px;
     background-color: red;
     border-radius: 50%;
     text-align: center;
     color: #fff;
     font-size: 12px;
-    line-height: 22px;
+    line-height: 20.5px;
 }
 #cookie-delete{
   position: absolute;
@@ -934,6 +941,9 @@ canvas {
     line-height: 36px;
     cursor: pointer;
 }
+.graph-icon:hover .dashboard-table tr{
+	background-color: $list-hover !important;
+}
 .info{
     position: absolute;
     font-size: 20px;
@@ -957,6 +967,7 @@ canvas {
     margin-left: -128px;
     font-weight: 300;
     font-size: 13px;
+    line-height: 19px;
 }
 
 .tooltip .tooltiptext::after {
@@ -1155,7 +1166,7 @@ canvas {
 
 .task-table::-webkit-scrollbar
 {
-	width: 6px;
+	width: 9px;
 	background-color: #F5F5F5;
 }
 
@@ -1268,7 +1279,7 @@ canvas {
 
 .dropdown-week::-webkit-scrollbar
 {
-	width: 6px;
+	width: 9px;
 	background-color: #F5F5F5;
 }
 

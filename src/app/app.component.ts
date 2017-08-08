@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PerfectScrollbarComponent, PerfectScrollbarDirective, PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -9,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  public config: PerfectScrollbarConfigInterface = {};
   constructor() { }
   ngOnInit() {
     let interval;

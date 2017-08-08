@@ -37,7 +37,7 @@ export class ForgotPasswordComponent implements OnInit {
       (data) => {
         console.log(data);
         document.getElementById('username-error').innerHTML = 'A new temporary password has' +
-         ' been sent to the registered email address of the parent/guardians.';
+         ' been sent to </br>the registered email address of the parent/guardians.';
       },
       (err) => {
         const data = JSON.parse(err._body);
