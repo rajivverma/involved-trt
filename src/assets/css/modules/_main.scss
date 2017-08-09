@@ -355,18 +355,18 @@ button:focus, a:focus{outline: none;}
 	overflow: hidden;
 	position: relative;
  }
-.fixed-header tbody::-webkit-scrollbar-track
+.fixed-header .data-body::-webkit-scrollbar-track
 {
 	background-color: #F5F5F5;
 }
 
-.fixed-header tbody::-webkit-scrollbar
+.fixed-header .data-body::-webkit-scrollbar
 {
 	width: 9px;
 	background-color: #F5F5F5;
 }
 
-.fixed-header tbody::-webkit-scrollbar-thumb
+.fixed-header .data-body::-webkit-scrollbar-thumb
 {
 	background-color: $primary-color;
 }
@@ -385,8 +385,6 @@ button:focus, a:focus{outline: none;}
 {
 	background-color: #F5F5F5;
 }
-
-.fixed-header tbody tr td, .fixed-header th{width: 258px;}
 
 .profile {
 	background: $primary-color;
@@ -451,7 +449,7 @@ button:focus, a:focus{outline: none;}
 	padding: 10px 20px;
  }
 
-.dashboard-table table {
+.dashboard-table .fixed-header {
 	border-collapse: collapse;
 	width: 1003px;
 	table-layout: fixed;
@@ -459,12 +457,14 @@ button:focus, a:focus{outline: none;}
  .modal-body table{border-collapse: collapse;
  	width: 100%;
  }
-.fixed-header thead tr{display: block; position: relative;}
-.dashboard-table th, td{
+.fixed-header .row{display: block; position: relative;}
+.dashboard-table .col-hd, .dashboard-table .col
+{
 	font-size: 15px;
 	font-weight: 500;
 	padding: 10px;
 	text-align: center;
+	width: 230.75px; float: left;
  }
  .modal-body th, td{
  	font-size: 15px;
@@ -472,7 +472,7 @@ button:focus, a:focus{outline: none;}
 	padding: 10px;
 	text-align: center;
 }
-.fixed-header tbody {
+.data-body {
     display: block;
     overflow: auto;
     height: 615px;
@@ -486,25 +486,19 @@ button:focus, a:focus{outline: none;}
 .lft-subject {
  	text-align: left !important;
  }
- .lft-subject span{position: relative; top: -4px;}
-.lft-subject i{
-  margin-left: 5px;
-}
-.lft-subject a{
-  color: white;
-}
+.lft-subject img{position: absolute; top: 7px; left: 65px;}
 /*tr:nth-child(even){background-color: #f2f2f2}*/
-.dashboard-table th {
+.dashboard-table .col-hd {
 	background-color: $primary-color;
 	color: $white;
 	font-size: 15px;
 	font-weight: 400;
  }
 
-.dashboard-table tr {
+.dashboard-table .row {
 	border-bottom: 1px solid #eeeeee;
  }
-.dashboard-table td p{position: relative;}
+.dashboard-table .col p{position: relative;}
 /*.performance tr:hover {background-color: #e7f0f9; transition: all ease 0.5s;}*/
 /*.modal-body tr:hover {background-color: #e7f0f9; transition: all ease 0.5s;}*/
 .table-profile-pic {
@@ -928,7 +922,6 @@ canvas {
 }
 #server-failed .round-btn{margin-right: 0;}
 #server-failed .modal-dialog{padding:25px;}
-.graph-td{position: relative;}
 .graph-icon{
 	position: absolute;
 	right: 30px;
