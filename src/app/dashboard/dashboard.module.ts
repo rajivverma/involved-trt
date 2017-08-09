@@ -14,6 +14,12 @@ import { TimetableComponent } from './timetable/timetable.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { DateFormatPipe } from '../filter/dateformat.filter';
 import { SafeHtmlPipe } from '../filter/safeHTML.filter';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
+
 
 
 declare var require: any;
@@ -31,6 +37,7 @@ export function highchartsFactory() {
     HttpModule,
     ChartModule,
     CommonModule,
+     PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG)
   ],
   exports: [],
   declarations: [
