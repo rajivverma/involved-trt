@@ -475,9 +475,8 @@ button:focus, a:focus{outline: none;}
 .data-body {
     display: block;
     overflow: auto;
-    height: 615px;
+    height: 618px;
     position: relative;
-    top: -1px;
 }
 
  .lft {
@@ -1474,4 +1473,24 @@ input:disabled, textarea:disabled{
 .no-task p a:hover{
 	color: #20568d;
 	transition: all ease 0.5s;
+}
+.ps__scrollbar-y-rail{
+    background-color: #f9f9f9 !important;
+    opacity: .9 !important;
+    width: 8px !important;
+}
+    .ps__scrollbar-y-rail .ps__scrollbar-y{
+    width: 8px !important;
+    right: 0 !important;
+    border-radius: 0 !important;
+    background-color: $primary-color !important;
+}
+  .ps__scrollbar-y-rail:hover .ps__scrollbar-y{
+    width: 8px !important;
+    right: 0 !important;
+    border-radius: 0 !important;
+    background-color: $primary-color;
+}
+.data-header{
+	height: 38px;
 }
