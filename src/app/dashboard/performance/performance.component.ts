@@ -95,8 +95,7 @@ export class PerformanceComponent implements OnInit {
         e.stopPropagation();
       });
     document.getElementsByTagName('body')[0].addEventListener('click', function () {
-      const d = document.getElementById('performance-modal')
-        .getElementsByClassName('modal-contentl')[0];
+      const d = document.getElementById('performance-modal');
       if (d != null) {
         d.className = d.className.replace('in', '');
       }

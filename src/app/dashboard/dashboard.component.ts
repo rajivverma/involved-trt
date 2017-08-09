@@ -3,11 +3,12 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DashboardService } from './dashboard.service';
 import { MainService } from '../commonService/main.service';
 import { DashboardMainService } from '../dashboard/commonService/dashboard.main.service';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  providers: [DashboardService, MainService, DashboardMainService]
+  providers: [DashboardService, MainService, DashboardMainService, CookieService]
 })
 export class DashboardComponent implements OnInit {
 
@@ -17,7 +18,8 @@ export class DashboardComponent implements OnInit {
   constructor(private dashboardService: DashboardService,
     private router: Router,
     private mainService: MainService,
-    private dashboardMainService: DashboardMainService) { }
+    private dashboardMainService: DashboardMainService,
+    private cookieService: CookieService) { }
   ngOnInit() {
     this.mainService.show('dashboard-loader');
     this.dashboardService.getStudentDetails().subscribe(
@@ -41,7 +43,7 @@ export class DashboardComponent implements OnInit {
           });
       },
       (err) => {
-        this.clearCookies();
+        this.cookieService.removeAll();
         this.router.navigate(['login']);
         console.log(err);
       });
@@ -73,7 +75,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.logout().subscribe(
       (data) => {
         console.log(data);
-        this.clearCookies();
+        this.cookieService.removeAll();
         clearInterval(this.cookieInterval);
         this.cookieInterval = undefined;
         this.router.navigate(['login']);
@@ -83,15 +85,9 @@ export class DashboardComponent implements OnInit {
       });
   }
   goToLogin() {
-    this.clearCookies();
+    this.cookieService.removeAll();
     clearInterval(this.cookieInterval);
     this.cookieInterval = undefined;
     this.router.navigate(['login']);
-  }
-  clearCookies() {
-    document.cookie = 'token' + '=';
-    document.cookie = 'userid' + '=';
-    document.cookie = 'token' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = 'userid' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 }

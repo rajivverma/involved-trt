@@ -3,11 +3,12 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { LoginService, User } from './login.service';
 import { ParticalService } from '../commonService/partical.service';
 import { MainService } from '../commonService/main.service';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  providers: [LoginService, ParticalService, MainService]
+  providers: [LoginService, ParticalService, MainService, CookieService]
 })
 
 export class LoginComponent implements OnInit {
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService,
     private router: Router,
     private particalService: ParticalService,
-    private mainService: MainService) { }
+    private mainService: MainService,
+    private cookieService: CookieService) { }
   ngOnInit() {
     this.particalStyle = this.particalService.getParticalStyle();
     this.particalParams = this.particalService.getParticalParams();
@@ -115,8 +117,8 @@ export class LoginComponent implements OnInit {
         if (val) {
           localStorage.setItem('username', this.user.username);
         }
-        document.cookie = 'userid' + '=' + data.userid;
-        document.cookie = 'token' + '=' + data.access_token;
+        this.cookieService.put('userid', data.userid);
+        this.cookieService.put('token', data.access_token);
         this.router.navigate(['dashboard']);
       },
       (err) => {
