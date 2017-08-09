@@ -18,7 +18,54 @@
         <div class="clear"></div>
       </div>
     </div>
-    <div class="data-body">
+    <perfect-scrollbar [config]="config">
+    <div class="data-body" [perfect-scrollbar]="config">
+      <div class="row" *ngFor="let subject of subjectsData;">
+        <div class="col">
+          <div></div>
+          <div class="table-profile-pic lft" id="t{{subject.Id}}" *ngIf="subject.ClassTeachers.length != 0">
+            <img class="teacher-image" *ngFor="let teacher of subject.ClassTeachers" [src]="'data:image/png;base64,'+teacher.Image" />
+          </div>
+          <div class="table-profile-pic lft" id="t{{subject.Id}}" *ngIf="subject.ClassTeachers.length == 0">
+          </div>
+          <div class="subject-name lft" id="{{subject.Id}}">
+            <p class="first">{{subject.SubjectName}}</p>
+            <span class="second" *ngFor="let teacher of subject.ClassTeachers; trackBy: index;">{{teacher.Name}}</span>
+          </div>
+        </div>
+        <div class="col">
+          <p class="success" *ngIf="subject.Performance.Column1.Value != null" [ngStyle]="{ 'color': getColor(subject.Performance.Column1.Trend)}">{{subject.Performance.Column1.Value}}{{subject.Performance.Column1.Unit}}
+            <span class="up" *ngIf="subject.Performance.Column1.Trend == 1">
+            <i class="fa fa-caret-up" aria-hidden="true"></i>
+          </span>
+            <span class="down" *ngIf="subject.Performance.Column1.Trend == 3">
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </span>
+          </p>
+        </div>
+        <div class="col">
+          <p class="black" *ngIf="subject.Performance.Column2.Value != null" [ngStyle]="{ 'color': getColor(subject.Performance.Column2.Trend)}">{{subject.Performance.Column2.Value}}{{subject.Performance.Column2.Unit}}
+            <span class="up" *ngIf="subject.Performance.Column2.Trend == 1">
+            <i class="fa fa-caret-up" aria-hidden="true"></i>
+          </span>
+            <span class="down" *ngIf="subject.Performance.Column2.Trend == 3">
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </span>
+          </p>
+        </div>
+        <div class="col graph-td">
+          <p class="success" *ngIf="subject.Performance.Column3.Value != null" [ngStyle]="{ 'color': getColor(subject.Performance.Column3.Trend)}">{{subject.Performance.Column3.Value}}
+            <span class="up" *ngIf="subject.Performance.Column3.Trend == 1">
+            <i class="fa fa-caret-up" aria-hidden="true"></i>
+          </span>
+            <span class="down" *ngIf="subject.Performance.Column3.Trend == 3">
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </span>
+          </p>
+          <div *ngIf="PerformanceGraph == 'false'" (click)="getSubjectDetails(subject,$event)" class="graph-icon"><img src="../../assets/img/prfrmnc.png"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
       <div class="row" *ngFor="let subject of subjectsData;">
         <div class="col">
           <div></div>
@@ -66,6 +113,7 @@
         <div class="clear"></div>
       </div>
     </div>
+    </perfect-scrollbar>
   </div>
   <div class="loader" id="performance-loader">
     <img src="../../../assets/img/loader.gif">
@@ -99,10 +147,10 @@
                 <div *ngIf="subjectDetails.subject.Performance.Column1.Value != null">
                   <div class="circle" id="attendance-circles"></div>
                   <p class="success" [ngStyle]="{ 'color': getColor(subjectDetails.subject.Performance.Column1.Trend)}">{{subjectDetails.subject.Performance.Column1.Value}}{{subjectDetails.subject.Performance.Column1.Unit}}
-                    
-                  <i class="fa fa-caret-up" aria-hidden="true" *ngIf="subjectDetails.subject.Performance.Column1.Trend == 1"></i>
-                  <i class="fa fa-caret-down" aria-hidden="true" *ngIf="subjectDetails.subject.Performance.Column1.Trend == 3"></i>
-                    
+
+                    <i class="fa fa-caret-up" aria-hidden="true" *ngIf="subjectDetails.subject.Performance.Column1.Trend == 1"></i>
+                    <i class="fa fa-caret-down" aria-hidden="true" *ngIf="subjectDetails.subject.Performance.Column1.Trend == 3"></i>
+
                   </p>
                 </div>
               </div>
