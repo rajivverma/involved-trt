@@ -4,22 +4,23 @@
 </div>
  -->
 <div class="performance dashboard-table">
-  <table class="fixed-header" *ngIf="subjectsData != undefined">
-    <thead>
-      <tr>
-        <th class="lft-subject"><span>Subject</span>
+  <div class="fixed-header" *ngIf="subjectsData != undefined">
+    <div class="data-header">
+      <div class="row">
+        <div class="col-hd lft-subject"><span>Subject</span>
           <a href="{{PerformanceGradeUrl}}" target="_blank">
             <img src="../assets/img/info-w.png">
           </a>
-        </th>
-        <th>{{subjectsData[0].Performance.Column1.Header}}</th>
-        <th>{{subjectsData[0].Performance.Column2.Header}}</th>
-        <th>{{subjectsData[0].Performance.Column3.Header}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let subject of subjectsData;">
-        <td>
+        </div>
+        <div class="col-hd">{{subjectsData[0].Performance.Column1.Header}}</div>
+        <div class="col-hd">{{subjectsData[0].Performance.Column2.Header}}</div>
+        <div class="col-hd">{{subjectsData[0].Performance.Column3.Header}}</div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="data-body">
+      <div class="row" *ngFor="let subject of subjectsData;">
+        <div class="col">
           <div></div>
           <div class="table-profile-pic lft" id="t{{subject.Id}}" *ngIf="subject.ClassTeachers.length != 0">
             <img class="teacher-image" *ngFor="let teacher of subject.ClassTeachers" [src]="'data:image/png;base64,'+teacher.Image" />
@@ -30,8 +31,8 @@
             <p class="first">{{subject.SubjectName}}</p>
             <span class="second" *ngFor="let teacher of subject.ClassTeachers; trackBy: index;">{{teacher.Name}}</span>
           </div>
-        </td>
-        <td>
+        </div>
+        <div class="col">
           <p class="success" *ngIf="subject.Performance.Column1.Value != null" [ngStyle]="{ 'color': getColor(subject.Performance.Column1.Trend)}">{{subject.Performance.Column1.Value}}{{subject.Performance.Column1.Unit}}
             <span class="up" *ngIf="subject.Performance.Column1.Trend == 1">
             <i class="fa fa-caret-up" aria-hidden="true"></i>
@@ -40,8 +41,8 @@
             <i class="fa fa-caret-down" aria-hidden="true"></i>
           </span>
           </p>
-        </td>
-        <td>
+        </div>
+        <div class="col">
           <p class="black" *ngIf="subject.Performance.Column2.Value != null" [ngStyle]="{ 'color': getColor(subject.Performance.Column2.Trend)}">{{subject.Performance.Column2.Value}}{{subject.Performance.Column2.Unit}}
             <span class="up" *ngIf="subject.Performance.Column2.Trend == 1">
             <i class="fa fa-caret-up" aria-hidden="true"></i>
@@ -50,8 +51,8 @@
             <i class="fa fa-caret-down" aria-hidden="true"></i>
           </span>
           </p>
-        </td>
-        <td class="graph-td">
+        </div>
+        <div class="col graph-td">
           <p class="success" *ngIf="subject.Performance.Column3.Value != null" [ngStyle]="{ 'color': getColor(subject.Performance.Column3.Trend)}">{{subject.Performance.Column3.Value}}
             <span class="up" *ngIf="subject.Performance.Column3.Trend == 1">
             <i class="fa fa-caret-up" aria-hidden="true"></i>
@@ -61,10 +62,11 @@
           </span>
           </p>
           <div *ngIf="PerformanceGraph == 'false'" (click)="getSubjectDetails(subject,$event)" class="graph-icon"><img src="../../assets/img/prfrmnc.png"></div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
   <div class="loader" id="performance-loader">
     <img src="../../../assets/img/loader.gif">
   </div>
