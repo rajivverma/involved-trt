@@ -53,6 +53,9 @@ export class DashboardComponent implements OnInit {
         d.className = d.className.replace('in', '');
       }
     });
+    document.getElementById('network-failed').addEventListener('click', function (e) {
+      e.stopPropagation();
+    });
     const that = this;
     this.cookieInterval = setInterval(function () {
       const val = that.mainService.getCookie('token');

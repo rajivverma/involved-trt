@@ -5,7 +5,7 @@ export class PiChart {
   constructor() { }
   options: Object;
 
- getPieChartData(GradeSet: any,
+  getPieChartData(GradeSet: any,
     xAxixData: any,
     GradeResults: any,
     TargetGrades: any,
@@ -125,7 +125,7 @@ export class PiChart {
                     break;
                   }
                 }
-                if(isSimilar != true){
+                if (isSimilar != true) {
                   data.push({
                     x: tempDate
                   })
