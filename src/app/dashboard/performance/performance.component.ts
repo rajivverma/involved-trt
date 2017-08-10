@@ -12,7 +12,12 @@ declare var Circles: any;
 @Component({
   selector: 'app-performance',
   templateUrl: './performance.component.html',
-  providers: [PerformanceService, DashboardService, PiChart, MainService]
+  providers: [PerformanceService, DashboardService, PiChart, MainService],
+  styles: [`
+      chart {
+        display: block;
+      }
+  `]
 })
 export class PerformanceComponent implements OnInit {
   options: Object;
