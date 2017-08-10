@@ -117,7 +117,7 @@ export class PiChart {
             }
             if (data.length < xAxixData.length) {
               for (let k = 0; k < xAxixData.length; k++) {
-                let tempDate = new Date(xAxixData[k].Date);
+                const tempDate = new Date(xAxixData[k].Date);
                 let isSimilar = false;
                 for (let m = 0; m < data.length; m++) {
                   if (tempDate === new Date(data[m].Date)) {
@@ -125,10 +125,10 @@ export class PiChart {
                     break;
                   }
                 }
-                if (isSimilar != true) {
+                if (isSimilar !== true) {
                   data.push({
                     x: tempDate
-                  })
+                  });
                 }
               }
             }
