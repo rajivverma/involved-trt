@@ -5,7 +5,7 @@ export class PiChart {
   constructor() { }
   options: Object;
 
-  getPieChartData(GradeSet: any,
+ getPieChartData(GradeSet: any,
     xAxixData: any,
     GradeResults: any,
     TargetGrades: any,
@@ -80,7 +80,7 @@ export class PiChart {
       series: [
         {
           name: Column2.Header,
-          color: '#48CAE5',
+          color: '#48CAE5 ',
           data: (function () {
             const data1 = [];
             for (let m = 0; m < TargetGrades.length; m++) {
@@ -114,6 +114,23 @@ export class PiChart {
                 x: date,
                 y: GradeSet.indexOf(GradeResults[j].Grade),
               });
+            }
+            if (data.length < xAxixData.length) {
+              for (let k = 0; k < xAxixData.length; k++) {
+                let tempDate = new Date(xAxixData[k].Date);
+                let isSimilar = false;
+                for (let m = 0; m < data.length; m++) {
+                  if (tempDate === new Date(data[m].Date)) {
+                    isSimilar = true;
+                    break;
+                  }
+                }
+                if(isSimilar != true){
+                  data.push({
+                    x: tempDate
+                  })
+                }
+              }
             }
             return data;
           }()),

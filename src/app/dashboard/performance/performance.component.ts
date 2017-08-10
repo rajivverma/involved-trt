@@ -16,6 +16,7 @@ declare var Circles: any;
   styles: [`
       chart {
         display: block;
+        width: 97%;
       }
   `]
 })
