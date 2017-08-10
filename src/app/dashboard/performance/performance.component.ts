@@ -120,12 +120,12 @@ export class PerformanceComponent implements OnInit {
   }
 
   over(event) {
-    let target = <HTMLElement>(event.target || event.srcElement || event.currentTarget);
+    const target = <HTMLElement>(event.target || event.srcElement || event.currentTarget);
     target.parentElement.parentElement.parentElement.style.transition = 'all 0.5s ease';
     target.parentElement.parentElement.parentElement.style.background = '#e7f0f9';
   }
   leave(event) {
-    let target = <HTMLElement>(event.target || event.srcElement || event.currentTarget);
+    const target = <HTMLElement>(event.target || event.srcElement || event.currentTarget);
     target.parentElement.parentElement.parentElement.style.background = '';
   }
 
