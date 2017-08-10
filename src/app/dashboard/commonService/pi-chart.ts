@@ -21,6 +21,9 @@ export class PiChart {
         type: 'line',
         width: 1150
       },
+  legend: {
+            enabled: false
+        },
       title: {
         text: '<h2><b>Performance Graph</b></h2>'
       },
