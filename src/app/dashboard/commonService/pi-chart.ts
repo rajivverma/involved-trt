@@ -43,7 +43,7 @@ export class PiChart {
       yAxis: {
         endOnTick: true,
         min: 0,
-        max: 5,
+        max: 6,
         title: { text: Column3.Header },
         labels: {
           formatter: function () {
