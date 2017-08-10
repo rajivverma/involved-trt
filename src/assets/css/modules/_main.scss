@@ -1,57 +1,38 @@
- 
 body {
 	background-color: $body-bg;
 	font-family: $roboto;
 	margin: 0;
 	padding: 0;
  }
- 
 ul {
 	margin: 0;
 	padding: 0;
  }
- 
 h1, h2, h3, h4, h5, h6 {margin: 0;}
- 
 li {list-style: none;}
- 
 button:focus, a:focus {outline: none;}
- 
 :focus {outline: none !important;}
- 
 ::-webkit-input-placeholder {font-family: $roboto;}
- 
 :-moz-placeholder {font-family: $roboto;}
- 
 ::-moz-placeholder {font-family: $roboto;}
- 
 :-ms-input-placeholder {font-family: $roboto;}
- 
 ::-webkit-textarea-placeholder {font-family: $roboto;}
- 
 :-moz-placeholder {font-family: $roboto;}
- 
 ::-moz-placeholder {font-family: $roboto;}
- 
 :-ms-textarea-placeholder {font-family: $roboto;}
- 
 .f-left {float: left;}
- 
 .f-right {float: right;}
- 
 .clear {
 	clear: both;
 	float: none;
 	margin: 0;
 	padding: 0;
  }
- 
 .main {
 	background-color: $body-bg;
 	height: 100%;
 	width: 100%;
  }
- 
 .login-box {
 	background: $white;
 	border-top: 4px solid $primary-color;
@@ -61,9 +42,7 @@ button:focus, a:focus {outline: none;}
 	width: 585px;
 	z-index: 9;
  }
- 
 .logo {text-align: center;}
- 
 .login-box h1 {
 	border-bottom: 1px solid $primary-color;
 	font-size: 90px;
@@ -71,19 +50,16 @@ button:focus, a:focus {outline: none;}
 	margin: 40px 0 15px;
 	padding: 0 80px;
  }
- 
 .form-inner {
 	padding: 0 80px;
 	position: relative;
  }
- 
 	.form-inner h2 {
 		color: $black;
 		font-size: 30px;
 		font-weight: 400;
 		margin: 0 0 25px;
 	 }
- 
 .custom-input {
 	-moz-transition: all 0.4s ease-in-out 0s;
 	-webkit-transition: all 0.4s ease-in-out 0s;
