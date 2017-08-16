@@ -16,6 +16,8 @@ export class PiChart {
       'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
     ];
     const GradeResultsName = new Array();
+    const maxGradeSet = (GradeSet.length);
+    console.log(GradeSet);
     return {
       chart: {
         type: 'line',
@@ -43,7 +45,7 @@ export class PiChart {
       yAxis: {
         endOnTick: true,
         min: 0,
-        max: 6,
+        max: maxGradeSet,
         title: { text: Column3.Header },
         labels: {
           formatter: function () {
