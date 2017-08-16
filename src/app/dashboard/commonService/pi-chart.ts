@@ -21,6 +21,9 @@ export class PiChart {
         type: 'line',
         width: 1150
       },
+      legend: {
+        enabled: false
+      },
       title: {
         text: '<h2><b>Performance Graph</b></h2>'
       },
@@ -40,7 +43,7 @@ export class PiChart {
       yAxis: {
         endOnTick: true,
         min: 0,
-        max: 5,
+        max: 6,
         title: { text: Column3.Header },
         labels: {
           formatter: function () {
@@ -80,7 +83,7 @@ export class PiChart {
       series: [
         {
           name: Column2.Header,
-          color: '#48CAE5',
+          color: '#48CAE5 ',
           data: (function () {
             const data1 = [];
             for (let m = 0; m < TargetGrades.length; m++) {
@@ -114,6 +117,23 @@ export class PiChart {
                 x: date,
                 y: GradeSet.indexOf(GradeResults[j].Grade),
               });
+            }
+            if (data.length < xAxixData.length) {
+              for (let k = 0; k < xAxixData.length; k++) {
+                const tempDate = new Date(xAxixData[k].Date);
+                let isSimilar = false;
+                for (let m = 0; m < data.length; m++) {
+                  if (tempDate === new Date(data[m].Date)) {
+                    isSimilar = true;
+                    break;
+                  }
+                }
+                if (isSimilar !== true) {
+                  data.push({
+                    x: tempDate
+                  });
+                }
+              }
             }
             return data;
           }()),

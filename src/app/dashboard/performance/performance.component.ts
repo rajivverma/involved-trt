@@ -16,6 +16,7 @@ declare var Circles: any;
   styles: [`
       chart {
         display: block;
+        width: 97%;
       }
   `]
 })
@@ -117,6 +118,17 @@ export class PerformanceComponent implements OnInit {
       return '#ff3c1f';
     }
   }
+
+  over(event) {
+    const target = <HTMLElement>(event.target || event.srcElement || event.currentTarget);
+    target.parentElement.parentElement.parentElement.style.transition = 'all 0.5s ease';
+    target.parentElement.parentElement.parentElement.style.background = '#e7f0f9';
+  }
+  leave(event) {
+    const target = <HTMLElement>(event.target || event.srcElement || event.currentTarget);
+    target.parentElement.parentElement.parentElement.style.background = '';
+  }
+
   getSubjectDetails(subject, e) {
     e.stopPropagation();
     const id = localStorage.getItem('userid');
@@ -190,7 +202,7 @@ export class PerformanceComponent implements OnInit {
       width: 3,
       text: '',
       colors: ['transparent', color],
-      duration: 100,
+      duration: 0,
       wrpClass: 'circles-wrp',
       textClass: txtColor,
       valueStrokeClass: 'circles-valueStroke',

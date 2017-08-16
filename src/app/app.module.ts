@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './auth/auth-gaurd.service';
 import { AuthService } from './auth/auth.service';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { CookieModule } from 'ngx-cookie';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    CookieModule.forRoot()
   ],
   providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]

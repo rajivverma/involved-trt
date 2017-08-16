@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DashboardService } from './dashboard.service';
 import { MainService } from '../commonService/main.service';
 import { DashboardMainService } from '../dashboard/commonService/dashboard.main.service';
-import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
   selector: 'app-dashboard',
@@ -52,6 +52,9 @@ export class DashboardComponent implements OnInit {
       if (d != null) {
         d.className = d.className.replace('in', '');
       }
+    });
+    document.getElementById('network-failed').addEventListener('click', function (e) {
+      e.stopPropagation();
     });
     const that = this;
     this.cookieInterval = setInterval(function () {

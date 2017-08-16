@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { LoginService, User } from './login.service';
 import { ParticalService } from '../commonService/partical.service';
 import { MainService } from '../commonService/main.service';
-import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
   selector: 'app-login',
