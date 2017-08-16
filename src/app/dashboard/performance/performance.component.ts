@@ -101,9 +101,9 @@ export class PerformanceComponent implements OnInit {
         e.stopPropagation();
       });
     document.getElementsByTagName('body')[0].addEventListener('click', function () {
-      const d = document.getElementById('performance-modal');
-      if (d != null) {
-        d.className = d.className.replace('in', '');
+      const div = document.getElementById('performance-modal');
+      if (div != null) {
+        div.className = div.className.replace('in', '');
         document.querySelector('body').className = document.querySelector('body').className.replace('modal-back','');
       }
     });
