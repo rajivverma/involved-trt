@@ -104,6 +104,7 @@ export class PerformanceComponent implements OnInit {
       const d = document.getElementById('performance-modal');
       if (d != null) {
         d.className = d.className.replace('in', '');
+        document.querySelector('body').className = document.querySelector('body').className.replace('modal-back','');
       }
     });
   }
@@ -144,6 +145,7 @@ export class PerformanceComponent implements OnInit {
         if (!d.className.includes('in')) {
           d.className += ' in';
         }
+        document.querySelector('body').className = 'modal-back';
         const GradeSet = [];
         const GradeResults = [];
         const XaxisGrades = [];
@@ -215,6 +217,7 @@ export class PerformanceComponent implements OnInit {
     const d = document.getElementById('performance-modal');
     d.className = d.className.replace('in', '');
     clearInterval(this.studentDetailInterval);
+    document.querySelector('body').className = document.querySelector('body').className.replace('modal-back','');
   }
 
 }
