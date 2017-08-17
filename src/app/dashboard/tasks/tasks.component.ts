@@ -3,8 +3,9 @@ import { MainService } from '../../commonService/main.service';
 import { TaskService } from './tasks.service';
 import { DateFormatPipe } from '../../filter/dateformat.filter';
 import { SafeHtmlPipe } from '../../filter/safeHTML.filter';
-
 import 'rxjs/Rx';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-tasks',
@@ -31,6 +32,18 @@ export class TasksComponent implements OnInit {
   public monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
   ];
+  public daysList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+    16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
+  public todayDate = new Date();
+  public todayDay = this.todayDate.getDate();
+  public todayDayMonth = this.todayDate.getMonth() + 1;
+  public todayDayYear = this.todayDate.getFullYear();
+  public yearsList = [this.todayDayYear - 1, this.todayDayYear];
+  public selectedYearIndex = 1;
+  public taskDetails = {
+    'title': '',
+    'description': ''
+  };
   ngOnInit() {
     this.taskDescription = document.getElementById('task-description');
     this.firstday.setDate(this.firstday.getDate() - 22);
@@ -50,19 +63,61 @@ export class TasksComponent implements OnInit {
         console.log(err);
       });
     document.getElementsByTagName('body')[0].addEventListener('click', function () {
-      const d = document.getElementById('dropdown-week');
+      const dropdownWeek = document.getElementById('dropdown-week');
       const taskDescription = document.getElementById('task-description');
-      if (d != null) {
-        d.style.display = '';
+      if (dropdownWeek != null) {
+        dropdownWeek.style.display = '';
       }
-      const sT = document.getElementById('searchTask');
-      if (sT != null) {
-        sT.style.display = '';
+      const searchTask = document.getElementById('searchTask');
+      if (searchTask != null) {
+        searchTask.style.display = '';
       }
       if (taskDescription != null) {
         taskDescription.style.display = '';
       }
+      const addTask = document.getElementById('add-task');
+      if (addTask != null) {
+        addTask.className = addTask.className.replace('in', '');
+        document.querySelector('body').className = document.querySelector('body').className.replace('modal-back', '');
+      }
     });
+    Array.from(document.querySelectorAll('.date-cell')).forEach(function (element, index) {
+      element.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (this.querySelector('.dropdown-date').style.display === 'block') {
+          this.querySelector('.dropdown-date').style.display = '';
+          this.querySelector('.fa-caret-down').style.transform = '';
+        } else {
+          for (let i = 0; i < document.querySelectorAll('.date-cell').length; i++) {
+            (<HTMLElement>document.querySelectorAll('.date-cell')[i]
+              .querySelector('.dropdown-date'))
+              .style.display = '';
+            (<HTMLElement>document.querySelectorAll('.date-cell')[i]
+              .querySelector('.fa-caret-down'))
+              .style.transform = '';
+          }
+          this.querySelector('.dropdown-date').style.display = 'block';
+          this.querySelector('.fa-caret-down').style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+    const addTask = document.getElementById('add-task').querySelector('.modal-content');
+    addTask.addEventListener('click', function (e) {
+      e.stopPropagation();
+      for (let i = 0; i < document.querySelectorAll('.date-cell').length; i++) {
+        (<HTMLElement>document.querySelectorAll('.date-cell')[i]
+          .querySelector('.dropdown-date'))
+          .style.display = '';
+        (<HTMLElement>document.querySelectorAll('.date-cell')[i]
+          .querySelector('.fa-caret-down'))
+          .style.transform = '';
+      }
+    });
+    setTimeout(function (todayDay, todayDayMonth) {
+      document.querySelectorAll('.dropdown-date')[0].querySelectorAll('li')[todayDay].className = 'active-week';
+      document.querySelectorAll('.dropdown-date')[1].querySelectorAll('li')[todayDayMonth].className = 'active-week';
+      document.querySelectorAll('.dropdown-date')[2].querySelectorAll('li')[2].className = 'active-week';
+    }, 1000, this.todayDay, this.todayDayMonth);
   }
   preventDefault(e) {
     e.stopPropagation();
@@ -364,8 +419,68 @@ export class TasksComponent implements OnInit {
         console.log(err);
       });
   }
-  createTask() {
+  createTask(e) {
+    e.stopPropagation();
     const ct = document.getElementById('add-task');
-    ct.style.display = 'block';
+    this.changedExtraHandler('addTaskTitle', 'Title');
+    this.changedExtraHandler('addTaskDescription', 'Description');
+    ct.className = ct.className + ' in';
+  }
+  closeModal() {
+    this.mainService.closeModal('add-task');
+  }
+  daySelect(day) {
+    this.todayDay = day;
+    for (let i = 0; i < document.querySelectorAll('.dropdown-date')[0].querySelectorAll('li').length; i++) {
+      document.querySelectorAll('.dropdown-date')[0].querySelectorAll('li')[i].className = '';
+    }
+    document.querySelectorAll('.dropdown-date')[0].querySelectorAll('li')[this.todayDay].className = 'active-week';
+  }
+  monthSelect(month) {
+    this.todayDayMonth = this.monthNames.indexOf(month) + 1;
+    for (let i = 0; i < document.querySelectorAll('.dropdown-date')[1].querySelectorAll('li').length; i++) {
+      document.querySelectorAll('.dropdown-date')[1].querySelectorAll('li')[i].className = '';
+    }
+    document.querySelectorAll('.dropdown-date')[1].querySelectorAll('li')[this.todayDayMonth].className = 'active-week';
+  }
+  yearSelect(year) {
+    this.todayDayYear = year;
+    let index;
+    if (this.yearsList.indexOf(year) === 0) {
+      index = 1;
+      document.querySelectorAll('.dropdown-date')[2]
+        .querySelectorAll('li')[index + 1].className = '';
+    } else {
+      index = 2;
+      document.querySelectorAll('.dropdown-date')[2]
+        .querySelectorAll('li')[index - 1].className = '';
+    }
+    document.querySelectorAll('.dropdown-date')[2]
+      .querySelectorAll('li')[index].className = 'active-week';
+
+  }
+  changedExtraHandler(id, name) {
+    const username = (<HTMLInputElement>document.getElementById(id));
+    username.className = username.className.replace('p-error', '');
+    username.placeholder = name;
+  }
+  saveTask() {
+    this.taskDetails.title = this.taskDetails.title.trim();
+    this.taskDetails.description = this.taskDetails.description.trim();
+    if (this.taskDetails.title === '') {
+      (<HTMLInputElement>document.getElementById('addTaskTitle')).placeholder =
+        'Please enter task title';
+      document.getElementById('addTaskTitle').className += ' p-error';
+    } else if (this.taskDetails.description === '') {
+      (<HTMLInputElement>document.getElementById('addTaskDescription')).placeholder =
+        'Please enter task description';
+      document.getElementById('addTaskDescription').className += ' p-error';
+    } else {
+      const date = moment();
+      date.date(this.daysList[this.todayDay - 1]);
+      date.month(this.todayDayMonth - 1);
+      date.year(this.todayDayYear);
+    }
+
   }
 }

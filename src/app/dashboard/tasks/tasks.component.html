@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="create-task">
-        <a (click)="createTask()">Create Task</a>
+        <a (click)="createTask($event)">Create Task</a>
       </div>
     </div>
     <div class="clear"></div>
@@ -83,87 +83,47 @@
   <div class="modal modal-add-task" id="add-task">
     <div class="modal-content">
       <div class="modal-header">
-        <span class="close">×</span>
+        <span class="close" (click)="closeModal()">×</span>
         <p>Add Task</p>
       </div>
       <div class="modal-body">
         <div class="add-task-form">
-          <input type="" name="" class="custom-input" placeholder="Title">
-          <textarea class="custom-input" placeholder="Description" maxlength="2000"></textarea>
+          <input type="text" name="" class="custom-input" placeholder="Title" id="addTaskTitle" (keyup)="changedExtraHandler('addTaskTitle','Title')"
+            [(ngModel)]="taskDetails.title">
+          <textarea class="custom-input" placeholder="Description" maxlength="2000" id="addTaskDescription" (keyup)="changedExtraHandler('addTaskDescription','Description')"
+            [(ngModel)]="taskDetails.description"></textarea>
           <div class="date-select">
             <label>Due Date</label>
             <div class="select-cell">
               <div class="date-cell date">
-                2 <i class="fa fa-caret-down" aria-hidden="true"></i>
+                {{daysList[todayDay-1]}} <i class="fa fa-caret-down" aria-hidden="true"></i>
                 <div class="dropdown-date dd">
                   <ul>
                     <li>dd</li>
-                    <li>1</li>
-                    <li class="active-week">2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>6</li>
-                    <li>7</li>
-                    <li>8</li>
-                    <li>9</li>
-                    <li>10</li>
-                    <li>11</li>
-                    <li>12</li>
-                    <li>13</li>
-                    <li>14</li>
-                    <li>15</li>
-                    <li>16</li>
-                    <li>17</li>
-                    <li>18</li>
-                    <li>19</li>
-                    <li>20</li>
-                    <li>21</li>
-                    <li>22</li>
-                    <li>23</li>
-                    <li>24</li>
-                    <li>25</li>
-                    <li>26</li>
-                    <li>27</li>
-                    <li>28</li>
-                    <li>29</li>
-                    <li>30</li>
-                    <li>31</li>
+                    <li *ngFor="let day of daysList" (click)="daySelect(day)">{{day}}</li>
                   </ul>
                 </div>
               </div>
               <div class="date-cell month">
-                Aug <i class="fa fa-caret-down" aria-hidden="true"></i>
+                {{monthNames[todayDayMonth-1]}} <i class="fa fa-caret-down" aria-hidden="true"></i>
                 <div class="dropdown-date mm">
                   <ul>
                     <li>mm</li>
-                    <li>Jan</li>
-                    <li>Feb</li>
-                    <li>Mar</li>
-                    <li>Apr</li>
-                    <li>May</li>
-                    <li>Jun</li>
-                    <li>Jul</li>
-                    <li class="active-week">Aug</li>
-                    <li>Sep</li>
-                    <li>Oct</li>
-                    <li>Nov</li>
-                    <li>Dec</li>
+                    <li *ngFor="let month of monthNames" (click)="monthSelect(month)">{{month}}</li>
                   </ul>
                 </div>
               </div>
               <div class="date-cell year">
-                2017 <i class="fa fa-caret-down" aria-hidden="true"></i>
+                {{todayDayYear}} <i class="fa fa-caret-down" aria-hidden="true"></i>
                 <div class="dropdown-date yy">
                   <ul>
                     <li>yyyy</li>
-                    <li>2016</li>
-                    <li class="active-week">2017</li>
+                    <li *ngFor="let year of yearsList" (click)="yearSelect(year)">{{year}}</li>
                   </ul>
                 </div>
               </div>
             </div>
-            <button class="round-btn" align="center">Submit</button>
+            <button class="round-btn" align="center" (click)="saveTask()">Submit</button>
           </div>
         </div>
       </div>

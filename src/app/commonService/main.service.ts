@@ -20,4 +20,25 @@ export class MainService {
       return parts.pop().split(';').shift();
     }
   }
+  eventStopPropagation(id) {
+    document.getElementById(id)
+      .getElementsByClassName('modal-content')[0]
+      .addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+  }
+  bodyEventListener(id) {
+    document.getElementsByTagName('body')[0].addEventListener('click', function () {
+      const div = document.getElementById(id);
+      if (div != null) {
+        div.className = div.className.replace('in', '');
+        document.querySelector('body').className = document.querySelector('body').className.replace('modal-back', '');
+      }
+    });
+  }
+  closeModal(id) {
+    const d = document.getElementById(id);
+    d.className = d.className.replace('in', '');
+    document.querySelector('body').className = document.querySelector('body').className.replace('modal-back', '');
+  }
 }

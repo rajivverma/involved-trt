@@ -16,6 +16,7 @@ import { DateFormatPipe } from '../filter/dateformat.filter';
 import { SafeHtmlPipe } from '../filter/safeHTML.filter';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { MomentModule } from 'angular2-moment';
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -37,7 +38,8 @@ export function highchartsFactory() {
     HttpModule,
     ChartModule,
     CommonModule,
-     PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG)
+    MomentModule,
+    PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG)
   ],
   exports: [],
   declarations: [
