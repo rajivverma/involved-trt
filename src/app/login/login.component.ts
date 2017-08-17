@@ -76,8 +76,8 @@ export class LoginComponent implements OnInit {
     return platform;
   }
   login() {
-    if (this.user.username === undefined || this.user.username === '') {
       const username = (<HTMLInputElement>document.getElementById('username'));
+    if (this.user.username === undefined || this.user.username === '') {
       if (!username.className.includes('p-error')) {
         username.placeholder = 'Please enter username';
         username.className += ' p-error';
@@ -85,7 +85,9 @@ export class LoginComponent implements OnInit {
       return;
     }
     if (this.user.username.includes(' ')) {
-      document.getElementById('login-error').innerHTML = 'Invalid Username';
+      this.user.username = '';
+      username.placeholder = 'Please enter valid username';
+      username.className += ' p-error';
       return;
     }
     if (this.user.password === undefined || this.user.password === '') {
@@ -110,7 +112,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(user).subscribe(
       (data) => {
         if (data.isactivated === 'False') {
-          document.getElementById('login-error').innerHTML = 'Locked.Parent has not unlocked this account.';
+          document.getElementById('login-error').innerHTML = 'Parent has not unlocked this account.';
           return;
         }
         const val = (<HTMLInputElement>document.getElementById('test2')).checked;

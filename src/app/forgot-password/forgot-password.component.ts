@@ -20,8 +20,8 @@ export class ForgotPasswordComponent implements OnInit {
     this.particalParams = this.particalService.getParticalParams();
   }
   submit() {
+    const username = (<HTMLInputElement>document.getElementById('username'));
     if (this.username === undefined || this.username === '') {
-      const username = (<HTMLInputElement>document.getElementById('username'));
       if (!username.className.includes('p-error')) {
         username.placeholder = 'Please enter username';
         username.className += ' p-error';
@@ -30,7 +30,9 @@ export class ForgotPasswordComponent implements OnInit {
     }
     this.username = this.username.trim();
     if (this.username.includes(' ')) {
-      document.getElementById('username-error').innerHTML = 'Invalid Username';
+      this.username = '';
+      username.placeholder = 'Please enter valid username';
+      username.className += ' p-error';
       return;
     }
     this.forgotPaswordService.submit(this.username).subscribe(
