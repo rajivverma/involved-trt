@@ -109,6 +109,17 @@ export class PerformanceComponent implements OnInit {
       return '#ff3c1f';
     }
   }
+  getTop(val) {
+    if (val === 0) {
+      return '50%';
+    } else if (val === 1) {
+      return '55%';
+    } else if (val === 2) {
+      return '50%';
+    } else {
+      return '45%';
+    }
+  }
 
   over(event) {
     const target = <HTMLElement>(event.target || event.srcElement || event.currentTarget);
