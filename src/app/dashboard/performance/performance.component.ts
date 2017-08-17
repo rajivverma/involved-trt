@@ -95,18 +95,8 @@ export class PerformanceComponent implements OnInit {
       (err) => {
         // alert('something wrong');
       });
-    document.getElementById('performance-modal')
-      .getElementsByClassName('modal-content')[0]
-      .addEventListener('click', function (e) {
-        e.stopPropagation();
-      });
-    document.getElementsByTagName('body')[0].addEventListener('click', function () {
-      const div = document.getElementById('performance-modal');
-      if (div != null) {
-        div.className = div.className.replace('in', '');
-        document.querySelector('body').className = document.querySelector('body').className.replace('modal-back','');
-      }
-    });
+    this.mainService.eventStopPropagation('performance-modal');
+    this.mainService.bodyEventListener('performance-modal');
   }
   getColor(val) {
     if (val === 0) {
@@ -214,10 +204,8 @@ export class PerformanceComponent implements OnInit {
     });
   }
   closeModal() {
-    const d = document.getElementById('performance-modal');
-    d.className = d.className.replace('in', '');
+    this.mainService.closeModal('performance-modal');
     clearInterval(this.studentDetailInterval);
-    document.querySelector('body').className = document.querySelector('body').className.replace('modal-back','');
   }
 
 }
