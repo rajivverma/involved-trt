@@ -59,4 +59,9 @@ export class TaskService {
     return this.http.post(URL + '/api/studenttasks/' + id + '/iscompleted=' + status, {}, token)
       .map((res: Response) => res.json());
   }
+  saveTask(data) {
+    const token = this.getToken();
+    return this.http.post(URL + '/api/personaltasks', data, token)
+      .map((res: Response) => res.json());
+  }
 }

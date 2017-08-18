@@ -5,7 +5,7 @@ import { DateFormatPipe } from '../../filter/dateformat.filter';
 import { SafeHtmlPipe } from '../../filter/safeHTML.filter';
 import 'rxjs/Rx';
 import * as moment from 'moment';
-
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-tasks',
@@ -64,40 +64,25 @@ export class TasksComponent implements OnInit {
       (err) => {
         console.log(err);
       });
+    const that = this;
     document.getElementsByTagName('body')[0].addEventListener('click', function () {
-      const dropdownWeek = document.getElementById('dropdown-week');
-      const taskDescription = document.getElementById('task-description');
-      if (dropdownWeek != null) {
-        dropdownWeek.style.display = '';
-      }
-      const searchTask = document.getElementById('searchTask');
-      if (searchTask != null) {
-        searchTask.style.display = '';
-      }
-      if (taskDescription != null) {
-        taskDescription.style.display = '';
-      }
+      that.hideOpenDiv('dropdown-week');
+      that.hideOpenDiv('searchTask');
+      that.hideOpenDiv('task-description');
       const addTask = document.getElementById('add-task');
       if (addTask != null) {
-        addTask.className = addTask.className.replace('in', '');
+        that.mainService.closeModal('add-task');
         document.querySelector('body').className = document.querySelector('body').className.replace('modal-back', '');
       }
     });
-    Array.from(document.querySelectorAll('.date-cell')).forEach(function (element, index) {
+    _.forEach(document.querySelectorAll('.date-cell'), function (element, index) {
       element.addEventListener('click', function (e) {
         e.stopPropagation();
         if (this.querySelector('.dropdown-date').style.display === 'block') {
           this.querySelector('.dropdown-date').style.display = '';
           this.querySelector('.fa-caret-down').style.transform = '';
         } else {
-          for (let i = 0; i < document.querySelectorAll('.date-cell').length; i++) {
-            (<HTMLElement>document.querySelectorAll('.date-cell')[i]
-              .querySelector('.dropdown-date'))
-              .style.display = '';
-            (<HTMLElement>document.querySelectorAll('.date-cell')[i]
-              .querySelector('.fa-caret-down'))
-              .style.transform = '';
-          }
+          removeDisplayTransform();
           this.querySelector('.dropdown-date').style.display = 'block';
           this.querySelector('.fa-caret-down').style.transform = 'rotate(180deg)';
         }
@@ -106,24 +91,28 @@ export class TasksComponent implements OnInit {
     const addTask = document.getElementById('add-task').querySelector('.modal-content');
     addTask.addEventListener('click', function (e) {
       e.stopPropagation();
-      for (let i = 0; i < document.querySelectorAll('.date-cell').length; i++) {
-        (<HTMLElement>document.querySelectorAll('.date-cell')[i]
-          .querySelector('.dropdown-date'))
-          .style.display = '';
-        (<HTMLElement>document.querySelectorAll('.date-cell')[i]
-          .querySelector('.fa-caret-down'))
-          .style.transform = '';
-      }
+      removeDisplayTransform();
     });
-    const that = this;
     setTimeout(function (todayDay, todayDayMonth) {
       that.dropDownDate[0].querySelectorAll('li')[todayDay].className = 'active-week';
       that.dropDownDate[1].querySelectorAll('li')[todayDayMonth].className = 'active-week';
       that.dropDownDate[2].querySelectorAll('li')[2].className = 'active-week';
     }, 1000, this.todayDay, this.todayDayMonth);
+    function removeDisplayTransform() {
+      _.forEach(document.querySelectorAll('.date-cell'), function (value) {
+        (<HTMLElement>value.querySelector('.dropdown-date')).style.display = '';
+        (<HTMLElement>value.querySelector('.fa-caret-down')).style.transform = '';
+      });
+    }
   }
   preventDefault(e) {
     e.stopPropagation();
+  }
+  hideOpenDiv(id) {
+    const openDiv = document.getElementById(id);
+    if (openDiv != null) {
+      openDiv.style.display = '';
+    }
   }
   convertDate(date) {
     return date.getFullYear() +
@@ -132,14 +121,15 @@ export class TasksComponent implements OnInit {
   }
   displayDropDownDate(data) {
     let dateS, dateE;
-    for (let i = 0; i < data.length; i++) {
-      dateS = new Date(data[i].StartDate);
-      dateE = new Date(data[i].EndDate);
-      data[i].displayStartDate = this.monthNames[(dateS.getMonth())]
+    const that = this;
+    _.forEach(data, function (value) {
+      dateS = new Date(value.StartDate);
+      dateE = new Date(value.EndDate);
+      value.displayStartDate = that.monthNames[(dateS.getMonth())]
         + ' ' + ('0' + dateS.getDate()).slice(-2);
-      data[i].displayEndDate = this.monthNames[(dateE.getMonth())]
+      value.displayEndDate = that.monthNames[(dateE.getMonth())]
         + ' ' + ('0' + dateE.getDate()).slice(-2);
-    }
+    });
   }
   getStudentTasks(data) {
     this.taskService.getStudentTasks(
@@ -157,6 +147,7 @@ export class TasksComponent implements OnInit {
   }
   getWeekTaskLIst(index) {
     const obj = this.weekList[index];
+    this.mainService.show('task-loader');
     this.taskService.getStudentTasks(
       this.studentId,
       this.convertDate(new Date(obj.StartDate)),
@@ -164,7 +155,7 @@ export class TasksComponent implements OnInit {
     ).subscribe(
       (data) => {
         this.taskList = data;
-        console.log(data);
+        this.mainService.hide('task-loader');
         this.firstday.setDate(this.firstday.getDate() - (7 * (3 - index)));
         this.lastday.setDate(this.lastday.getDate() - (7 * (3 - index)));
         const timeDiff = Math.abs(this.lastday.getTime() - this.firstday.getTime());
@@ -188,6 +179,7 @@ export class TasksComponent implements OnInit {
           });
       },
       (err) => {
+        this.mainService.hide('task-loader');
         console.log(err);
       });
   }
@@ -316,12 +308,16 @@ export class TasksComponent implements OnInit {
   }
   openWeekList(e) {
     e.stopPropagation();
-    document.getElementsByTagName('body')[0].click();
+    this.hideOpenDiv('searchTask');
+    this.toggleWeekList();
+  }
+  toggleWeekList() {
     const dropdownWeek = document.getElementById('dropdown-week');
     if (dropdownWeek.style.display !== 'block') {
       dropdownWeek.style.display = 'block';
     } else {
       dropdownWeek.style.display = '';
+      document.getElementsByTagName('body')[0].click();
     }
   }
   searchTextValidation(e) {
@@ -427,24 +423,24 @@ export class TasksComponent implements OnInit {
     const addTask = document.getElementById('add-task');
     this.changedExtraHandler('addTaskTitle', 'Title');
     this.changedExtraHandler('addTaskDescription', 'Description');
-    addTask.className = addTask.className + ' in';
+    this.mainService.openModal('add-task');
   }
   closeModal() {
     this.mainService.closeModal('add-task');
   }
+  removeClassFromDropDown(index, prm) {
+    _.forEach(this.dropDownDate[index].querySelectorAll('li'), function (value) {
+      value.className = '';
+    });
+    this.dropDownDate[index].querySelectorAll('li')[prm].className = 'active-week';
+  }
   daySelect(day) {
     this.todayDay = day;
-    for (let i = 0; i < this.dropDownDate[0].querySelectorAll('li').length; i++) {
-      this.dropDownDate[0].querySelectorAll('li')[i].className = '';
-    }
-    this.dropDownDate[0].querySelectorAll('li')[this.todayDay].className = 'active-week';
+    this.removeClassFromDropDown(0, this.todayDay);
   }
   monthSelect(month) {
     this.todayDayMonth = this.monthNames.indexOf(month) + 1;
-    for (let i = 0; i < this.dropDownDate[1].querySelectorAll('li').length; i++) {
-      this.dropDownDate[1].querySelectorAll('li')[i].className = '';
-    }
-    this.dropDownDate[1].querySelectorAll('li')[this.todayDayMonth].className = 'active-week';
+    this.removeClassFromDropDown(1, this.todayDayMonth);
   }
   yearSelect(year) {
     this.todayDayYear = year;
@@ -483,6 +479,22 @@ export class TasksComponent implements OnInit {
       date.date(this.daysList[this.todayDay - 1]);
       date.month(this.todayDayMonth - 1);
       date.year(this.todayDayYear);
+      const obj = {
+        'StudentId': this.studentId,
+        'Title': this.taskDetails.title,
+        'Description': this.taskDetails.description,
+        'DueDate': date.utc().format(),
+        'Attachments': []
+      }
+      console.log(obj);
+      this.taskService.saveTask
+      this.taskService.saveTask(obj).subscribe(
+        (data) => {
+          this.mainService.closeModal('add-task');
+        },
+        (err) => {
+          console.log(err);
+        });
     }
 
   }

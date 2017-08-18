@@ -36,6 +36,11 @@ export class MainService {
       }
     });
   }
+  openModal(id) {
+    const d = document.getElementById(id);
+    d.className += ' in'
+    document.querySelector('body').className += 'modal-back';
+  }
   closeModal(id) {
     const d = document.getElementById(id);
     d.className = d.className.replace('in', '');
