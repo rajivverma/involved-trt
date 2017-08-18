@@ -5,7 +5,7 @@ import { DateFormatPipe } from '../../filter/dateformat.filter';
 import { SafeHtmlPipe } from '../../filter/safeHTML.filter';
 import 'rxjs/Rx';
 import * as moment from 'moment';
-import * as _ from "lodash";
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-tasks',
@@ -485,9 +485,8 @@ export class TasksComponent implements OnInit {
         'Description': this.taskDetails.description,
         'DueDate': date.utc().format(),
         'Attachments': []
-      }
+      };
       console.log(obj);
-      this.taskService.saveTask
       this.taskService.saveTask(obj).subscribe(
         (data) => {
           this.mainService.closeModal('add-task');
