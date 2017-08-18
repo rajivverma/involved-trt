@@ -37,8 +37,8 @@ export class MainService {
     });
   }
   openModal(id) {
-    const d = document.getElementById(id);
-    d.className += ' in';
+    const modal = document.getElementById(id);
+    modal.className += ' in';
     document.querySelector('body').className += 'modal-back';
   }
   closeModal(id) {
