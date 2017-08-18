@@ -44,7 +44,9 @@ export class TasksComponent implements OnInit {
     'title': '',
     'description': ''
   };
+  public dropDownDate: any;
   ngOnInit() {
+    this.dropDownDate = document.querySelectorAll('.dropdown-date');
     this.taskDescription = document.getElementById('task-description');
     this.firstday.setDate(this.firstday.getDate() - 22);
     this.lastday.setDate(this.lastday.getDate() + 22);
@@ -113,10 +115,11 @@ export class TasksComponent implements OnInit {
           .style.transform = '';
       }
     });
+    const that = this;
     setTimeout(function (todayDay, todayDayMonth) {
-      document.querySelectorAll('.dropdown-date')[0].querySelectorAll('li')[todayDay].className = 'active-week';
-      document.querySelectorAll('.dropdown-date')[1].querySelectorAll('li')[todayDayMonth].className = 'active-week';
-      document.querySelectorAll('.dropdown-date')[2].querySelectorAll('li')[2].className = 'active-week';
+      that.dropDownDate[0].querySelectorAll('li')[todayDay].className = 'active-week';
+      that.dropDownDate[1].querySelectorAll('li')[todayDayMonth].className = 'active-week';
+      that.dropDownDate[2].querySelectorAll('li')[2].className = 'active-week';
     }, 1000, this.todayDay, this.todayDayMonth);
   }
   preventDefault(e) {
@@ -314,16 +317,16 @@ export class TasksComponent implements OnInit {
   openWeekList(e) {
     e.stopPropagation();
     document.getElementsByTagName('body')[0].click();
-    const d = document.getElementById('dropdown-week');
-    if (d.style.display !== 'block') {
-      d.style.display = 'block';
+    const dropdownWeek = document.getElementById('dropdown-week');
+    if (dropdownWeek.style.display !== 'block') {
+      dropdownWeek.style.display = 'block';
     } else {
-      d.style.display = '';
+      dropdownWeek.style.display = '';
     }
   }
   searchTextValidation(e) {
     const msg = document.getElementById('userChar');
-    const d = document.getElementById('searchTask');
+    const searchTask = document.getElementById('searchTask');
     msg.style.display = 'block';
     if (e !== undefined) {
       e.stopPropagation();
@@ -332,7 +335,7 @@ export class TasksComponent implements OnInit {
         this.searchResultData = [];
         msg.innerHTML = 'Press Enter to search';
       }
-      d.style.display = 'block';
+      searchTask.style.display = 'block';
       if (this.searchTask.length < 3) {
         msg.innerHTML = 'Enter a minimum of 3 characters';
       }
@@ -421,41 +424,41 @@ export class TasksComponent implements OnInit {
   }
   createTask(e) {
     e.stopPropagation();
-    const ct = document.getElementById('add-task');
+    const addTask = document.getElementById('add-task');
     this.changedExtraHandler('addTaskTitle', 'Title');
     this.changedExtraHandler('addTaskDescription', 'Description');
-    ct.className = ct.className + ' in';
+    addTask.className = addTask.className + ' in';
   }
   closeModal() {
     this.mainService.closeModal('add-task');
   }
   daySelect(day) {
     this.todayDay = day;
-    for (let i = 0; i < document.querySelectorAll('.dropdown-date')[0].querySelectorAll('li').length; i++) {
-      document.querySelectorAll('.dropdown-date')[0].querySelectorAll('li')[i].className = '';
+    for (let i = 0; i < this.dropDownDate[0].querySelectorAll('li').length; i++) {
+      this.dropDownDate[0].querySelectorAll('li')[i].className = '';
     }
-    document.querySelectorAll('.dropdown-date')[0].querySelectorAll('li')[this.todayDay].className = 'active-week';
+    this.dropDownDate[0].querySelectorAll('li')[this.todayDay].className = 'active-week';
   }
   monthSelect(month) {
     this.todayDayMonth = this.monthNames.indexOf(month) + 1;
-    for (let i = 0; i < document.querySelectorAll('.dropdown-date')[1].querySelectorAll('li').length; i++) {
-      document.querySelectorAll('.dropdown-date')[1].querySelectorAll('li')[i].className = '';
+    for (let i = 0; i < this.dropDownDate[1].querySelectorAll('li').length; i++) {
+      this.dropDownDate[1].querySelectorAll('li')[i].className = '';
     }
-    document.querySelectorAll('.dropdown-date')[1].querySelectorAll('li')[this.todayDayMonth].className = 'active-week';
+    this.dropDownDate[1].querySelectorAll('li')[this.todayDayMonth].className = 'active-week';
   }
   yearSelect(year) {
     this.todayDayYear = year;
     let index;
     if (this.yearsList.indexOf(year) === 0) {
       index = 1;
-      document.querySelectorAll('.dropdown-date')[2]
+      this.dropDownDate[2]
         .querySelectorAll('li')[index + 1].className = '';
     } else {
       index = 2;
-      document.querySelectorAll('.dropdown-date')[2]
+      this.dropDownDate[2]
         .querySelectorAll('li')[index - 1].className = '';
     }
-    document.querySelectorAll('.dropdown-date')[2]
+    this.dropDownDate[2]
       .querySelectorAll('li')[index].className = 'active-week';
 
   }
