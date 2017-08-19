@@ -9,9 +9,9 @@ export class MainService {
   }
   hide(id) {
     document.getElementById(id).style.opacity = '0';
-    setTimeout(function () {
-      document.getElementById(id).style.display = '';
-    }, 600);
+    setTimeout(function (prm) {
+      document.getElementById(prm).style.display = '';
+    }, 600, id);
   }
   getCookie(name) {
     const value = '; ' + document.cookie;

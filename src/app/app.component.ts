@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
     setInterval(function () {
       if (navigator.onLine) {
         if (interval !== undefined) {
-          console.log(interval);
           clearInterval(interval);
           interval = undefined;
           document.getElementById('network-failed').style.opacity = '0';
@@ -24,7 +23,6 @@ export class AppComponent implements OnInit {
         }
       } else {
         if (interval === undefined) {
-          console.log(interval);
           checkConnection();
           document.getElementById('network-failed').style.display = 'block';
           setTimeout(function () {
@@ -32,7 +30,7 @@ export class AppComponent implements OnInit {
           }, 1000);
         }
       }
-    }, 2000);
+    }, 1000);
 
     function checkConnection() {
       interval = setInterval(function () {
