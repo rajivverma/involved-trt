@@ -213,6 +213,7 @@ export class TasksComponent implements OnInit {
   }
   loadMorePreviousWeekTask() {
     const obj = this.weekList[this.activeWeekIndex - 1];
+    this.mainService.show('task-loader');
     this.taskService.getStudentTasks(
       this.studentId,
       this.convertDate(new Date(obj.StartDate)),
@@ -221,6 +222,7 @@ export class TasksComponent implements OnInit {
       (data) => {
         this.taskList = data;
         console.log(data);
+        this.mainService.hide('task-loader');
         this.firstday.setDate(this.firstday.getDate() - 7);
         this.lastday.setDate(this.lastday.getDate() - 7);
         this.taskService.getWeekList(
@@ -243,6 +245,7 @@ export class TasksComponent implements OnInit {
   }
   loadMoreNextWeekTask() {
     const obj = this.weekList[this.activeWeekIndex + 1];
+    this.mainService.show('task-loader');
     this.taskService.getStudentTasks(
       this.studentId,
       this.convertDate(new Date(obj.StartDate)),
@@ -251,6 +254,7 @@ export class TasksComponent implements OnInit {
       (data) => {
         this.taskList = data;
         console.log(data);
+        this.mainService.hide('task-loader');
         this.firstday.setDate(this.firstday.getDate() + 7);
         this.lastday.setDate(this.lastday.getDate() + 7);
         this.taskService.getWeekList(

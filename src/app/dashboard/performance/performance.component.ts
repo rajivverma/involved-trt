@@ -7,6 +7,7 @@ import { PerformanceService } from './performance.service';
 import { DashboardService } from '../dashboard.service';
 import { PiChart } from '../commonService/pi-chart';
 import { MainService } from '../../commonService/main.service';
+import { MalihuScrollbarService } from 'ngx-malihu-scrollbar';
 
 declare var Circles: any;
 @Component({
@@ -33,13 +34,20 @@ export class PerformanceComponent implements OnInit {
   public monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
   ];
+  public scrollbarOptions = {
+    axis: 'yx',
+    theme: 'minimal-dark',
+    wheelSpeed: 1,
+    scrollInertia: 500
+  };
   public PerformanceGradeUrl;
   public PerformanceGraph;
   constructor(private router: Router,
     private performanceService: PerformanceService,
     private dashboardService: DashboardService,
     private piChart: PiChart,
-    private mainService: MainService) {
+    private mainService: MainService,
+    private mScrollbarService: MalihuScrollbarService) {
     router.events.subscribe((val) => {
       // clearInterval();
       for (let i = 0; i < this.intervalsId.length; i++) {

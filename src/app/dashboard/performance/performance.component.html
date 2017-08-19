@@ -19,8 +19,7 @@
         <div class="clear"></div>
       </div>
     </div>
-    <perfect-scrollbar [config]="config">
-    <div class="data-body" [perfect-scrollbar]="config">
+    <div class="data-body" id="dataBodyPerformance" malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
       <div class="row" *ngFor="let subject of subjectsData;">
         <div class="col">
           <div></div>
@@ -63,24 +62,23 @@
             <i class="fa fa-caret-down" aria-hidden="true"></i>
           </span>
           </p>
-          <div *ngIf="PerformanceGraph == 'true'" (click)="getSubjectDetails(subject,$event)" class="graph-icon"><img src="../../assets/img/prfrmnc.png" (mouseover)="over($event)" (mouseleave)="leave($event)" ></div>
+          <div *ngIf="PerformanceGraph == 'true'" (click)="getSubjectDetails(subject,$event)" class="graph-icon"><img src="../../assets/img/prfrmnc.png" (mouseover)="over($event)" (mouseleave)="leave($event)"></div>
         </div>
         <div class="clear"></div>
       </div>
     </div>
-    </perfect-scrollbar>
   </div>
-    <div *ngIf="subjectsData == undefined ||  subjectsData.length == 0">
-      <div class="no-task-header">
-        <p>Class</p>
-      </div>
-      <div class="no-task">
-        <p><b>No Classes Found...</b></p>
-        <p>Try:</p>
-        <p>1. Reload the webpage.</p>
-        <p>2. If the problem persists, please submit your query <a>here.</a></p>
-      </div>
+  <div *ngIf="subjectsData == undefined ||  subjectsData.length == 0">
+    <div class="no-task-header">
+      <p>Class</p>
     </div>
+    <div class="no-task">
+      <p><b>No Classes Found...</b></p>
+      <p>Try:</p>
+      <p>1. Reload the webpage.</p>
+      <p>2. If the problem persists, please submit your query <a>here.</a></p>
+    </div>
+  </div>
   <div class="loader" id="performance-loader">
     <img src="../../../assets/img/loader.gif">
   </div>

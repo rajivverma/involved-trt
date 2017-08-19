@@ -131,7 +131,7 @@ a {
   }
 }
 
-// Base for label styling 
+// Base for label styling
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
   left: -9999px;
@@ -145,7 +145,7 @@ a {
   position: relative;
 }
 
-// checkbox aspect 
+// checkbox aspect
 [type="checkbox"]:not(:checked)+label:before,
 [type="checkbox"]:checked+label:before {
   background: $white;
@@ -184,7 +184,7 @@ a {
   transform: scale(1);
 }
 
-// disabled checkbox 
+// disabled checkbox
 [type="checkbox"]:disabled:not(:checked)+label:before,
 [type="checkbox"]:disabled:checked+label:before {
   background-color: #ddd;
@@ -350,22 +350,22 @@ a {
 
   &::-webkit-input-placeholder {
     color: $danger;
-    // Chrome/Opera/Safari 
+    // Chrome/Opera/Safari
   }
 
   &::-moz-placeholder {
     color: $danger;
-    // Firefox 19+ 
+    // Firefox 19+
   }
 
   &:-ms-input-placeholder {
     color: $danger;
-    // IE 10+ 
+    // IE 10+
   }
 
   &:-moz-placeholder {
     color: $danger;
-    // Firefox 18- 
+    // Firefox 18-
   }
 }
 
@@ -697,7 +697,7 @@ td {
   color: $black;
 }
 
-// Add Animation 
+// Add Animation
 @-webkit-keyframes animatetop {
   from {
     opacity: 0;
@@ -730,14 +730,14 @@ td {
 
 .modal {
   background-color: rgb(255, 255, 255);
-  // Fallback color 
+  // Fallback color
   background-color: rgba(255, 255, 255, .5);
-  // Black w/ opacity 
+  // Black w/ opacity
   display: block;
-  // Hidden by default 
+  // Hidden by default
   display: none;
   height: 100%;
-  // Full height 
+  // Full height
   left: 0;
   overflow: auto;
   // Enable scroll if needed
@@ -756,7 +756,7 @@ td {
   display: block;
 }
 
-// Modal Content 
+// Modal Content
 .modal-content {
   -webkit-animation-duration: .5s;
   -webkit-animation-name: animatetop;
@@ -770,7 +770,7 @@ td {
   width: 1200px;
 }
 
-// The Close Button 
+// The Close Button
 .close {
   background: rgba(48, 48, 48, 1);
   border-radius: 50px;
@@ -1188,7 +1188,7 @@ canvas {
 }
 
 .tooltip {
-  &:hover 
+  &:hover
   .tooltiptext {
     transition: all ease .5s;
     visibility: visible;
@@ -1432,7 +1432,7 @@ canvas {
   height: 500px;
   overflow-x: hidden;
   overflow-y: auto;
-
+  position: relative;
   tr {
     cursor: pointer;
   }
@@ -1506,7 +1506,7 @@ canvas {
 .active-week {
   background-color: $primary-color;
   color: $white !important;
-  
+
   &:hover {
     background-color: $primary-color !important;
   }
@@ -1541,7 +1541,7 @@ canvas {
   text-align: center;
 }
 
-.add-task-form, 
+.add-task-form,
 .description-txt {
   textarea {
     height: 175px;
@@ -1567,6 +1567,7 @@ canvas {
 .date-cell {
   border-bottom: 1px solid #dedede;
   color: $black;
+  cursor: pointer;
   display: inline-block;
   font-size: 14px;
   margin-left: 15px;
@@ -1730,7 +1731,7 @@ input {
 
 textarea {
   &:disabled {
-    background-color: transparent; 
+    background-color: transparent;
   }
 }
 
@@ -1815,25 +1816,40 @@ textarea {
 }
 
 .no-task {
-  padding: 150px 0 0 10%;
+  height: 500px;
+  width: 100%;
+  position: relative;
+  .no-task-description{
+    padding: 150px 0 0 10%;
+    p {
+      color: #333;
+      font-size: 14px;
+      margin: 0;
+    }
+    a {
+      color: $primary-color;
+      cursor: pointer;
+    }
 
-  p {
-    color: #333;
-    font-size: 14px;
-    margin: 0;
-  }
-
-  a {
-    color: $primary-color;
-    cursor: pointer;
-  }
-
-  &:hover {
-    color: #20568d;
-    transition: all ease .5s;
+    &:hover {
+      color: #20568d;
+      transition: all ease .5s;
+    }
   }
 }
-
+.mCSB_scrollTools_vertical {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  opacity: 1 !important;
+  width: 8px !important;
+  background-color: #f9f9f9 !important;
+  opacity: .9 !important;
+}
+.mCSB_dragger_bar{
+  width: 100% !important;
+  border-radius: 0 !important;
+  background: #2671be !important;
+}
 .ps__scrollbar-y-rail {
   background-color: #f9f9f9 !important;
   opacity: .9 !important;

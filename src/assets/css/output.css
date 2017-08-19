@@ -1103,7 +1103,8 @@ canvas {
 .task-table {
   height: 500px;
   overflow-x: hidden;
-  overflow-y: auto; }
+  overflow-y: auto;
+  position: relative; }
   .task-table tr {
     cursor: pointer; }
   .task-table td {
@@ -1195,6 +1196,7 @@ canvas {
 .date-cell {
   border-bottom: 1px solid #dedede;
   color: #000;
+  cursor: pointer;
   display: inline-block;
   font-size: 14px;
   margin-left: 15px;
@@ -1374,17 +1376,34 @@ textarea:disabled {
   margin-right: 50px; }
 
 .no-task {
-  padding: 150px 0 0 10%; }
-  .no-task p {
-    color: #333;
-    font-size: 14px;
-    margin: 0; }
-  .no-task a {
-    color: #2671be;
-    cursor: pointer; }
-  .no-task:hover {
-    color: #20568d;
-    transition: all ease .5s; }
+  height: 500px;
+  width: 100%;
+  position: relative; }
+  .no-task .no-task-description {
+    padding: 150px 0 0 10%; }
+    .no-task .no-task-description p {
+      color: #333;
+      font-size: 14px;
+      margin: 0; }
+    .no-task .no-task-description a {
+      color: #2671be;
+      cursor: pointer; }
+    .no-task .no-task-description:hover {
+      color: #20568d;
+      transition: all ease .5s; }
+
+.mCSB_scrollTools_vertical {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  opacity: 1 !important;
+  width: 8px !important;
+  background-color: #f9f9f9 !important;
+  opacity: .9 !important; }
+
+.mCSB_dragger_bar {
+  width: 100% !important;
+  border-radius: 0 !important;
+  background: #2671be !important; }
 
 .ps__scrollbar-y-rail {
   background-color: #f9f9f9 !important;

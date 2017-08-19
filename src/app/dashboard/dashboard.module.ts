@@ -17,6 +17,7 @@ import { SafeHtmlPipe } from '../filter/safeHTML.filter';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { MomentModule } from 'angular2-moment';
+import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -39,6 +40,7 @@ export function highchartsFactory() {
     ChartModule,
     CommonModule,
     MomentModule,
+    MalihuScrollbarModule.forRoot(),
     PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG)
   ],
   exports: [],

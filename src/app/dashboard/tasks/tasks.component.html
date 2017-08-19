@@ -70,8 +70,10 @@
     </div>
   </div>
   <div *ngIf="taskList[0] != undefined && taskList[0].TotalTaskCount == 0" class="no-task">
-    <p><b>No Tasks Due this week.</b></p>
-    <p>Click on <a (click)="createTask($event)">Create Task</a> to set a task</p>
+    <div class="no-task-description">
+      <p><b>No Tasks Due this week.</b></p>
+      <p>Click on <a (click)="createTask($event)">Create Task</a> to set a task</p>
+    </div>
     <div class="loader" id="task-loader">
       <img src="../../../assets/img/loader.gif">
     </div>
