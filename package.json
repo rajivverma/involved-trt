@@ -4,10 +4,9 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "changeNodeModule": "rm node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js && cp src/assets/javascripts/jquery.mCustomScrollbar.js node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js",
-    "start": "npm run changeNodeModule && ng serve",
-    "build": "npm run changeNodeModule && ng build",
-    "build:prod": "npm run changeNodeModule && ng build --prod",
+    "start": "ng serve",
+    "build": "ng build",
+    "build:prod": "ng build --prod",
     "test": "ng test",
     "e2e": "ng e2e",
     "saas-lint": "sass-lint -c src/sass-lint.yml -v -q",

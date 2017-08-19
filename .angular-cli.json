@@ -24,7 +24,7 @@
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js"
+        "../src/assets/javascripts/jquery.mCustomScrollbar.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
