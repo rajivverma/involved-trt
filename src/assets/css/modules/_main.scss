@@ -1226,10 +1226,8 @@ canvas {
 
 .subject-list {
   display: inline-block;
-  overflow: auto;
   padding-bottom: 5px;
-  white-space: nowrap;
-  width: 1160px;
+  width: 900px;
   p {
     border-bottom: 2px solid transparent;
     cursor: pointer;
@@ -1239,6 +1237,7 @@ canvas {
     transition: none;
 
     &.active {
+      border-bottom: 2px solid $white;
       color: $white !important;
       font-size: 16px;
       font-weight: 900;

@@ -946,10 +946,8 @@ canvas {
 
 .subject-list {
   display: inline-block;
-  overflow: auto;
   padding-bottom: 5px;
-  white-space: nowrap;
-  width: 1160px; }
+  width: 900px; }
   .subject-list p {
     border-bottom: 2px solid transparent;
     cursor: pointer;
@@ -958,6 +956,7 @@ canvas {
     padding: 5px 10px;
     transition: none; }
     .subject-list p.active {
+      border-bottom: 2px solid #fff;
       color: #fff !important;
       font-size: 16px;
       font-weight: 900; }
