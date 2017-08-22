@@ -49,7 +49,7 @@ export class ForgotPasswordComponent implements OnInit {
         } else if (data.Message === 'ERROR_INACTIVE_ACCOUNT') {
           msg = 'Account has not been unlocked by parent/guardian.';
         } else if (data.Message === 'ERROR_INCOMPATIBLE_CLIENT') {
-          msg = 'Please enter valid student login username to reset password.';
+          msg = 'Please enter valid student username to reset password.';
         } else if (data.Message === 'ERROR_INVALID_CLIENT') {
           msg = 'Account is not active. Please email your query to support@involvedtech.co.uk';
         } else {

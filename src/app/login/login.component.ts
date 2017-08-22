@@ -112,7 +112,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(user).subscribe(
       (data) => {
         if (data.isactivated === 'False') {
-          document.getElementById('login-error').innerHTML = 'Parent has not unlocked this account.';
+          document.getElementById('login-error').innerHTML = 'Parent has not unlocked this account';
           return;
         }
         const val = (<HTMLInputElement>document.getElementById('test2')).checked;
