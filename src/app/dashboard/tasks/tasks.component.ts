@@ -374,25 +374,48 @@ export class TasksComponent implements OnInit {
     msg.innerHTML = 'Enter a minimum of 3 characters';
   }
   openTaskDescription(task, e) {
-    e.stopPropagation();
-    document.getElementsByTagName('body')[0].click();
-    this.taskDescription.style.display = 'block';
-    this.taskService.getTaskDetails(task.Id).subscribe(
-      (data) => {
-        this.taskDescriptionDetails = data;
-        console.log(data);
-        if (data.IsRead === false) {
-          this.taskService.markAsRead(data.Id).subscribe(
-            (dataC) => {
-            },
-            (err) => {
-              console.log(err);
-            });
-        }
-      },
-      (err) => {
-        console.log(err);
-      });
+    console.log(task.TaskType)
+    if (task.TaskType == 'Personal') {
+      e.stopPropagation();
+      document.getElementsByTagName('body')[0].click();
+      this.taskDescription.style.display = 'block';
+      this.taskService.personalTasks(task.Id).subscribe(
+        (data) => {
+          this.taskDescriptionDetails = data;
+          console.log(data);
+          if (data.IsRead === false) {
+            this.taskService.markAsRead(data.Id).subscribe(
+              (dataC) => {
+              },
+              (err) => {
+                console.log(err);
+              });
+          }
+        },
+        (err) => {
+          console.log(err);
+        });
+    } else {
+      e.stopPropagation();
+      document.getElementsByTagName('body')[0].click();
+      this.taskDescription.style.display = 'block';
+      this.taskService.getTaskDetails(task.Id).subscribe(
+        (data) => {
+          this.taskDescriptionDetails = data;
+          console.log(data);
+          if (data.IsRead === false) {
+            this.taskService.markAsRead(data.Id).subscribe(
+              (dataC) => {
+              },
+              (err) => {
+                console.log(err);
+              });
+          }
+        },
+        (err) => {
+          console.log(err);
+        });
+    }
   }
   closeTaskDescription() {
     this.taskDescription.style.display = '';

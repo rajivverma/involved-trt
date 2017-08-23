@@ -64,4 +64,10 @@ export class TaskService {
     return this.http.post(URL + '/api/personaltasks', data, token)
       .map((res: Response) => res.json());
   }
+
+  personalTasks(taskId) {
+    const token = this.getToken();
+    return this.http.get(URL + '/api/personaltasks/' + taskId, token)
+      .map((res: Response) => res.json());
+  }
 }
