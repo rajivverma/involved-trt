@@ -5,7 +5,7 @@ import { DateFormatPipe } from '../../filter/dateformat.filter';
 import { SafeHtmlPipe } from '../../filter/safeHTML.filter';
 import 'rxjs/Rx';
 import * as moment from 'moment';
-import * as _ from 'lodash';
+import { forEach } from 'lodash';
 
 @Component({
   selector: 'app-tasks',
@@ -75,7 +75,7 @@ export class TasksComponent implements OnInit {
         document.querySelector('body').className = document.querySelector('body').className.replace('modal-back', '');
       }
     });
-    _.forEach(document.querySelectorAll('.date-cell'), function (element, index) {
+    forEach(document.querySelectorAll('.date-cell'), function (element, index) {
       element.addEventListener('click', function (e) {
         e.stopPropagation();
         if (this.querySelector('.dropdown-date').style.display === 'block') {
@@ -99,7 +99,7 @@ export class TasksComponent implements OnInit {
       that.dropDownDate[2].querySelectorAll('li')[2].className = 'active-week';
     }, 1000, this.todayDay, this.todayDayMonth);
     function removeDisplayTransform() {
-      _.forEach(document.querySelectorAll('.date-cell'), function (value) {
+      forEach(document.querySelectorAll('.date-cell'), function (value) {
         (<HTMLElement>value.querySelector('.dropdown-date')).style.display = '';
         (<HTMLElement>value.querySelector('.fa-caret-down')).style.transform = '';
       });
@@ -122,7 +122,7 @@ export class TasksComponent implements OnInit {
   displayDropDownDate(data) {
     let dateS, dateE;
     const that = this;
-    _.forEach(data, function (value) {
+    forEach(data, function (value) {
       dateS = new Date(value.StartDate);
       dateE = new Date(value.EndDate);
       value.displayStartDate = that.monthNames[(dateS.getMonth())]
@@ -140,11 +140,23 @@ export class TasksComponent implements OnInit {
       (dataT) => {
         this.taskList = dataT;
         console.log(dataT);
+        this.setProgressBar(dataT);
       },
       (err) => {
         console.log(err);
       });
   }
+  setProgressBar(data) {
+    setTimeout(function () {
+      if (data[0].CompletedTaskCount !== 0) {
+        document.getElementById('bar-fill').style.width =
+          ((100 * data[0].CompletedTaskCount) / data[0].TotalTaskCount) + '%';
+      } else {
+        document.getElementById('bar-fill').style.width = '';
+      }
+    });
+  }
+
   getWeekTaskLIst(index) {
     const obj = this.weekList[index];
     this.mainService.show('task-loader');
@@ -222,6 +234,7 @@ export class TasksComponent implements OnInit {
       (data) => {
         this.taskList = data;
         console.log(data);
+        this.setProgressBar(data);
         this.mainService.hide('task-loader');
         this.firstday.setDate(this.firstday.getDate() - 7);
         this.lastday.setDate(this.lastday.getDate() - 7);
@@ -254,6 +267,7 @@ export class TasksComponent implements OnInit {
       (data) => {
         this.taskList = data;
         console.log(data);
+        this.setProgressBar(data);
         this.mainService.hide('task-loader');
         this.firstday.setDate(this.firstday.getDate() + 7);
         this.lastday.setDate(this.lastday.getDate() + 7);
@@ -433,7 +447,7 @@ export class TasksComponent implements OnInit {
     this.mainService.closeModal('add-task');
   }
   removeClassFromDropDown(index, prm) {
-    _.forEach(this.dropDownDate[index].querySelectorAll('li'), function (value) {
+    forEach(this.dropDownDate[index].querySelectorAll('li'), function (value) {
       value.className = '';
     });
     this.dropDownDate[index].querySelectorAll('li')[prm].className = 'active-week';

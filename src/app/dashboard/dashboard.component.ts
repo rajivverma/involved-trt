@@ -81,6 +81,11 @@ export class DashboardComponent implements OnInit {
         this.cookieService.removeAll();
         clearInterval(this.cookieInterval);
         this.cookieInterval = undefined;
+        localStorage.removeItem('PerformanceGraph');
+        localStorage.removeItem('fullname');
+        localStorage.removeItem('token');
+        localStorage.removeItem('userid');
+        localStorage.removeItem('PerformanceGradeUrl');
         this.router.navigate(['login']);
       },
       (err) => {

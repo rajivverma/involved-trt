@@ -395,7 +395,8 @@ a:focus {
   display: block;
   font-size: 15px;
   padding: 15px 5px;
-  text-decoration: none; }
+  text-decoration: none;
+  cursor: pointer; }
 
 .nav li a:hover {
   background: #e7f0f9;
@@ -1145,7 +1146,10 @@ canvas {
   background-color: #ccc; }
 
 .bar-fill {
-  background-color: #fff; }
+  background-color: #fff;
+  height: 10px;
+  width: 0;
+  transition: all 0.5s ease; }
 
 .ft-progress {
   background-color: #2671be;

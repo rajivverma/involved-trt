@@ -1486,6 +1486,9 @@ canvas {
 
 .bar-fill {
   background-color: $white;
+  height: 10px;
+  width: 0;
+  transition: all 0.5s ease;
 }
 
 .ft-progress {
