@@ -103,7 +103,7 @@ export class LoginComponent implements OnInit {
     };
     this.loginService.login(user).subscribe(
       (data) => {
-        if(data.isactivated === 'False') {
+        if (data.isactivated === 'False') {
           document.getElementById('login-error').innerHTML = 'Authorization has been denied for this request.';
           return;
         }
