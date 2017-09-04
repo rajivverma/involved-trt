@@ -28,6 +28,20 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false
+    singleRun: false,
+    
+    /* TravisCI  */
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    }
   });
+  
+  /* A check to see if Travis is running the test */
+  if(process.env.TRAVIS){
+    config.browsers = ['Chrome_travis_ci'];
+    config.singleRun = true;
+  }
 };
